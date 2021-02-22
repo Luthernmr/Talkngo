@@ -36,8 +36,7 @@ class RegistrationFormType extends AbstractType
             ->add('age',DateType::class,[
                 'label' => 'date de naissance',
                 'required' => true,
-                'widget' => 'choice',
-                'input'  => 'datetime_immutable'
+                
             ])
             ->add('location',TextType::class,[
                 'label' => 'ville',
@@ -49,7 +48,7 @@ class RegistrationFormType extends AbstractType
                  
             ])
             ->add('img', FileType::class, [
-                'required' => true,
+
                 'mapped' => false,
                 'label' => 'Photo de profil',
                 
