@@ -15,6 +15,8 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}<body>
+            <a href="{{ path('admin_user') }}">users</a>            
+        </body>{% endblock %}
     </body>
 </html>
