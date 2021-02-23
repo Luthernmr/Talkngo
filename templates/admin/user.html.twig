@@ -17,10 +17,11 @@
         <tbody>
             {% for user in users %}
             <tr>
-                <th>{{user.name}}</th>
-                <th>{{user.firstname}}</th>
-                <th>{{user.email}}</th>
-                <th>{{user_age.age.(user.id)}}</th>
+                {% set counter = ( counter | default(-1) ) + 1 %}
+                <th>{{ user.name }}</th>
+                <th>{{ user.firstname }}</th>
+                <th>{{ user.email }}</th>
+                <th>{{ user_age.age[counter]}}</th>
             </tr>
             {% endfor %}
         </tbody>

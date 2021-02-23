@@ -16,17 +16,16 @@ class UserController extends AbstractController
     {
         $users = $userRepository->findAll();
         $utilisateurs = [];
-        $user_id = [];
         for ($i=0; $i<count($users); $i++) {
             $datetime = date_format($users[$i]->getAge(), 'Y-m-d H:i:s');
             $timestamp = strtotime($datetime);
             $utilisateurs['age'][$i] = abs((time() - $timestamp) / (3600 * 24 * 365));
         }
-
+        $i = $i-1;
         return $this->render('admin/user.html.twig', [
             'users' => $users,
             'user_age' => $utilisateurs,
-            'u_id' => $user_id
+            'user_count' => $i
         ]);
     }
 }
