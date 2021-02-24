@@ -37,7 +37,7 @@ class RegistrationController extends AbstractController
             $infoImg = $form['img']->getData(); // récupère les infos de l'image 
             $extensionImg = $infoImg->guessExtension(); // récupère le format de l'image 
             $nomImg = time() . '.' . $extensionImg; // compose un nom d'image unique
-            $infoImg->move($this->getParameter('dossier_photos_maisons'), $nomImg); // déplace l'image
+            $infoImg->move($this->getParameter('dossier_photos_user'), $nomImg); // déplace l'image
             $user->setImg($nomImg);
 
             // generer le token pour activer le compte 

@@ -16,23 +16,32 @@
                 <th>localisation</th>
                 <th>description</th>
                 <th>image</th>
+                <th>modifier</th>
             </tr>
         </thead>
         <tbody>
             {% for user in users %}
             <tr>
                 {% set counter = ( counter | default(-1) ) + 1 %}
-                <th>{{ user.name }}</th>
-                <th>{{ user.firstname }}</th>
-                <th>{{ user.email }}</th>
-                <th>{{ user_age.age[counter]}}</th>
-                <th>{{ user.password }}</th>
-                <th>{{ user.location }}</th>
-                <th>{{ user.description }}</th>
-                <th>{{ user.img }}</th>
+                <td>{{ user.name }}</td>
+                <td>{{ user.firstname }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user_age.age[counter]}}</td>
+                <td>{{ user.location }}</td>
+                <td>{{ user.description }}</td>
+                <td>{{ user.img }}</td>
+                <td>
+                    <a href=" {{path('update_user')}} ">mdifier user</a>
+                    <a href=""> suprimer user</a>
+                </td>
+
 
             </tr>
             {% endfor %}
         </tbody>
     </table>
+    
+    <a href=" {{ path('create_user')}} ">créé user</a>
+
+
 {% endblock %}
