@@ -8,13 +8,8 @@
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
         <link rel="stylesheet" href="../public/css/style.css">
-<<<<<<< HEAD
         <link rel="stylesheet" href="../public/css/style_home.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Calistoga&display=swap" rel="stylesheet"> 
-=======
         <link rel="stylesheet" href="../public/css/form.css">
->>>>>>> 64f0479ddda11c9f5e8fc5590e423167ce10f16d
             {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
 
@@ -31,8 +26,8 @@
                 <li><input class="searchbar" type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeyup="searchFunction()"></li>
                     <ul id="myUL">
                         {% for country in countrys %}
-                        <li>
-                            <a class="dropdown-item" href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryName }}</a>
+                        <li id="liste-recherche">
+                            <a href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryName }}</a>
                         </li>
                         {% endfor %}
                     </ul>
@@ -69,7 +64,7 @@
             <img class="logo" src="../public/css/img/logo-vertical (2).svg" alt="">
             <input class="searchbar" type="search" name="" placeholder="Chercher un pays">
     
-            <a class="register" href="">Inscription</a>
+            <a class="register" href="{{path('app_register')}}">Inscription</a>
             <a class="login" href="">Connexion</a>
     
         </header>
