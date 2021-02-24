@@ -9,12 +9,12 @@
 </style>
 
 <div class="example-wrapper">
-{% if countryPage.countryName %}
-        <h1>Hello {{ countryPage.countryName }}! ✅</h1>
+{% if countryPage.countryNameFr %}
+        <h1>Hello {{ countryPage.countryNameFr }}! ✅</h1>
 {% endif %}
 
 {{ form_start(formPublication) }}
-    {{form_row(formPublication.countryName)}}
+    
     {{ form_widget(formPublication) }}
 
     <button type="submit">Publier l'annonce</button>

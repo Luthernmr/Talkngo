@@ -25,7 +25,9 @@ class CountryPageController extends AbstractController
         $repo = $this->getDoctrine()->getRepository(Country::class);
         $countryPage = $repo->find($id);
         $publications = $this->getDoctrine()->getManager()->getRepository(Publication::class)->findAll();
-       
+        $repo = $this->getDoctrine()->getRepository(Country::class);
+        $countrys = $repo->findAll();
+        
        //création du formulaire 
         $publication=new Publication();
         $form =$this->createForm(PublicationType::class,$publication);
@@ -46,6 +48,7 @@ class CountryPageController extends AbstractController
         return $this->render('country_page/index.html.twig', [
             'countryPage' => $countryPage,
             'publications' => $publications,
+            'countrys' => $countrys,
             'formPublication' => $form->createView()
         ]);
     }

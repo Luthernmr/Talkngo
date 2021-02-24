@@ -17,9 +17,10 @@ class PublicationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('countryName',ChoiceType::class, [
+            ->add('countryName',TextType::class, [
                 'required' => true,
-                'label' => 'Destination'
+                'label' => 'Destination',
+                                
                  
             ])
             ->add('date', DateType::class,[

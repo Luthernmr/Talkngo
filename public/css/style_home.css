@@ -1,0 +1,29 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Calistoga&display=swap%27); */
+
+body {
+    padding: 0;
+}
+
+#slogan_image {
+    color:white;
+    font-family: Arial;
+    font-size: 3em;
+}
+
+#imageaccueil {
+    background-image: url("img/Image_accueil.png");
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 40em;
+}
+
+h2 {
+    color: #6923E5;
+    font-family: 'calistoga';
+}
+
+h3 {
+    color: #0d9b9c;
+    font-family: 'calistoga';
+    font-size: 1.3em;
+}
