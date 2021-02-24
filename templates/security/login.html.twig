@@ -3,6 +3,12 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
+{% for message in app.flashes('message') %}
+<div class="alert alert-success " role="alert">
+    {{message}}
+</div>
+    
+{% endfor %}
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -39,4 +45,9 @@
         Sign in
     </button>
 </form>
+<a href=" {{ path('app_forgotten_password') }} ">mot de passe oublié</a> 
+
+
+
+<a href=" {{path('app_register')}} ">inscription</a>
 {% endblock %}

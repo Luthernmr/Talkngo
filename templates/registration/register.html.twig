@@ -5,12 +5,11 @@
 {% block body %}
 
 <div class="container-fluid p-4">
-        <h2 class="text-center">inscription </h2>
-
-
 
     <div class="col-4 offset-4">
 
+<<<<<<< HEAD
+=======
     
             {{ form_start(registrationForm,) }}
         {{ form_row(registrationForm.name,{'attr':{'class':'form-control'} }) }}
@@ -18,21 +17,42 @@
         {{ form_row(registrationForm.email,{'attr':{'class':'form-control'} }) }}
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
-        },{'attr':{'class':'form-control'} }) }}
-        {{ form_row(registrationForm.age) }}
+        }) }}
+        {{ form_row(registrationForm.age, {'attr':{'class':'form-control'} }) }}
         {{ form_row(registrationForm.location,{'attr':{'class':'form-control'} }) }}
         {{ form_row(registrationForm.description,{'attr':{'class':'form-control'} }) }}
         {{ form_row(registrationForm.img,{'attr':{'class':'form-control'} }) }}
+>>>>>>> 46373b413d72bb34bebce4caa2f126d71adc67b2
 
-        {{ form_row(registrationForm.agreeTerms) }}
+        <div class="form-largescreen">
 
-        <button type="submit" class="btn btn-success">valider form</button>
-    {{ form_end(registrationForm) }}
-      </div>
+            <div class="title">
+                <h2>Inscription</h2>
+                <h3>Rejoignez l'aventure Talk'n Go !</h3>
+            </div>
 
+
+            {{ form_start(registrationForm,) }}
+            {{ form_row(registrationForm.name,{'attr':{'class':'form-control'} }) }}
+            {{ form_row(registrationForm.first_name,{'attr':{'class':'form-control'} }) }}
+            {{ form_row(registrationForm.email,{'attr':{'class':'form-control'} }) }}
+            {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+            },{'attr':{'class':'form-control'} }) }}
+            {{ form_row(registrationForm.age) }}
+            {{ form_row(registrationForm.location,{'attr':{'class':'form-control'} }) }}
+            {{ form_row(registrationForm.description,{'attr':{'class':'form-control'} }) }}
+            {{ form_row(registrationForm.img,{'attr':{'class':'form-control'} }) }}
+
+            {{ form_row(registrationForm.agreeTerms) }}
+
+            <button type="submit" class="submit">valider</button>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
 </div>
 
 
 
-    
+
 {% endblock %}
