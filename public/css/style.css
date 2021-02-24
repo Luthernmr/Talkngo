@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Calistoga&display=swap');
+
+*{
+    list-style: none;
+    outline-style: none;
+    margin: 0;
+    padding: 0;
+}
+header.phone-screen{
+    display: none;
+}
+
+ header.large-screen{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 50px;
+    margin-left:auto ;
+    margin-right: auto;
+    width: 100%;
+    box-shadow: 0px 11px 7px 0px rgba(0,0,0,0.2);
+    
+  
+}
+
+footer{
+
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+a{
+    color:#6923E5 ;
+}
+a:link{
+    text-decoration: none;
+}
+
+.header-content{
+   width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    
+  
+    
+}
+
+
+.logo{
+    width: 200px;
+    height: 200px;
+}
+.searchbar{
+    width: 500px;
+    height: 40px;
+    border: 1px solid #6923E5;
+    border-radius: 20px;
+    padding: 15px;
+    background-image: url('./img/loupe.svg')  ;
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position-x: 468px;
+    background-position-y: 10px;
+    background-color: rgb(236, 236, 236);
+    font-family: Arial, Helvetica, sans-serif;
+
+    
+    
+}
+
+
+
+.spacebar{
+    height: 40px;
+    border: 1px solid #6923E5;
+   
+    
+}
+
+
+.register{
+border: 1px solid #6923E5;
+padding : 10px 30px 10px 30px;
+border-radius: 20px;
+background-color: #fff;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+.login{
+border: 1px solid  #6923E5;
+padding : 10px 30px 10px 30px;
+border-radius: 20px;
+background-color: #6923E5;    
+color: #fff;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+li{
+    padding-right: 15px;
+    padding-left:15px ;
+}
+
+.map{
+    height: 600px;
+    width: 1200px;
+    margin-top: 5vh;
+    margin-left:auto ;
+    margin-right: auto;
+border:15px solid #6923E5;
+border-radius: 5px;
+}
+
+
+
+
+
+@media (max-width: 840px) {
+
+    header.large-screen{
+        display: none;
+     
+      
+    }
+
+    header.phone-screen{
+        padding: 15px;
+        display: flex;
+       align-items: center;
+        flex-direction: column;
+      
+     
+    }
+
+    footer{
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;   
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .searchbar{
+        width: 350px;
+    }
+    
+    .login{
+        
+       margin-top: 25px;
+        border: 1px solid  #6923E5;
+        padding : 10px 30px 10px 30px;
+        border-radius: 20px;
+        background-color: #6923E5;    
+        color: #fff;
+        }
+
+        .register{
+            margin-top: 25px;
+            border: 1px solid #6923E5;
+            padding : 10px 30px 10px 30px;
+            border-radius: 20px;
+            background-color: #fff;
+        }
+
+        .map{
+            height: 400px;
+            width: 350px;
+        }
+
+
+}
