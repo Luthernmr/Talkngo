@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -72,6 +74,7 @@ class User implements UserInterface
     private $isVerified = false;
 
     /**
+<<<<<<< HEAD
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $token;
@@ -80,6 +83,16 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $reset_token;
+=======
+     * @ORM\OneToMany(targetEntity=Publication::class, mappedBy="user")
+     */
+    private $publications;
+
+    public function __construct()
+    {
+        $this->publications = new ArrayCollection();
+    }
+>>>>>>> 3f6ee5cbc9b835ec58cdb7a2c5bfa3e3e7b6e457
 
     public function getId(): ?int
     {
@@ -246,6 +259,7 @@ class User implements UserInterface
         return $this;
     }
 
+<<<<<<< HEAD
     public function getToken(): ?string
     {
         return $this->token;
@@ -254,10 +268,27 @@ class User implements UserInterface
     public function setToken(?string $token): self
     {
         $this->token = $token;
+=======
+    /**
+     * @return Collection|Publication[]
+     */
+    public function getPublications(): Collection
+    {
+        return $this->publications;
+    }
+
+    public function addPublication(Publication $publication): self
+    {
+        if (!$this->publications->contains($publication)) {
+            $this->publications[] = $publication;
+            $publication->setUser($this);
+        }
+>>>>>>> 3f6ee5cbc9b835ec58cdb7a2c5bfa3e3e7b6e457
 
         return $this;
     }
 
+<<<<<<< HEAD
     public function getResetToken(): ?string
     {
         return $this->reset_token;
@@ -266,6 +297,16 @@ class User implements UserInterface
     public function setResetToken(?string $reset_token): self
     {
         $this->reset_token = $reset_token;
+=======
+    public function removePublication(Publication $publication): self
+    {
+        if ($this->publications->removeElement($publication)) {
+            // set the owning side to null (unless already changed)
+            if ($publication->getUser() === $this) {
+                $publication->setUser(null);
+            }
+        }
+>>>>>>> 3f6ee5cbc9b835ec58cdb7a2c5bfa3e3e7b6e457
 
         return $this;
     }

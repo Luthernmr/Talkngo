@@ -5,35 +5,21 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Country;
 use App\Entity\Publication;
-use App\Form\PublicationType;
+use Doctrine\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
+use App\DataFixtures\PublicationFixtures;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Form\PublicationType;
 
-class HomeController extends AbstractController
+class CountryPageController extends AbstractController
 {
     /**
-     * @Route("/", name="home")
+     * @Route("/country/page", name="country_page")
      */
-    public function index()
-    {
-        $repo = $this->getDoctrine()->getRepository(Country::class);
-        $countryPage = $repo->findAll();
-        $repo = $this->getDoctrine()->getRepository(Country::class);
-        $countrys = $repo->findAll();
-        return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
-            'countrys' => $countrys,
-            'countryPage' => $countryPage
-        ]);
-    }
-
-    /**
-     * @Route("/country/page/{id}", name="country_page")
-     */
-    public function show(Request $request, $id,EntityManagerInterface $entityManager){
+    public function index(Request $request, $id,EntityManagerInterface $entityManager){
 
         $repo = $this->getDoctrine()->getRepository(Country::class);
         $countryPage = $repo->find($id);
@@ -55,10 +41,13 @@ class HomeController extends AbstractController
             $manager->flush();
         }
 
-        return $this->render('country_page/index.html.twig', [
+        return $this->redirectToRoute('country_page/index.html.twig', [
             'countryPage' => $countryPage,
             'publications' => $publications,
             'formPublication' => $form->createView()
         ]);
     }
+
+
 }
+   
