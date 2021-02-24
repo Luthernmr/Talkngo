@@ -16,8 +16,10 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class RegistrationFormType extends AbstractType
@@ -37,6 +39,14 @@ class RegistrationFormType extends AbstractType
             ->add('age',BirthdayType::class,[
                 'label' => 'date de naissance',
                 'required' => true,
+                'attr' => [
+                    'class' => 'form-control js-datepicker'
+                ],
+                'placeholder' => [
+                    'year' => 'Year', 'month' => 'Month', 'day' => 'Day',
+                ]
+                
+                
                 
             ])
             ->add('location',TextType::class,[
@@ -50,7 +60,7 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('img', FileType::class, [
 
-                'mapped' => false,
+                
                 'label' => 'Photo de profil',
                 
             ])
@@ -85,6 +95,14 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            // ->add('password', RepeatedType::class, [
+            //     'type' => PasswordType::class,
+            //     'invalid_message' => 'les deux mot de passe doivent corresponde .',
+            //     'options' => ['attr' => ['class' => 'password-field']],
+            //     'required' => true,
+            //     'first_options'  => ['label' => 'mot de passe'],
+            //     'second_options' => ['label' => 'confirmer mot de passe'],
+            // ]);
             
         
         ;
