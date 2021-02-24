@@ -12,6 +12,10 @@
                 <th>prenom</th>
                 <th>email</th>
                 <th>age</th>
+                <th>mdp</th>
+                <th>localisation</th>
+                <th>description</th>
+                <th>image</th>
             </tr>
         </thead>
         <tbody>
@@ -22,6 +26,11 @@
                 <th>{{ user.firstname }}</th>
                 <th>{{ user.email }}</th>
                 <th>{{ user_age.age[counter]}}</th>
+                <th>{{ user.password }}</th>
+                <th>{{ user.location }}</th>
+                <th>{{ user.description }}</th>
+                <th>{{ user.img }}</th>
+
             </tr>
             {% endfor %}
         </tbody>
