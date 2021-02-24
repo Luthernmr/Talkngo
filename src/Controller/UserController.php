@@ -73,7 +73,7 @@ class UserController extends AbstractController
         
 
     /**
-     * @Route("/admin/user/update-{id}", name="user_update")
+     * @Route("/admin/user/update-{id}", name="update_user")
      */
     public function updateMaison(UserRepository $userRepository, $id, Request $request)
     {
