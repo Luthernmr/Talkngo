@@ -14,7 +14,7 @@ header.phone-screen{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 50px;
+    padding: 0px 50px 0px 50px;
     margin-left:auto ;
     margin-right: auto;
     width: 100%;
@@ -45,14 +45,12 @@ a:link{
     justify-content: space-around;
     align-items: center;
     
-  
-    
 }
 
 
 .logo{
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
 }
 .searchbar{
     width: 500px;
