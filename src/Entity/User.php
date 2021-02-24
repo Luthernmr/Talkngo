@@ -74,6 +74,16 @@ class User implements UserInterface
     private $isVerified = false;
 
     /**
+<<<<<<< HEAD
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $token;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $reset_token;
+=======
      * @ORM\OneToMany(targetEntity=Publication::class, mappedBy="user")
      */
     private $publications;
@@ -82,6 +92,7 @@ class User implements UserInterface
     {
         $this->publications = new ArrayCollection();
     }
+>>>>>>> 3f6ee5cbc9b835ec58cdb7a2c5bfa3e3e7b6e457
 
     public function getId(): ?int
     {
@@ -248,6 +259,16 @@ class User implements UserInterface
         return $this;
     }
 
+<<<<<<< HEAD
+    public function getToken(): ?string
+    {
+        return $this->token;
+    }
+
+    public function setToken(?string $token): self
+    {
+        $this->token = $token;
+=======
     /**
      * @return Collection|Publication[]
      */
@@ -262,10 +283,21 @@ class User implements UserInterface
             $this->publications[] = $publication;
             $publication->setUser($this);
         }
+>>>>>>> 3f6ee5cbc9b835ec58cdb7a2c5bfa3e3e7b6e457
 
         return $this;
     }
 
+<<<<<<< HEAD
+    public function getResetToken(): ?string
+    {
+        return $this->reset_token;
+    }
+
+    public function setResetToken(?string $reset_token): self
+    {
+        $this->reset_token = $reset_token;
+=======
     public function removePublication(Publication $publication): self
     {
         if ($this->publications->removeElement($publication)) {
@@ -274,6 +306,7 @@ class User implements UserInterface
                 $publication->setUser(null);
             }
         }
+>>>>>>> 3f6ee5cbc9b835ec58cdb7a2c5bfa3e3e7b6e457
 
         return $this;
     }
