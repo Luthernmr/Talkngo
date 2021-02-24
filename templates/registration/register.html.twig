@@ -5,34 +5,39 @@
 {% block body %}
 
 <div class="container-fluid p-4">
-        <h2 class="text-center">inscription </h2>
-
-
 
     <div class="col-4 offset-4">
 
-    
+
+        <div class="form-largescreen">
+
+            <div class="title">
+                <h2>Inscription</h2>
+                <h3>Rejoignez l'aventure Talk'n Go !</h3>
+            </div>
+
+
             {{ form_start(registrationForm,) }}
-        {{ form_row(registrationForm.name,{'attr':{'class':'form-control'} }) }}
-        {{ form_row(registrationForm.first_name,{'attr':{'class':'form-control'} }) }}
-        {{ form_row(registrationForm.email,{'attr':{'class':'form-control'} }) }}
-        {{ form_row(registrationForm.plainPassword, {
+            {{ form_row(registrationForm.name,{'attr':{'class':'form-control'} }) }}
+            {{ form_row(registrationForm.first_name,{'attr':{'class':'form-control'} }) }}
+            {{ form_row(registrationForm.email,{'attr':{'class':'form-control'} }) }}
+            {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
-        },{'attr':{'class':'form-control'} }) }}
-        {{ form_row(registrationForm.age) }}
-        {{ form_row(registrationForm.location,{'attr':{'class':'form-control'} }) }}
-        {{ form_row(registrationForm.description,{'attr':{'class':'form-control'} }) }}
-        {{ form_row(registrationForm.img,{'attr':{'class':'form-control'} }) }}
+            },{'attr':{'class':'form-control'} }) }}
+            {{ form_row(registrationForm.age) }}
+            {{ form_row(registrationForm.location,{'attr':{'class':'form-control'} }) }}
+            {{ form_row(registrationForm.description,{'attr':{'class':'form-control'} }) }}
+            {{ form_row(registrationForm.img,{'attr':{'class':'form-control'} }) }}
 
-        {{ form_row(registrationForm.agreeTerms) }}
+            {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn btn-success">valider form</button>
-    {{ form_end(registrationForm) }}
-      </div>
-
+            <button type="submit" class="submit">valider</button>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
 </div>
 
 
 
-    
+
 {% endblock %}
