@@ -12,9 +12,12 @@ class AdminController extends AbstractController
      * @Route("/admin", name="admin")
      */
     public function index(): Response
-    {
-        return $this->render('admin/index.html.twig', [
+    { $repo = $this->getDoctrine()->getRepository(Country::class);
+        $countrys = $repo->findAll();
+
+        return $this->render('admin/admin.html.twig', [
             'controller_name' => 'AdminController',
+            'countrys' => $countrys
         ]);
     }
 }

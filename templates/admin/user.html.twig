@@ -3,36 +3,51 @@
 {% block title %}utilisateurs{% endblock %}
 
 {% block body %}
+
+{% for message in app.flashes('message') %}
+<div class="alert alert-success " role="alert">
+    {{message}}
+</div>
+    
+{% endfor %}
     <h2>utilisateurs</h2>
     
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>nom</th>
                 <th>prenom</th>
                 <th>email</th>
                 <th>age</th>
-                <th>mdp</th>
                 <th>localisation</th>
                 <th>description</th>
                 <th>image</th>
+                <th>modifier</th>
             </tr>
         </thead>
         <tbody>
             {% for user in users %}
             <tr>
                 {% set counter = ( counter | default(-1) ) + 1 %}
-                <th>{{ user.name }}</th>
-                <th>{{ user.firstname }}</th>
-                <th>{{ user.email }}</th>
-                <th>{{ user_age.age[counter]}}</th>
-                <th>{{ user.password }}</th>
-                <th>{{ user.location }}</th>
-                <th>{{ user.description }}</th>
-                <th>{{ user.img }}</th>
+                <td>{{ user.name }}</td>
+                <td>{{ user.firstname }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user_age.age[counter]}}</td>
+                <td>{{ user.location }}</td>
+                <td>{{ user.description }}</td>
+                <td>{{ user.img }}</td>
+                <td>
+                     <a href=" {{ path('user_update', {'id':user.id})  }} ">modifier user</a> 
+                    <a href="  {{ path('user_delete', {'id':user.id})  }} "> suprimer user</a>
+                </td>
+
 
             </tr>
             {% endfor %}
         </tbody>
     </table>
+    
+    <a href=" {{ path('create_user')}} ">créé user</a>
+
+
 {% endblock %}
