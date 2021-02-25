@@ -45,7 +45,7 @@
                     <ul id="myUL">
                        {% for country in countrys %}
                         <li>
-                            <a class="dropdown-item" href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryNameFr }}</a>
+                            <a class="pays" href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryNameFr }}</a>
                         </li>
                         {% endfor %} 
                     </ul>
