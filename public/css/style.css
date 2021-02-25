@@ -66,11 +66,12 @@ a:link{
     background-color: rgb(236, 236, 236);
     font-family: Arial, Helvetica, sans-serif;
 
-    
-    
 }
 
-
+#myUL{
+    height: 40px;
+    overflow: hidden;
+}
 
 .spacebar{
     height: 40px;

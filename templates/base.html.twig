@@ -15,6 +15,36 @@
         {% endblock %}
 
         {% block javascripts %}
+        <script>
+
+            function afficheListe() {
+                let barre = document.getElementsByClassName('searchbar')
+                let 
+            }
+
+
+
+
+
+
+
+            function searchFunction() {
+                var input, filter, ul, li, a, i, txtValue;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                ul = document.getElementById("myUL");
+                li = ul.getElementsByTagName("li");
+                for (i = 0; i < li.length; i++) {
+                    a = li[i].getElementsByClassName("pays")[0];
+                    txtValue = a.textContent || a.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        li[i].style.display = "";
+                    } else {
+                        li[i].style.display = "none";
+                    }
+                }
+            }
+            </script>
             {#{{ encore_entry_script_tags('app') }}#}
         {% endblock %}
     </head>
@@ -23,8 +53,8 @@
 
             <a href="{{path('')}}"><img class="logo" src="../public/css/img/logo-horizontal (1).svg" alt=""></a>
             <div class="header-content">
-    
-                <input class="searchbar" type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeyup="searchFunction()">
+                <div class="liste-searchbar">
+                <input class="searchbar" onClick="afficheListe()" type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeyup="searchFunction()">
                     <ul id="myUL">
                         {% for country in countrys %}
                         <li id="liste-recherche">
@@ -32,24 +62,7 @@
                         </li>
                         {% endfor %}
                     </ul>
-                <script>
-                    function searchFunction() {
-                        var input, filter, ul, li, a, i, txtValue;
-                        input = document.getElementById("myInput");
-                        filter = input.value.toUpperCase();
-                        ul = document.getElementById("myUL");
-                        li = ul.getElementsByTagName("li");
-                        for (i = 0; i < li.length; i++) {
-                            a = li[i].getElementsByClassName("pays")[0];
-                            txtValue = a.textContent || a.innerText;
-                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                                li[i].style.display = "";
-                            } else {
-                                li[i].style.display = "none";
-                            }
-                        }
-                    }
-                    </script>
+            </div>
     
                 <li>
                     <div class="spacebar"></div>
