@@ -13,54 +13,67 @@
         {% endblock %}
 
         {% block javascripts %}
+        <script>
+
+            function afficheListe() {
+                let barre = document.getElementsByClassName('searchbar')
+                let 
+            }
+
+
+
+
+
+
+
+            function searchFunction() {
+                var input, filter, ul, li, a, i, txtValue;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                ul = document.getElementById("myUL");
+                li = ul.getElementsByTagName("li");
+                for (i = 0; i < li.length; i++) {
+                    a = li[i].getElementsByClassName("pays")[0];
+                    txtValue = a.textContent || a.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        li[i].style.display = "";
+                    } else {
+                        li[i].style.display = "none";
+                    }
+                }
+            }
+            </script>
             {#{{ encore_entry_script_tags('app') }}#}
         {% endblock %}
     </head>
     <body>
         <header class="large-screen">
 
-            <a href="{{path('')}}"><img class="logo" src="{{asset('img/logo-horizontal-1')}}" alt=""></a>
+            <a href="{{path('')}}"><img class="logo" src="{{asset('css/img/logo-horizontal-1.svg')}}" alt=""></a>
             <div class="header-content">
-                
-                <input class="searchbar" type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeyup="searchFunction()">
+                <div class="liste-searchbar">
+                <input class="searchbar" onClick="afficheListe()" type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeyup="searchFunction()">
                     <ul id="myUL">
-                        {% for country in countrys %}
-                        <li id="liste-recherche">
-                            <a class='pays' href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryNameFr }}</a>
+                       {% for country in countrys %}
+                        <li>
+                            <a class="dropdown-item" href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryNameFr }}</a>
                         </li>
-                        {% endfor %}
+                        {% endfor %} 
                     </ul>
-                <script>
-                    function searchFunction() {
-                        var input, filter, ul, li, a, i, txtValue;
-                        input = document.getElementById("myInput");
-                        filter = input.value.toUpperCase();
-                        ul = document.getElementById("myUL");
-                        li = ul.getElementsByTagName("li");
-                        for (i = 0; i < li.length; i++) {
-                            a = li[i].getElementsByClassName("pays")[0];
-                            txtValue = a.textContent || a.innerText;
-                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                                li[i].style.display = "";
-                            } else {
-                                li[i].style.display = "none";
-                            }
-                        }
-                    }
-                    </script>
+            </div>
     
                 <li>
                     <div class="spacebar"></div>
                 </li>
             
-                <li><a class="register" href="{{path('app_register')}}">Inscription</a></li>
-                <li><a class="login" href="{{path('app_register')}}">Connexion</a></li>
+                <li><a class="register" href="{{ path('app_register') }}">Inscription</a></li>
+                <li><a class="login" href=" {{ path('app_login') }} ">Connexion</a></li>
     
             </div>
         </header>
     
         <header class="phone-screen">
-            <img class="logo" src="{{asset('img/logo-vertical-2')}}" alt="">
+            <img class="logo" src="{{asset('css/img/logo-vertical-2.svg')}}" alt="">
             <input class="searchbar" type="search" name="" placeholder="Chercher un pays">
     
             <a class="register" href="{{path('app_register')}}">Inscription</a>
