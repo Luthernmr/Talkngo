@@ -9,23 +9,31 @@
 </style>
 
 <div class="example-wrapper">
-{% if countryPage.countryName %}
-        <h1>Hello {{ countryPage.countryName }}! ✅</h1>
+{% if countryPage.countryNameFr %}
+        <h1>Hello {{ countryPage.countryNameFr }}! ✅</h1>
 {% endif %}
 
 {{ form_start(formPublication) }}
+    
     {{ form_widget(formPublication) }}
 
     <button type="submit">Publier l'annonce</button>
 {{ form_end(formPublication) }}
 
 {% for publication in publications %}
-    {% if countryPage.countryName == publication.countryName %}
+    {% if countryPage.countryName == publication.countryName  %}
         <div>
             <img src="{{ publication.img}}" alt="">
-            <h3>Road to {{countryPage.countryNameFr}}</h3> 
+            <h3>Road to </h3> 
             <p>{{publication.duration}}</p>
             <p>{{publication.date | date('d/m/Y')}}</p>
+            <img src="{{asset('img/profil/publication.user.img')}}" alt="pdp">
+            <p>{{publication.user.name}} </p>
+            <p>{{publication.user.location}} -> {{countryPage.countryNameFr}}</p>
+            
+        </div>
+        <div>
+            
         </div>
     {% endif %}
 {% endfor %}
