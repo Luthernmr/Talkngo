@@ -24,7 +24,7 @@
             <a href="{{path('')}}"><img class="logo" src="../public/css/img/logo-horizontal (1).svg" alt=""></a>
             <div class="header-content">
     
-                <li><input class="searchbar" type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeyup="searchFunction()"></li>
+                <input class="searchbar" type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeyup="searchFunction()">
                     <ul id="myUL">
                         {% for country in countrys %}
                         <li id="liste-recherche">
@@ -56,7 +56,7 @@
                 </li>
             
                 <li><a class="register" href="{{path('app_register')}}">Inscription</a></li>
-                <li><a class="login" href="">Connexion</a></li>
+                <li><a class="login" href="{{path('app_register')}}">Connexion</a></li>
     
             </div>
         </header>
