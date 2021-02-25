@@ -1,13 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %} modifier un utilisateur {% endblock %}
 
 {% block body %}
 
-
-
 <div class="container-fluid p-4">
-        <h2 class="text-center">inscription </h2>
+        <h2 class="text-center"> modifier un utilisateur </h2>
 
 
 
@@ -24,19 +22,13 @@
         {{ form_row(registrationForm.age, {'attr':{'class':'form-control'} }) }}
         {{ form_row(registrationForm.location,{'attr':{'class':'form-control'} }) }}
         {{ form_row(registrationForm.description,{'attr':{'class':'form-control'} }) }}
-        {{ form_row(registrationForm.img,{'attr':{'class':'form-control'} }) }}
-
-        <div class="form-largescreen">
-
+        {{ form_row(registrationForm.img) }}
         {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn btn-success">valider form</button>
+        
+        <button type="submit" class="btn btn-success">valider </button>
     {{ form_end(registrationForm) }}
       </div>
-
+                  <a href=" {{path('admin_user')}} "> retour </a>
 </div>
-
-
-
     
 {% endblock %}

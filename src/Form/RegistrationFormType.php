@@ -59,7 +59,7 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('img', FileType::class, [
 
-                
+                'mapped' => false,
                 'label' => 'Photo de profil',
                 
             ])
@@ -78,6 +78,7 @@ class RegistrationFormType extends AbstractType
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
+                'required' => true,
                 'mapped' => false,
                 'attr' => [
                     'class' => 'form-control '
