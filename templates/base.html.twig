@@ -7,18 +7,11 @@
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
-<<<<<<< HEAD
-        <link rel="stylesheet" href="../public/css/style.css"> 
-         <link rel="stylesheet" href="../public/css/style_home.css">
+        <link rel="stylesheet" href=" {{asset('css/style.css')}} "> 
+         <link rel="stylesheet" href=" {{asset('css/style_home.css')}} ">
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link rel="stylesheet" href="../public/css/form.css">
+        <link rel="stylesheet" href=" {{asset('css/style.css')}}">
        
-=======
-        <link rel="stylesheet" href="../public/css/style.css">
-        <link rel="stylesheet" href="../public/css/style_home.css">
-        <link rel="stylesheet" href="../public/css/form.css">
-        <link rel="stylesheet" href="../public/css/pays.css">
->>>>>>> 7864ea843c06e7db8ffc9379783106d8f19fc4c2
             {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
 
@@ -29,20 +22,14 @@
     <body>
         <header class="large-screen">
 
-            <a href="{{path('')}}"><img class="logo" src="../public/css/img/logo-horizontal (1).svg" alt=""></a>
+            <a href="{{path('')}}"><img class="logo" src="{{asset('css/img/logo-horizontal-1.svg')}}" alt="logo talkngo"></a>
             <div class="header-content">
     
                 <input class="searchbar" type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeyup="searchFunction()">
                     <ul id="myUL">
-<<<<<<< HEAD
                       {#  <!-- {% for country in countrys %}
                         <li>
                             <a class="dropdown-item" href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryName }}</a>
-=======
-                        {% for country in countrys %}
-                        <li id="liste-recherche">
-                            <a class='pays' href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryName }}</a>
->>>>>>> 7864ea843c06e7db8ffc9379783106d8f19fc4c2
                         </li>
                         {% endfor %} -->#}
                     </ul>
@@ -76,7 +63,7 @@
         </header>
     
         <header class="phone-screen">
-            <img class="logo" src="../public/css/img/logo-vertical (2).svg" alt="">
+            <img class="logo" src="{{asset('css/img/logo-vertical-2.svg')}}" alt="">
             <input class="searchbar" type="search" name="" placeholder="Chercher un pays">
     
             <a class="register" href="{{path('app_register')}}">Inscription</a>
