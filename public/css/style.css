@@ -49,12 +49,14 @@ a:link{
 
 
 .logo{
+    margin-top: 30px;
     width: 200px;
     height: 100px;
 }
 .searchbar{
     width: 500px;
     height: 40px;
+    margin-top: 56px;
     border: 1px solid #6923E5;
     border-radius: 20px;
     padding: 15px;
@@ -69,9 +71,14 @@ a:link{
 }
 
 #myUL{
+
     height: 40px;
+    /* overflow: ; */
+    border: 3px solid #6923E5;
+    border-radius: 25px;
     overflow: hidden;
 }
+
 
 .spacebar{
     height: 40px;
@@ -80,6 +87,9 @@ a:link{
     
 }
 
+.liste-searchbar{
+    margin-right: 10px;
+}
 
 .register{
 border: 1px solid #6923E5;
