@@ -3,14 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="stylesheet" href="https://bootswatch.com/4/sandstone/bootstrap.min.css">
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
-        <link rel="stylesheet" href="../public/css/style.css"> 
-         <link rel="stylesheet" href="../public/css/style_home.css">
+        <link rel="stylesheet" href=" {{asset('css/style.css')}} "> 
+         <link rel="stylesheet" href=" {{asset('css/style_home.css')}} ">
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link rel="stylesheet" href="../public/css/form.css">
+        <link rel="stylesheet" href=" {{asset('css/style.css')}}">
        
             {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
@@ -57,14 +56,14 @@
     <body>
         <header class="large-screen">
 
-            <a href="{{path('')}}"><img class="logo" src="../public/css/img/logo-horizontal (1).svg" alt=""></a>
+            <a href="{{path('')}}"><img class="logo" src="{{asset('css/img/logo-horizontal-1.svg')}}" alt="logo talkngo"></a>
             <div class="header-content">
                 <div class="liste-searchbar">
                 <input class="searchbar" onClick="afficheListe()" type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeydown="searchFunction();">
                     <ul id="myUL">
-                       {% for country in countrys %}
+                      {#  <!-- {% for country in countrys %}
                         <li>
-                            <a class="pays" href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryName }}</a>
+                            <a class="dropdown-item" href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryName }}</a>
                         </li>
                         {% endfor %} 
                     </ul>
@@ -81,7 +80,7 @@
         </header>
     
         <header class="phone-screen">
-            <img class="logo" src="../public/css/img/logo-vertical (2).svg" alt="">
+            <img class="logo" src="{{asset('css/img/logo-vertical-2.svg')}}" alt="">
             <input class="searchbar" type="search" name="" placeholder="Chercher un pays">
     
             <a class="register" href="{{path('app_register')}}">Inscription</a>
@@ -89,11 +88,13 @@
     
         </header>
     
-        {% block body %}<body>
+        {% block body %}
+        <body>
 
             <a href="{{ path('admin_user') }}">users</a>   
                    
-        </body>{% endblock %}
+        </body>
+        {% endblock %}
         <footer>
             <li><a href="#">A propos</a></li>
             <li><a href="#">Nous contacter</a></li>

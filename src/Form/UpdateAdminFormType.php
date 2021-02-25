@@ -17,11 +17,11 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
-class RegistrationFormType extends AbstractType
+class UpdateAdminFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -59,8 +59,7 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('img', FileType::class, [
 
-                'required' => true,
-                
+                'mapped' => false,
                 'label' => 'Photo de profil',
                 
             ])
@@ -76,49 +75,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            // ->add('plainPassword', PasswordType::class, [
-            //     // instead of being set onto the object directly,
-            //     // this is read and encoded in the controller
-            //     'required' => true,
-            //     'mapped' => false,
-            //     'attr' => [
-            //         'class' => 'form-control '
-            //     ],
-            //     'constraints' => [
-            //         new NotBlank([
-            //             'message' => 'veuillez entrer un mot de passe ',
-            //         ]),
-            //         new Length([
-            //             'min' => 6,
-            //             'minMessage' => 'votre mot de passe doit comporter au minimun  {{ limit }} characters',
-            //             // max length allowed by Symfony for security reasons
-            //             'max' => 4096,
-            //         ]),
-            //     ],
-            // ])
-            ->add('plainPassword', RepeatedType::class, [
-                'type' => PasswordType::class,
-                'invalid_message' => 'les deux mot de passe doivent corresponde .',
-                'options' => ['attr' => ['class' => 'password-field']],
-                'required' => true,
-                'mapped' => false,
-                'first_options'  => ['label' => 'mot de passe'],
-                'second_options' => ['label' => 'confirmer mot de passe'],
-                'attr' => [
-                            'class' => 'form-control '
-                         ],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'veuillez entrer un mot de passe ',
-                    ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'votre mot de passe doit comporter au minimun  {{ limit }} characters',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 4096,
-                    ]),
-                ],
-            ]);
+           
             
         
         ;
