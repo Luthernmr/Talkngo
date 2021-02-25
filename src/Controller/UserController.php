@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Country;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,7 +14,8 @@ class UserController extends AbstractController
      * @Route("/admin/user", name="admin_user")
      */
     public function index(UserRepository $userRepository): Response
-    {
+    { $repo = $this->getDoctrine()->getRepository(Country::class);
+        $countrys = $repo->findAll();
         $users = $userRepository->findAll();
         $utilisateurs = [];
         for ($i=0; $i<count($users); $i++) {
@@ -25,7 +27,8 @@ class UserController extends AbstractController
         return $this->render('admin/user.html.twig', [
             'users' => $users,
             'user_age' => $utilisateurs,
-            'user_count' => $i
+            'user_count' => $i,
+            'countrys' => $countrys
         ]);
     }
 }
