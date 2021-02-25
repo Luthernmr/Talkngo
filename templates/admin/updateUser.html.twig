@@ -22,12 +22,13 @@
         {{ form_row(registrationForm.age, {'attr':{'class':'form-control'} }) }}
         {{ form_row(registrationForm.location,{'attr':{'class':'form-control'} }) }}
         {{ form_row(registrationForm.description,{'attr':{'class':'form-control'} }) }}
-        {{ form_row(registrationForm.img,{'attr':{'class':'form-control'} }) }}
+        {{ form_row(registrationForm.img) }}
         {{ form_row(registrationForm.agreeTerms) }}
         
         <button type="submit" class="btn btn-success">valider </button>
     {{ form_end(registrationForm) }}
       </div>
+                  <a href=" {{path('admin_user')}} "> retour </a>
 </div>
     
 {% endblock %}

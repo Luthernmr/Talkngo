@@ -3,16 +3,22 @@
 {% block title %}utilisateurs{% endblock %}
 
 {% block body %}
+
+{% for message in app.flashes('message') %}
+<div class="alert alert-success " role="alert">
+    {{message}}
+</div>
+    
+{% endfor %}
     <h2>utilisateurs</h2>
     
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>nom</th>
                 <th>prenom</th>
                 <th>email</th>
                 <th>age</th>
-                <th>mdp</th>
                 <th>localisation</th>
                 <th>description</th>
                 <th>image</th>
@@ -31,8 +37,8 @@
                 <td>{{ user.description }}</td>
                 <td>{{ user.img }}</td>
                 <td>
-                    <a href=" {{path('update_user')}} ">mdifier user</a>
-                    <a href=""> suprimer user</a>
+                     <a href=" {{ path('user_update', {'id':user.id})  }} ">modifier user</a> 
+                    <a href="  {{ path('user_delete', {'id':user.id})  }} "> suprimer user</a>
                 </td>
 
 

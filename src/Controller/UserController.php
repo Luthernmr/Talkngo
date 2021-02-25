@@ -55,7 +55,7 @@ class UserController extends AbstractController
             $infoImg = $form['img']->getData(); // récupère les infos de l'image 
             $extensionImg = $infoImg->guessExtension(); // récupère le format de l'image 
             $nomImg = time() . '.' . $extensionImg; // compose un nom d'image unique
-            $infoImg->move($this->getParameter('dossier_photos_maisons'), $nomImg); // déplace l'image
+            $infoImg->move($this->getParameter('dossier_photos_user'), $nomImg); // déplace l'image
             $user->setImg($nomImg);
            
 
@@ -73,9 +73,9 @@ class UserController extends AbstractController
         
 
     /**
-     * @Route("/admin/user/update-{id}", name="update_user")
+     * @Route("/admin/user/update-{id}", name="user_update") 
      */
-    public function updateMaison(UserRepository $userRepository, $id, Request $request)
+    public function updateUser(UserRepository $userRepository, $id, Request $request)
     {
         $user = $userRepository->find($id);
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -93,16 +93,16 @@ class UserController extends AbstractController
             $extensionImg = $infoImg->guessExtension();
 
             $nomImg = time() . '.' . $extensionImg;
-            $infoImg1->move($this->getParameter('dossier_photos_user'), $nomImg);
+            $infoImg->move($this->getParameter('dossier_photos_user'), $nomImg);
             $user->setImg($nomImg);
 
             $manager = $this->getDoctrine()->getManager();
-            $manager->persist($maison);
+            $manager->persist($user);
             $manager->flush();
 
             $this->addFlash(
                 'success',
-                'La maison a bien été modifiée'
+                'L\'utilisateur  a bien été modifiée'
             );
 
             return $this->redirectToRoute('admin_user');
@@ -112,4 +112,28 @@ class UserController extends AbstractController
         ]);
     }
 
+     /**
+     * @Route("/admin/user/delete-{id}", name="user_delete") 
+     */
+
+     public function deleteUser(UserRepository $userRepository,$id){
+
+        $user = $userRepository->find($id);
+        $oldNomImg = $user->getImg();
+        $oldCheminImg = $this->getParameter('dossier_photos_user') . '/' . $oldNomImg;
+
+        if (file_exists($oldCheminImg)) {
+            unlink($oldCheminImg);
+        }
+
+        $manager = $this->getDoctrine()->getManager();
+        $manager->remove($user);
+        $manager->flush();
+        $this->addFlash(
+            'success',
+            'L\'utilisateur a bien été supprimée'
+        );
+        return $this->redirectToRoute('admin_user');
+    }
+     
 }
