@@ -10,10 +10,10 @@
 <body>
     
         {% if countryPage.countryNameFr %}
-                <h1>Hello {{ countryPage.countryNameFr }}! ✅</h1>
+                <h1>{{ countryPage.countryNameFr }}! ✅</h1>
         {% endif %}
         
-        <div>
+        <div class="form-largescreens">
         {{ form_start(formPublication) }}
             
             {{ form_widget(formPublication) }}
@@ -33,7 +33,7 @@
                     <img src="{{asset('img/profil/publication.user.img')}}" alt="pdp">
                     <p>{{publication.user.name}} </p>
                     <p>{{publication.user.location}}  {{countryPage.countryNameFr}}</p>
-                    
+                </div>     
                 
             {% endif %}
         {% endfor %}
