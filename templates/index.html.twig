@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil | Talk'n Go{% endblock %}
+{% block title %}Acceuil{% endblock %}
 
 {% block body %}
 
@@ -15,9 +15,8 @@
         </p>
         <h2 class="mt-5">Explorez de nouvelles destinations</h2>
     </div>
-    <div class="container-fluid text-center">
-        <img src="../public/css/img/map.png" style="margin-top: 5em;" alt="">
-    </div>
+
+    {% include 'map.html.twig' %}
             
 {% endblock %}
 
