@@ -33,6 +33,10 @@
                         li[i].style.display = "none";
                     }
                 }
+
+                if( event.which === 13) {
+                    z = document.getElementsByClassName("pays");
+                }
             }
             </script>
             {#{{ encore_entry_script_tags('app') }}#}
@@ -44,11 +48,11 @@
             <a href="{{path('')}}"><img class="logo" src="../public/css/img/logo-horizontal (1).svg" alt=""></a>
             <div class="header-content">
                 <div class="liste-searchbar">
-                <input class="searchbar" onClick="afficheListe()" type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeyup="searchFunction()">
+                <input class="searchbar"  type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeyup="searchFunction()">
                     <ul id="myUL">
                        {% for country in countrys %}
                         <li>
-                            <a class="dropdown-item" href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryName }}</a>
+                            <a class="pays" href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryName }}</a>
                         </li>
                         {% endfor %} 
                     </ul>
