@@ -68,9 +68,6 @@ class CountryPageController extends AbstractController
         
         if($form->isSubmitted() && $form->isValid()){
             //récuperer les tokens de l'utilisateur connecté
-          
-            
-
             $user = $this->get('security.token_storage')->getToken()->getUser();
             $publication->setUser($user);
             
@@ -84,6 +81,22 @@ class CountryPageController extends AbstractController
             'publications' => $publications,
             'countrys' => $countrys,
             'formPublication' => $form->createView()
+        ]);
+    }
+
+     /**
+     * @Route("/", name="nase")
+     */
+    public function base()
+    {
+        $repo = $this->getDoctrine()->getRepository(Country::class);
+        $countryPage = $repo->findAll();
+        $repo = $this->getDoctrine()->getRepository(Country::class);
+        $countrys = $repo->findAll();
+        return $this->render('base.html.twig', [
+            'controller_name' => 'HomeController',
+            'countrys' => $countrys,
+            'countryPage' => $countryPage
         ]);
     }
 

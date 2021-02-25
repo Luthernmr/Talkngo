@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 
+use App\Entity\Country;
 use App\Form\UpdateAdminFormType;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
@@ -20,6 +21,8 @@ class UserController extends AbstractController
      */
     public function index(UserRepository $userRepository): Response
     {
+        $repo = $this->getDoctrine()->getRepository(Country::class);
+        $countrys = $repo->findAll();
         $users = $userRepository->findAll();
         $utilisateurs = [];
         for ($i=0; $i<count($users); $i++) {
@@ -31,7 +34,8 @@ class UserController extends AbstractController
         return $this->render('admin/user.html.twig', [
             'users' => $users,
             'user_age' => $utilisateurs,
-            'user_count' => $i
+            'user_count' => $i,
+            'countrys' => $countrys
         ]);
     }
 
@@ -43,6 +47,8 @@ class UserController extends AbstractController
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
+        $repo = $this->getDoctrine()->getRepository(Country::class);
+        $countrys = $repo->findAll();
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
@@ -69,6 +75,7 @@ class UserController extends AbstractController
 
         return $this->render('admin/userCreate.html.twig', [
             'registrationForm' => $form->createView(),
+            'countrys' =>$countrys
         ]);
     }
         
@@ -81,6 +88,8 @@ class UserController extends AbstractController
         $user = $userRepository->find($id);
         $form = $this->createForm(UpdateAdminFormType::class, $user);
         $form->handleRequest($request);
+        $repo = $this->getDoctrine()->getRepository(Country::class);
+        $countrys = $repo->findAll();
 
         if ($form->isSubmitted() && $form->isValid()) {
             $oldNomImg = $user->getImg(); //ancien image
@@ -109,7 +118,8 @@ class UserController extends AbstractController
             return $this->redirectToRoute('admin_user');
         }
         return $this->render('admin/updateUser.html.twig', [
-            'updateAdminForm' => $form->createView()
+            'updateAdminForm' => $form->createView(),
+            'countrys' => $countrys
         ]);
     }
 

@@ -36,10 +36,8 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', [
-            'last_username' => $lastUsername,
-            'error' => $error,
-            'countrys' => $countrys]);
+        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error,
+        'countrys' => $countrys]);
     }
 
     /**
@@ -57,6 +55,7 @@ class SecurityController extends AbstractController
 
         $form = $this->createForm(ResetPassType::class);
         $form->handleRequest($Request);
+        
 
         if($form->isSubmitted() && $form->isValid()){
 
