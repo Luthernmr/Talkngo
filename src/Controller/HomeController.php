@@ -15,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/home", name="")
+     * @Route("/", name="")
      */
     public function index()
     {
@@ -23,7 +23,7 @@ class HomeController extends AbstractController
         $countryPage = $repo->findAll();
         $repo = $this->getDoctrine()->getRepository(Country::class);
         $countrys = $repo->findAll();
-        return $this->render('home/index.html.twig', [
+        return $this->render('index.html.twig', [
             'controller_name' => 'HomeController',
             'countrys' => $countrys,
             'countryPage' => $countryPage
