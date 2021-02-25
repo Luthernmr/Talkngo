@@ -7,31 +7,49 @@
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
-        <link rel="stylesheet" href="{{asset('css/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/style_home.css')}}">
-        <link rel="stylesheet" href="{{asset('css/form.css')}}">
-        <link rel="stylesheet" href="{{asset('css/stylePublication.css')}}">
+        <link rel="stylesheet" href=" {{asset('css/style.css')}} "> 
+         <link rel="stylesheet" href=" {{asset('css/style_home.css')}} ">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="stylesheet" href=" {{asset('css/style.css')}}">
+        <link rel="stylesheet" href=" {{asset('css/stylePublication.css')}}">
+       
             {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
 
         {% block javascripts %}
         <script>
 
-            function searchFunction() {
+            function afficheListe() 
+            {
+                var x = document.getElementById("myUL");
+                if (x.style.display === "none") {
+                  x.style.display = "block";
+                } else {
+                  x.style.display = "none";
+                }
+            } 
+
+            function searchFunction() 
+            {
                 var input, filter, ul, li, a, i, txtValue;
                 input = document.getElementById("myInput");
                 filter = input.value.toUpperCase();
                 ul = document.getElementById("myUL");
                 li = ul.getElementsByTagName("li");
-                for (i = 0; i < li.length; i++) {
+                for (i = 0; i < li.length; i++) 
+                {
                     a = li[i].getElementsByClassName("pays")[0];
                     txtValue = a.textContent || a.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) 
+                    {
                         li[i].style.display = "";
                     } else {
                         li[i].style.display = "none";
                     }
                 }
+            }
+            function takeValue(){
+                document.getElementById("myInput").value;
             }
             </script>
             {#{{ encore_entry_script_tags('app') }}#}
@@ -40,14 +58,14 @@
     <body>
         <header class="large-screen">
 
-            <a href="{{path('')}}"><img class="logo" src="{{asset('css/img/logo-horizontal-1.svg')}}" alt=""></a>
+            <a href="{{path('')}}"><img class="logo" src="{{asset('css/img/logo-horizontal-1.svg')}}" alt="logo talkngo"></a>
             <div class="header-content">
                 <div class="liste-searchbar">
-                <input class="searchbar" onClick="afficheListe()" type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeyup="searchFunction()">
+                <input class="searchbar" onClick="afficheListe()" type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeydown="searchFunction();">
                     <ul id="myUL">
-                       {% for country in countrys %}
+                      { {% for country in countrys %}
                         <li>
-                            <a class="pays" href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryNameFr }}</a>
+                            <a class="pays" href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryName }}</a>
                         </li>
                         {% endfor %} 
                     </ul>

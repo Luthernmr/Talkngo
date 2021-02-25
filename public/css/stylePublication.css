@@ -1,6 +1,7 @@
 body{
     border: 2px solid blue;
-    height: 100vh;
+    
+    align-content: center;
 }
 @import url('https://fonts.googleapis.com/css2?family=Calistoga&display=swap');
 
@@ -12,10 +13,13 @@ body{
 }
 
 
+
 .form-largescreens{
     padding: 50px;
+    margin: 5vh auto 0 auto;
+	width:550px;
     border-radius: 25px;
-    background-color: #36333a;
+    background-color: #6923E5;
     box-shadow: 3px 5px 7px 2px rgba(0,0,0,0.61);
     display: flex;
 }
@@ -68,6 +72,20 @@ label {
     font-family: Arial, Helvetica, sans-serif;
 
 
+}
+
+.card{
+    display: flex;
+    
+}
+
+article{
+    border: 2px solid blue;
+}
+.date{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 @media (max-width: 840px) {

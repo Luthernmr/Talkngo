@@ -1,5 +1,6 @@
 
 {% extends "base.html.twig" %}
+{% form_theme formPublication 'bootstrap_4_layout.html.twig' %}
 
 {% block title %}Hello CountryPageController!{% endblock %}
 
@@ -10,33 +11,42 @@
 <body>
     
         {% if countryPage.countryNameFr %}
-                <h1>{{ countryPage.countryNameFr }}! ✅</h1>
+                <h1 class="">{{ countryPage.countryNameFr }}</h1>
         {% endif %}
         
         <div class="form-largescreens">
         {{ form_start(formPublication) }}
             
-            {{ form_widget(formPublication) }}
+            {{ form_row(formPublication.countryName) }}
+            {{ form_row(formPublication.date) }}
+            {{ form_row(formPublication.duration) }}
         
             <button type="submit" class="submit">Publier l'annonce</button>
         {{ form_end(formPublication) }}
         </div>
         
-        <div>
-        {% for publication in publications %}
-            {% if countryPage.countryName == publication.countryName  %}
-                <div>
-                    <img src="{{ publication.img}}" alt="">
-                    <h3>Road to </h3> 
-                    <p>{{publication.duration}}</p>
-                    <p>{{publication.date | date('d/m/Y')}}</p>
-                    <img src="{{asset('img/profil/publication.user.img')}}" alt="pdp">
-                    <p>{{publication.user.name}} </p>
-                    <p>{{publication.user.location}}  {{countryPage.countryNameFr}}</p>
-                </div>     
-                
-            {% endif %}
-        {% endfor %}
+            
+<article class="container col-10 d-flex">
+  {% for publication in publications %}
+  {% if countryPage.countryName == publication.countryName  %}
+  <div class="card container col-3">
+    <div class="presentation">
+      <div class="user-info">
+        <img src="{{asset('img/profil/publication.user.img')}}" alt="pdp">
+        <h3>{{publication.user.name}}</h3>
+      </div>
+      <div class="date">
+        <h4>{{publication.user.location}} - {{countryPage.countryNameFr}}</h4>
+        <h4 class="jour">{{publication.date | date('d/m/Y')}}</h4>
+      </div>
+      <button>En savoir plus</button>
+      <button>Contacter</button>
+    </div>
+  </div>
+  {% endif %}
+{% endfor %}
+</article>
+        
           
 </body>
 {% endblock %}
