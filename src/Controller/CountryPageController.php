@@ -37,6 +37,9 @@ class CountryPageController extends AbstractController
         
         if($form->isSubmitted() && $form->isValid()){
             //récuperer les tokens de l'utilisateur connecté
+          
+            
+
             $user = $this->get('security.token_storage')->getToken()->getUser();
             $publication->setUser($user);
             
