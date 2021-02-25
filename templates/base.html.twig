@@ -7,57 +7,57 @@
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
-        <link rel="stylesheet" href="../public/css/style.css"> 
-         <link rel="stylesheet" href="../public/css/style_home.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link rel="stylesheet" href="../public/css/form.css">
-       
+        <link rel="stylesheet" href="{{asset('css/style.css')}}">
+        <link rel="stylesheet" href="{{asset('css/style_home.css')}}">
+        <link rel="stylesheet" href="{{asset('css/form.css')}}">
+        <link rel="stylesheet" href="{{asset('css/stylePublication.css')}}">
             {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
 
         {% block javascripts %}
         <script>
 
-            function afficheListe() 
-            {
-                var x = document.getElementById("myUL");
-                if (x.style.display === "none") {
-                  x.style.display = "block";
-                } else {
-                  x.style.display = "none";
-                }
-            } 
-
-            function searchFunction() 
-            {
-                var input, filter, ul, li, a, i, txtValue;
-                input = document.getElementById("myInput");
-                filter = input.value.toUpperCase();
-                ul = document.getElementById("myUL");
-                li = ul.getElementsByTagName("li");
-                for (i = 0; i < li.length; i++) 
+                function afficheListe() 
                 {
-                    a = li[i].getElementsByClassName("pays")[0];
-                    txtValue = a.textContent || a.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) 
-                    {
-                        li[i].style.display = "";
+                    var x = document.getElementById("myUL");
+                    if (x.style.display === "none") {
+                      x.style.display = "block";
                     } else {
-                        li[i].style.display = "none";
+                      x.style.display = "none";
+                    }
+                } 
+    
+                function searchFunction() 
+                {
+                    var input, filter, ul, li, a, i, txtValue;
+                    input = document.getElementById("myInput");
+                    filter = input.value.toUpperCase();
+                    ul = document.getElementById("myUL");
+                    li = ul.getElementsByTagName("li");
+                    for (i = 0; i < li.length; i++) 
+                    {
+                        a = li[i].getElementsByClassName("pays")[0];
+                        txtValue = a.textContent || a.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) 
+                        {
+                            li[i].style.display = "";
+                        } else {
+                            li[i].style.display = "none";
+                        }
+                    }
+                    if (event.keyCode === 13) {
+                        
                     }
                 }
-                if (event.keyCode === 13) {
-                    window.location.href=""
-                }
-            }
-            </script>
+            
+        </script>
             {#{{ encore_entry_script_tags('app') }}#}
         {% endblock %}
     </head>
     <body>
         <header class="large-screen">
 
-            <a href="{{path('')}}"><img class="logo" src="../public/css/img/logo-horizontal (1).svg" alt=""></a>
+            <a href="{{path('')}}"><img class="logo" src="{{asset('css/img/logo-horizontal-1.svg')}}" alt="logo talkngo"></a>
             <div class="header-content">
                 <div class="liste-searchbar">
                 <input class="searchbar" onClick="afficheListe()" type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeyup="searchFunction()">
@@ -81,7 +81,7 @@
         </header>
     
         <header class="phone-screen">
-            <img class="logo" src="../public/css/img/logo-vertical (2).svg" alt="">
+            <a href="{{path('')}}"><img class="logo" src="{{asset('css/img/logo-vertical-2.svg')}}" alt="logo talkngo"></a>>
             <input class="searchbar" type="search" name="" placeholder="Chercher un pays">
     
             <a class="register" href="{{path('app_register')}}">Inscription</a>
