@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 
 class PublicationType extends AbstractType
 {
@@ -20,12 +21,16 @@ class PublicationType extends AbstractType
             ->add('countryName',TextType::class, [
                 'required' => true,
                 'label' => 'Destination',
+               
                                 
                  
             ])
-            ->add('date', DateType::class,[
+            ->add('date', BirthdayType::class,[
                 'required' => true,
                 'label' => 'Date de départ',
+                'placeholder' => [
+                    'year' => 'Year', 'month' => 'Month', 'day' => 'Day',
+                ]
                  
             ])
             ->add('duration', TextType::class,[
@@ -36,6 +41,7 @@ class PublicationType extends AbstractType
             ->add('img', FileType::class,[
                 'required' => true,
                 'label' => 'Image du pays',
+                'mapped' => false
                  
             ])
             
