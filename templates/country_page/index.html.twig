@@ -10,34 +10,35 @@
 </style>
 
 <div class="example-wrapper">
-{% if countryPage.countryNameFr %}
-        <h1>{{ countryPage.countryNameFr }}</h1>
-{% endif %}
 
-{{ form_start(formPublication) }}
     
-    {{ form_widget(formPublication) }}
-
-    <button type="submit">Publier l'annonce</button>
-{{ form_end(formPublication) }}
-
-{% for publication in publications %}
-    {% if countryPage.countryName == publication.countryName  %}
-        <div>
-            <img src="{{ publication.img}}" alt="">
-            <h3>Road to </h3> 
-            <p>{{publication.duration}}</p>
-            <p>{{publication.date | date('d/m/Y')}}</p>
-            <img src="{{asset('img/profil/publication.user.img')}}" alt="pdp">
-            <p>{{publication.user.name}} </p>
-            <p>{{publication.user.location}} -> {{countryPage.countryNameFr}}</p>
+        {% if countryPage.countryNameFr %}
+                <h1>{{ countryPage.countryNameFr }}</h1>
+        {% endif %}
+      
+        
             
-        </div>
-        <div>
-            
-        </div>
-    {% endif %}
+<article class=" ">
+  {% for publication in publications %}
+  {% if countryPage.countryName == publication.countryName  %}
+  <div class="">
+    <div class="presentation">
+      <div class="user-info">
+        <img src="{{asset('img/profil/publication.user.img')}}" alt="pdp">
+        <h3>{{publication.user.name}}</h3>
+      </div>
+      <div class="date">
+        <h4>{{publication.user.location}} <i class="fas fa-plane"></i> {{countryPage.countryNameFr}}</h4>
+        <h4 class="">départ le {{publication.date | date('d/m/Y')}}</h4>
+      </div>
+      <button class="button-info-1">En savoir plus</button>
+      <button class="button-info-2">Contacter</button>
+    </div>
+  </div>
+  {% endif %}
 {% endfor %}
-
-</div>
+</article>
+        
+          
+</body>
 {% endblock %}

@@ -3,12 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Country;
 use App\Form\NewPassType;
 use App\Form\ResetPassType;
 use App\Repository\UserRepository;
+
+
 use Symfony\Component\HttpFoundation\Request;
-
-
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -24,6 +25,9 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
+        $repo = $this->getDoctrine()->getRepository(Country::class);
+        $countrys = $repo->findAll();
+
         // if ($this->getUser()) {
         //     return $this->redirectToRoute('target_path');
         // }
@@ -33,8 +37,10 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error,
-        'countrys' => $countrys]);
+        return $this->render('security/login.html.twig', [
+            'last_username' => $lastUsername, 
+            'error' => $error,
+            'countrys' => $countrys]);
     }
 
     /**
@@ -49,6 +55,8 @@ class SecurityController extends AbstractController
      * @Route("/oublie-mdp", name="app_forgotten_password")
      */
     public function forgotPass(Request $Request,UserRepository $UserRepository, \Swift_Mailer $mailer,TokenGeneratorInterface $tokenGenerator){
+        $repo = $this->getDoctrine()->getRepository(Country::class);
+        $countrys = $repo->findAll();
 
         $form = $this->createForm(ResetPassType::class);
         $form->handleRequest($Request);
@@ -98,13 +106,18 @@ class SecurityController extends AbstractController
 
         }
 
-        return $this->render('security/forgotPassword.html.twig', ['emailForm' => $form->createView()]);
+        return $this->render('security/forgotPassword.html.twig', [
+            'emailForm' => $form->createView(),
+            'countrys' => $countrys
+            ]);
     }  
 
      /**
      * @Route("/reset-mdp/{token}", name="app_reset_password")
      */
      public function resetPassword(Request $request, string $token, UserPasswordEncoderInterface $passwordEncoder){
+        $repo = $this->getDoctrine()->getRepository(Country::class);
+        $countrys = $repo->findAll();
 
         $form = $this->createForm(NewPassType::class);
         $form->handleRequest($request);
@@ -130,7 +143,8 @@ class SecurityController extends AbstractController
             } else {
                 return $this->render('security/newPassword.html.twig', [
                     'passwordForm' => $form->createView(),
-                    'token' => $token
+                    'token' => $token,
+                    'countrys' => $countrys
                 ]);
             }
         } else {
