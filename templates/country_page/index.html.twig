@@ -2,42 +2,51 @@
 {% extends "base.html.twig" %}
 
 {% block title %}{{ countryPage.countryNameFr }}{% endblock %}
+  
 
 {% block body %}
+{% if user %}
+
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-{% if countryPage.countryNameFr %}
-        <h1>{{ countryPage.countryNameFr }}</h1>
-{% endif %}
-
-{{ form_start(formPublication) }}
+</h1>
     
-    {{ form_widget(formPublication) }}
-
-    <button type="submit">Publier l'annonce</button>
-{{ form_end(formPublication) }}
-
-{% for publication in publications %}
-    {% if countryPage.countryName == publication.countryName  %}
-        <div>
-            <img src="{{ publication.img}}" alt="">
-            <h3>Road to </h3> 
-            <p>{{publication.duration}}</p>
-            <p>{{publication.date | date('d/m/Y')}}</p>
-            <img src="{{asset('img/profil/publication.user.img')}}" alt="pdp">
-            <p>{{publication.user.name}} </p>
-            <p>{{publication.user.location}} -> {{countryPage.countryNameFr}}</p>
+        {% if countryPage.countryNameFr %}
+                <h1>Ces voyeugeurs vont découvrir '{{ countryPage.countryNameFr }}', {{ user.firstName}}, trouve ton partenaire de voyage</h1>
+           
+        {% endif %}
+      
+        
             
-        </div>
-        <div>
-            
-        </div>
-    {% endif %}
+<article class="container   p-auto">
+  {% for publication in publications %}
+  {% if countryPage.countryName == publication.countryName  %}
+  <div class="card col-5 m-3 p-3">
+    <div class="presentation">
+      <div class="user-info">
+        <a href=""><img src="{{asset('img/profil/publication.user.img')}}" alt="pdp"></a>
+        <h3>{{ publication.user.firstName }}</h3>
+      </div>
+      <div class="date">
+        <h4>{{ publication.user.location }} <i class="fas fa-plane"></i> {{ countryPage.countryNameFr }}</h4>
+        <h4 class=""> départ le {{ publication.date | date('d/m/Y')}}</h4>
+      </div>
+      <a href="{{ path('profil_voyageur',{'id':publication.user.id } ) }}" class="button-info-1">A propos de {{ publication.user.firstName }}</a>
+      <a class="button-info-2">Contacter</a>
+    </div>
+  </div>
+  {% endif %}
 {% endfor %}
-
-</div>
+</article>
+        
+          
+</body>
+{% else %}
+<h2>Vous devez etre connecter pour acceder à ce contenu</h2>
+<a href="{{ path('app_login') }}">Connexion</a>
+{% endif %}
 {% endblock %}
+
