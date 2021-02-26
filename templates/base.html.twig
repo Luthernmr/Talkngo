@@ -8,12 +8,10 @@
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
-        <link rel="stylesheet" href=" {{asset('css/style.css')}} "> 
-         <link rel="stylesheet" href=" {{asset('css/style_home.css')}} ">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link rel="stylesheet" href=" {{asset('css/style.css')}}">
-        <link rel="stylesheet" href=" {{asset('css/stylePublication.css')}}">
-       
+        <link rel="stylesheet" href="{{asset('css/style.css')}}">
+        <link rel="stylesheet" href="{{asset('css/style_home.css')}}">
+        <link rel="stylesheet" href="{{asset('css/form.css')}}">
+        <link rel="stylesheet" href="{{asset('css/stylePublication.css')}}">
             {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
 
@@ -54,19 +52,18 @@
                 }
             
         </script>
-        
             {#{{ encore_entry_script_tags('app') }}#}
         {% endblock %}
     </head>
     <body>
         <header class="large-screen">
 
-            <a href="{{path('')}}"><img class="logo" src="{{asset('css/img/logo-horizontal-1.svg')}}" alt="logo talkngo"></a>
+            <a href="{{path('home')}}"><img class="logo" src="{{asset('css/img/logo-horizontal-1.svg')}}" alt="logo talkngo"></a>
             <div class="header-content">
                 <div class="liste-searchbar">
-                <input class="searchbar" onClick="afficheListe()" type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeydown="searchFunction();">
+                <input class="searchbar"  type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeyup="searchFunction()">
                     <ul id="myUL">
-                      { {% for country in countrys %}
+                       {% for country in countrys %}
                         <li>
                             <a class="pays" href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryName }}</a>
                         </li>
@@ -79,7 +76,6 @@
     {% if app.user %}
 
     <li>
-        <img src="{{ user.img }}">
         <a class="register" href="{{ path('profil') }}">Mon profil</a>
     </li>
     {% else %}
@@ -94,7 +90,7 @@
         </header>
     
         <header class="phone-screen">
-            <a href="{{path('')}}"><img class="logo" src="{{asset('css/img/logo-vertical-2.svg')}}" alt="logo talkngo"></a>>
+            <a href="{{path('home')}}"><img class="logo" src="{{asset('css/img/logo-vertical-2.svg')}}" alt="logo talkngo"></a>>
             <input class="searchbar" type="search" name="" placeholder="Chercher un pays">
     
             <a class="register" href="{{path('app_register')}}">Inscription</a>

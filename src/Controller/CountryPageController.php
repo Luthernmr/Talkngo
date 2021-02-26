@@ -29,7 +29,6 @@ class CountryPageController extends AbstractController
         $repo = $this->getDoctrine()->getRepository(Country::class);
         $countryPage = $repo->find($id);
         $publications = $this->getDoctrine()->getManager()->getRepository(Publication::class)->findAll();
-        $repo = $this->getDoctrine()->getRepository(Country::class);
         $countrys = $repo->findAll();
         
        //création du formulaire 
@@ -84,21 +83,7 @@ class CountryPageController extends AbstractController
         ]);
     }
 
-     /**
-     * @Route("/", name="nase")
-     */
-    public function base()
-    {
-        $repo = $this->getDoctrine()->getRepository(Country::class);
-        $countryPage = $repo->findAll();
-        $repo = $this->getDoctrine()->getRepository(Country::class);
-        $countrys = $repo->findAll();
-        return $this->render('base.html.twig', [
-            'controller_name' => 'HomeController',
-            'countrys' => $countrys,
-            'countryPage' => $countryPage
-        ]);
-    }
+
 
 
 }

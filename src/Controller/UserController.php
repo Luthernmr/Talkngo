@@ -8,6 +8,7 @@ use App\Entity\Country;
 use App\Form\UpdateAdminFormType;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -86,7 +87,7 @@ class UserController extends AbstractController
     public function updateUser(UserRepository $userRepository, $id, Request $request)
     {
         $user = $userRepository->find($id);
-        $form = $this->createForm(UpdateAdminFormType::class, $user);
+        $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
         $repo = $this->getDoctrine()->getRepository(Country::class);
         $countrys = $repo->findAll();
@@ -118,8 +119,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute('admin_user');
         }
         return $this->render('admin/updateUser.html.twig', [
-            'updateAdminForm' => $form->createView(),
-            'countrys' => $countrys
+            'registrationForm' => $form->createView()
         ]);
     }
 

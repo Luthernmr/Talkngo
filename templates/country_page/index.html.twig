@@ -1,6 +1,5 @@
 
 {% extends "base.html.twig" %}
-{% form_theme formPublication 'bootstrap_4_layout.html.twig' %}
 
 {% block title %}{{ countryPage.countryNameFr }}{% endblock %}
 
@@ -13,22 +12,11 @@
 <div class="example-wrapper">
 
 
-{{ form_start(formPublication) }}
     
         {% if countryPage.countryNameFr %}
-                <h1 class="">{{ countryPage.countryNameFr }}</h1>
+                <h1>{{ countryPage.countryNameFr }}! ✅</h1>
         {% endif %}
-        
-        <div class="form-largescreens">
-        {{ form_start(formPublication) }}
-            
-            {{ form_row(formPublication.countryName) }}
-            {{ form_row(formPublication.date) }}
-            {{ form_row(formPublication.duration) }}
-        
-            <button type="submit" class="submit">Publier l'annonce</button>
-        {{ form_end(formPublication) }}
-        </div>
+      
         
             
 <article class=" ">

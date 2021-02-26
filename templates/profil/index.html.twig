@@ -9,12 +9,20 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ user.firstname }}! ✅</h1>
+    <div class="profile container">
+        <img src="{{user.img}}" alt="">
+        <h1>{{ user.firstname }}</h1>
+        <p>{{user.description}}</p>
+    </div>
+</div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp64/www/php/Projet-soutenance/Talkngo-projet/src/Controller/ProfilController.php'|file_link(0) }}">src/Controller/ProfilController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp64/www/php/Projet-soutenance/Talkngo-projet/templates/profil/index.html.twig'|file_link(0) }}">templates/profil/index.html.twig</a></code></li>
-    </ul>
+        
+<div class="form-largescreens">
+{{ form_start(formPublication) }}
+    
+    {{ form_widget(formPublication,{'attr':{'class':'form-control'} }) }}
+
+    <button type="submit" class="submit">Publier l'annonce</button>
+{{ form_end(formPublication) }}
 </div>
 {% endblock %}
