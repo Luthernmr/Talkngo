@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Country;
 use App\Entity\Publication;
 use Doctrine\ORM\EntityManagerInterface;
@@ -81,5 +82,26 @@ class ProfilController extends AbstractController
             'formPublication' => $form->createView()
         ]);
     }
+
+
+    /**
+     * @Route("/profil/{id}", name="profil_voyageur")
+     */
+    public function afficheProfilVoyageur($id){
+
+        $repo = $this->getDoctrine()->getRepository(Country::class);
+        $countrys = $repo->findAll();
+
+        $publications = $this->getDoctrine()->getManager()->getRepository(Publication::class)->findAll();
+        $repo = $this->getDoctrine()->getRepository(User::class);
+        $user = $repo->find($id);
+
+        return $this->render('profil/publierProfil.html.twig', [
+            'user' => $user,
+            'countrys' => $countrys,
+            'publications' => $publications,
+        ]);
+    }
+
     
 }

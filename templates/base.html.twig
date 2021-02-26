@@ -3,11 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <ink
+        
         <link rel="stylesheet" href="https://bootswatch.com/4/sandstone/bootstrap.min.css">
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
+            
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/style_home.css')}}">
         <link rel="stylesheet" href="{{asset('css/form.css')}}">
@@ -76,7 +77,7 @@
                     <ul id="myUL">
                        {% for country in countrys %}
                         <li>
-                            <a class="pays" id="pays" href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryName }}</a>
+                            <a class="pays" id="pays" href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryNameFr }} </a>
                         </li>
                         {% endfor %} 
                     </ul>
