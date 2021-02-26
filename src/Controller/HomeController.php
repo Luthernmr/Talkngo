@@ -19,18 +19,10 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-<<<<<<< HEAD
         
         return $this->render('home/index.html.twig', [
-=======
-        $repo = $this->getDoctrine()->getRepository(Country::class);
-        $countryPage = $repo->findAll();
-        $repo = $this->getDoctrine()->getRepository(Country::class);
-        $countrys = $repo->findAll();
-        return $this->render('index.html.twig', [
->>>>>>> cc601a5077ba7742a4f6fae72053eedf898f9fb8
             'controller_name' => 'HomeController',
-          
+            'countrys' => $countrys
         ]);
     }
 
