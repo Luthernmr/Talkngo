@@ -14,6 +14,10 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 class PublicationType extends AbstractType
 {
     
+<<<<<<< HEAD
+   
+   
+=======
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -41,6 +45,7 @@ class PublicationType extends AbstractType
             
         ;
     }
+>>>>>>> cc601a5077ba7742a4f6fae72053eedf898f9fb8
 
     public function configureOptions(OptionsResolver $resolver)
     {
