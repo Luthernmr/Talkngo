@@ -8,7 +8,7 @@
 }
 
 
-@media only screen and (min-width: 1200px) and (max-width: 1600px) { 
+@media only screen and (min-width: 1200px) { 
 
 header.phone-screen{
     display: none;

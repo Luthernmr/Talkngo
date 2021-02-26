@@ -22,11 +22,7 @@ class Country
      */
     private $countryName;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $countryNameFr;
-
+  
  
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -55,17 +51,6 @@ class Country
         return $this;
     }
 
-    public function getCountryNameFr(): ?string
-    {
-        return $this->countryNameFr;
-    }
-
-    public function setCountryNameFr(string $countryNameFr): self
-    {
-        $this->countryNameFr = $countryNameFr;
-
-        return $this;
-    }
 
 
     public function getImagePays(): ?string
