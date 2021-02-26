@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Entity\Country;
 use App\Entity\Publication;
 use App\Form\PublicationType;
+use App\Controller\BaseController;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
 use App\DataFixtures\PublicationFixtures;
@@ -27,9 +28,10 @@ class CountryPageController extends AbstractController
     public function index(Request $request, $id,EntityManagerInterface $entityManager){
         //récupération des données
         $repo = $this->getDoctrine()->getRepository(Country::class);
+        $countrys = $repo->findAll();
+
         $countryPage = $repo->find($id);
         $publications = $this->getDoctrine()->getManager()->getRepository(Publication::class)->findAll();
-        $countrys = $repo->findAll();
         
        //création du formulaire 
         $publication=new Publication();

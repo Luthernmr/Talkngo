@@ -1,11 +1,7 @@
 
 {% extends "base.html.twig" %}
-<<<<<<< HEAD
 
 {% block title %}{{ countryPage.countryNameFr }}{% endblock %}
-=======
-{% block title %}Hello CountryPageController!{% endblock %}
->>>>>>> cc601a5077ba7742a4f6fae72053eedf898f9fb8
 
 {% block body %}
 <style>
@@ -14,12 +10,10 @@
 </style>
 
 <div class="example-wrapper">
-<<<<<<< HEAD
-
 
     
         {% if countryPage.countryNameFr %}
-                <h1>{{ countryPage.countryNameFr }}! ✅</h1>
+                <h1>{{ countryPage.countryNameFr }}</h1>
         {% endif %}
       
         
@@ -47,36 +41,4 @@
         
           
 </body>
-=======
-{% if countryPage.countryNameFr %}
-        <h1>Hello {{ countryPage.countryNameFr }}! ✅</h1>
-{% endif %}
-
-{{ form_start(formPublication) }}
-    
-    {{ form_widget(formPublication) }}
-
-    <button type="submit">Publier l'annonce</button>
-{{ form_end(formPublication) }}
-
-{% for publication in publications %}
-    {% if countryPage.countryName == publication.countryName  %}
-        <div>
-            <img src="{{ publication.img}}" alt="">
-            <h3>Road to </h3> 
-            <p>{{publication.duration}}</p>
-            <p>{{publication.date | date('d/m/Y')}}</p>
-            <img src="{{asset('img/profil/publication.user.img')}}" alt="pdp">
-            <p>{{publication.user.name}} </p>
-            <p>{{publication.user.location}} -> {{countryPage.countryNameFr}}</p>
-            
-        </div>
-        <div>
-            
-        </div>
-    {% endif %}
-{% endfor %}
-
-</div>
->>>>>>> cc601a5077ba7742a4f6fae72053eedf898f9fb8
 {% endblock %}

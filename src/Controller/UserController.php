@@ -92,6 +92,8 @@ class UserController extends AbstractController
         $repo = $this->getDoctrine()->getRepository(Country::class);
         $countrys = $repo->findAll();
 
+
+
         if ($form->isSubmitted() && $form->isValid()) {
             $oldNomImg = $user->getImg(); //ancien image
             $oldCheminImg = $this->getParameter('dossier_photos_user') . '/' . $oldNomImg;
@@ -119,7 +121,8 @@ class UserController extends AbstractController
             return $this->redirectToRoute('admin_user');
         }
         return $this->render('admin/updateUser.html.twig', [
-            'registrationForm' => $form->createView()
+            'registrationForm' => $form->createView(),
+            'countrys' => $countrys
         ]);
     }
 

@@ -22,6 +22,10 @@ class RegistrationController extends AbstractController
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, Authenticator $authenticator, \Swift_Mailer $Mailer): Response
     {
+        $repo = $this->getDoctrine()->getRepository(Country::class);
+        $countrys = $repo->findAll();
+
+        
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
@@ -74,6 +78,7 @@ class RegistrationController extends AbstractController
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
+            'countrys' => $countrys
             
         ]);
     }
