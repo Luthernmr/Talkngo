@@ -8,31 +8,10 @@
 }
 
 
-.form-largescreens{
-    padding: 50px;
-    border-radius: 25px;
-    background-color: #36333a;
-    box-shadow: 3px 5px 7px 2px rgba(0,0,0,0.61);
-}
-
-.title{
- text-align: center;
- font-family: 'calistoga';
- color: rgb(0, 0, 0);
-
-}
 
 
-.form-control{
-    margin: 5px;
-    margin-top: 15px;
-    margin-bottom: 30px;
-    padding: 8px;
-    border: #ffffff 1px solid;
-    background-color: rgb(218, 218, 218);
-    border-radius: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-}
+
+
 
 select {
     word-wrap: normal;
@@ -72,7 +51,6 @@ label {
 article{
     display: flex;
     flex-wrap: wrap;
-    border: 2px solid blue;
 }
 .date{
     display: flex;
@@ -98,27 +76,10 @@ article{
 
 @media (max-width: 840px) {
 
-    .form-phonescreen {
-        padding: 50px;
-        margin: 5vh auto 0 auto;
-        width:350px;
-        border-radius: 25px;
-        background-color: #6923E5;
-        box-shadow: 3px 5px 7px 2px rgba(0,0,0,0.61);
-    }
+ 
     
 
-    .form-largescreen{
-        display: none;
+   
     }
 
 
-    .short, .long{
-
-        width: 250px;
-        margin: 30px auto;
-	    display: block;
-
-    }
-
-}

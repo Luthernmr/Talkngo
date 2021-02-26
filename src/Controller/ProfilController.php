@@ -52,14 +52,8 @@ class ProfilController extends AbstractController
                     ]
                      
                 ])
-                ->add('duration', DateIntervalType::class, [
-                    'input'      => 'string', // render a text field for each part
-                    // 'input'    => 'string',  // if you want the field to return a ISO 8601 string back to you
-                
-                    // customize which text boxes are shown
-                    'with_years'  => false,
-                    'with_months' => true,
-                    'with_days'   => true,
+                ->add('duration', TextType::class, [
+                    // render a text field for each part
                     'label' => 'Combien mois ou de jours resterez-vous ?'
                 ])
                 ->getForm();
@@ -78,7 +72,7 @@ class ProfilController extends AbstractController
             $manager->persist($publication);
             $manager->flush();
 
-             $this->addFlash('message', 'Votre annoce à bien été publié');
+              $this->addFlash('message', 'Votre annoce à bien été publié');
         } 
     
       
@@ -89,6 +83,7 @@ class ProfilController extends AbstractController
             'countrys' => $countrys,
             'formPublication' => $form->createView(),
             'user_age' => $utilisateurs,
+         
         ]);
     }
 

@@ -7,17 +7,16 @@
 {% block body %}
 {% if user %}
 
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-</h1>
-    
-        {% if countryPage.countryName %}
-                <h1>Ces voyeugeurs vont découvrir '{{ countryPage.countryName }}', {{ user.firstName}}, trouve ton partenaire de voyage</h1>
-           
+
+<div class="country-img" style="background-image:url('{{countryPage.imagePays}}');">
+    {% if countryPage.countryName %}
+                <h1>{{ countryPage.countryName }}... Une envie de partir ? </h1>     
         {% endif %}
+</div>
+  
+
+        
       
         
             
