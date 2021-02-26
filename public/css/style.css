@@ -68,7 +68,6 @@ a:link{
 .searchbar{
     width: 500px;
     height: 40px;
-    /* margin-top: 56px; */
     border: 1px solid #6923E5;
     border-radius: 20px;
     padding: 15px;
@@ -83,18 +82,32 @@ a:link{
 }
 
 #myUL{
+    padding: 0.4em 0;
     display: none;
     z-index: 1000;
     position: absolute;
-    height: 200px;
+    height: 179px;
     width: 500px;
-    background-color: #fff;
+    background-color: rgba(220, 220, 220, 0.8);
     border: 1px solid #6923E5;
     border-top: none;
     border-radius: 25px;
     overflow: hidden;
 }
 
+.pays {
+    color:#808080;
+    margin-top: 20px;
+    width: 500px;
+}
+
+#suggestion:hover{
+    background-color: rgb(200, 200, 200);
+}
+
+.pays:hover {
+    color: #09999A;
+}
 
 .spacebar{
     height: 40px;
@@ -126,7 +139,7 @@ font-family: Arial, Helvetica, sans-serif;
 
 li{
     padding-right: 15px;
-    padding-left:15px ;
+    padding-left:15px;
 }
 
 div.map{
@@ -135,8 +148,12 @@ div.map{
     margin-top: 5vh;
     margin-left:auto ;
     margin-right: auto;
+<<<<<<< HEAD
+
+=======
 border:5px solid #6923E5;
 border-radius: 5px;
+>>>>>>> 9d63a624f5a75a1ac56e9562b967ee6bbc420ed5
 }
 }
 

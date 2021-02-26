@@ -2,78 +2,67 @@
     * {
         list-style: none;
     }
-
-    .map {
-        width: 80em;
-        height: 40em;
+    
+    .map{
+        padding-top: 1em;
+        height: 55em;
         margin-left: auto;
         margin-right: auto;
-        border: #6923E5 4px solid;
-        border-radius: 20px;
-        overflow: scroll;
-
-
-
-    }
-
-    .map path {
-
-        fill: #09999A;
-        stroke: #fff;
-        stroke-width: 0.5px;
-        transition: fill 0.1s;
-
-    }
-
-    .map path:hover {
-
-        fill: #6923E5;
-        stroke: #fff;
-        stroke-width: 1px;
-        transition: fill 0.01s;
-
-
-
-
-
-    }
-
-    .territory {
-        fill: #a9a9a9;
-    }
-
-    .territory:hover {
-        fill: #22aa44;
-    }
-
-    .compass {
-        fill: #fff;
-        stroke: #000;
-        stroke-width: 1;
-    }
-
-    .button {
-        fill: #6923E5;
-        stroke: #6923E5;
-        stroke-width: 0.5;
-        stroke-miterlimit: 6;
-        stroke-linecap: round;
-    }
-
-    .button:hover {
-        stroke-width: 2;
-    }
-
-    .plus-minus {
-        fill: #fff;
-        pointer-events: none;
-    }
+        background-color: rgb(230, 230, 230);
+     
+   } 
+   
+   .map path {
+       fill: #09999A;
+       stroke: #fff;
+       stroke-width: 0.5px;
+       transition: fill 0.1s;
+   
+   }
+   .map path:hover{
+   
+       fill:#6923E5;
+       stroke: #fff;
+       stroke-width: 1px;
+       transition: fill 0.01s;
+       
+       
+   
+       
+   
+   }
+   
+   .territory {
+       fill: #a9a9a9;
+   }
+   .territory:hover {
+       fill: #22aa44;
+   }
+   .compass {
+       fill: #fff;
+       stroke: #000;
+       stroke-width: 1;
+   }
+   .button {
+       height 30px;
+       fill:#09999a;
+       stroke: #09999a;
+       stroke-width: 0.5;
+       stroke-miterlimit:6;
+       stroke-linecap: round;
+   }
+   .button:hover {
+       stroke-width: 2;
+   }
+   .plus-minus {
+       fill: #fff;
+       pointer-events: none;
+   }
+   
+   
+   
 </style>
-
-
-
-
-<div class="map">
+<div class="map container-fluid">
 
 
 
@@ -788,15 +777,12 @@
             </a>
         </g>
 
+    
+        <path class="button" onclick="pan(0, 50)" d="M25 5 l6 10 a20 40 0 0 0 -12 0z" />
+        <path class="button" onclick="pan(50, 0)" d="M5 25 l10 -6 a35 18 0 0 0 0 12z" />
+        <path class="button" onclick="pan(0,-50)" d="M25 45 l6 -10 a20, 40 0 0,1 -12,0z" />
+        <path class="button" onclick="pan(-50, 0)" d="M45 25 l-10 -6 a35 18 0 0 1 0 12z" />
 
-
-        <circle cx="25" cy="25" r="21" fill="white" opacity="0.75" />
-        <path class="button" onclick="pan(0, 50)" d="M25 5 l6 10 a20 35 0 0 0 -12 0z" />
-        <path class="button" onclick="pan(50, 0)" d="M5 25 l10 -6 a35 20 0 0 0 0 12z" />
-        <path class="button" onclick="pan(0,-50)" d="M25 45 l6 -10 a20, 35 0 0,1 -12,0z" />
-        <path class="button" onclick="pan(-50, 0)" d="M45 25 l-10 -6 a35 20 0 0 1 0 12z" />
-
-        <circle class="compass" cx="25" cy="25" r="10" />
         <circle class="button" cx="25" cy="20.5" r="4" onclick="zoom(0.5)" />
         <circle class="button" cx="25" cy="29.5" r="4" onclick="zoom(2)" />
 
@@ -832,16 +818,6 @@
                 var newMatrix = "matrix(" + transformMatrix.join(' ') + ")";
                 matrixGroup.setAttributeNS(null, "transform", newMatrix);
             }
-
-
-
-
-
-
-
-
-
-
         </script>
         </script>
     </svg>
