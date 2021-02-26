@@ -29,7 +29,7 @@ class CountryPageController extends AbstractController
         //récupération des données
         $repo = $this->getDoctrine()->getRepository(Country::class);
         $countrys = $repo->findAll();
-
+        $user = $this->getUser();
         $countryPage = $repo->find($id);
         $publications = $this->getDoctrine()->getManager()->getRepository(Publication::class)->findAll();
         
@@ -81,7 +81,9 @@ class CountryPageController extends AbstractController
             'countryPage' => $countryPage,
             'publications' => $publications,
             'countrys' => $countrys,
-            'formPublication' => $form->createView()
+            'formPublication' => $form->createView(),
+            'user' => $user,
+            'publication' => $publication
         ]);
     }
 
