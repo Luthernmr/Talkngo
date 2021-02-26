@@ -28,9 +28,17 @@
                 }
             } 
 
+            function afficheListekeyboard() 
+            {
+                var x = document.getElementById("myUL");
+                if (x.style.display === "none" && event.keyCode !== 13) {
+                  x.style.display = "block";
+                }
+            }
+
             function searchFunction() 
             {
-                var input, filter, ul, li, a, i, txtValue, path, m;
+                var input, filter, ul, li, a, i, txtValue, path;
                 input = document.getElementById("myInput");
                 m = 0;
                 filter = input.value.toUpperCase();
@@ -38,18 +46,14 @@
                 li = ul.getElementsByTagName("li");
                 for (i = 0; i < li.length; i++) 
                 {   
-                    if (txtValue != null)
-                    {
-                        li[i].style.display = "";
-                    }
-                    
+
                     a = li[i].getElementsByClassName("pays")[0];
                     txtValue = a.textContent || a.innerText;
                     if (txtValue.toUpperCase().indexOf(filter) > -1) 
                     {
                         li[i].style.display = "";
                         if (event.keyCode === 13) {
-                            path = li[i].getElementById("pays").getAttribute("href");
+                            path = a.getAttribute("href");
                             window.location.href=path;
                         }
                     } else {
@@ -68,11 +72,11 @@
             <a href="{{path('home')}}"><img class="logo" src="{{asset('css/img/logo-horizontal-1.svg')}}" alt="logo talkngo"></a>
             <div class="header-content">
                 <div class="liste-searchbar">
-                <input class="searchbar" onClick="afficheListe()" type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeydown="searchFunction()">
+                <input class="searchbar" onClick="afficheListe()" type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeydown="searchFunction(); afficheListekeyboard()">
                     <ul id="myUL">
                        {% for country in countrys %}
                         <li>
-                            <a class="pays" id="pays" href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryName }}</a>
+                            <a class="pays" id="pays" href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryNameFr }}</a>
                         </li>
                         {% endfor %} 
                     </ul>

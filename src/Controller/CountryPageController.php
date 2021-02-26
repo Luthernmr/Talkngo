@@ -31,6 +31,7 @@ class CountryPageController extends AbstractController
         $publications = $this->getDoctrine()->getManager()->getRepository(Publication::class)->findAll();
         $countrys = $repo->findAll();
         
+        
        //création du formulaire 
         $publication=new Publication();
         $form =$this->createFormBuilder($publication)
