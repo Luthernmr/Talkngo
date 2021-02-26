@@ -50,6 +50,7 @@ a:link{
 
 
 .logo{
+    margin-top: 1em;
     width: 200px;
     height: 100px;
 }
@@ -71,6 +72,7 @@ a:link{
 }
 
 #myUL{
+    display: none;
     z-index: 1000;
     position: absolute;
     height: 200px;
