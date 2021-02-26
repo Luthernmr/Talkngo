@@ -27,16 +27,16 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('name',TextType::class,[
-                'label' => 'nom',
+                'label' => 'Nom',
                 'required' => true,
             ])
             ->add('first_name',TextType::class,[
-                'label' => 'prenom',
+                'label' => 'Prénom',
                 'required' => true,
             ])
 
             ->add('age',BirthdayType::class,[
-                'label' => 'date de naissance',
+                'label' => 'Date de naissance',
                 'required' => true,
                 'attr' => [
                     'class' => 'form-control js-datepicker'
@@ -49,12 +49,12 @@ class RegistrationFormType extends AbstractType
                 
             ])
             ->add('location',TextType::class,[
-                'label' => 'ville',
+                'label' => 'Ville',
             ])
            
             ->add('description',TextareaType::class,[
                 'required' => true,
-                'label' => 'description',
+                'label' => 'Description',
                  
             ])
             ->add('img', FileType::class, [
@@ -65,13 +65,13 @@ class RegistrationFormType extends AbstractType
             ])
 
             ->add('email',EmailType::class,[
-                'label' => 'email',
+                'label' => 'Email',
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'vous devez accepter les conditions d\'utilisation .',
+                        'message' => 'Vous devez accepter les conditions d\'utilisation .',
                     ]),
                 ],
             ])
@@ -85,11 +85,11 @@ class RegistrationFormType extends AbstractType
                 ],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'veuillez entrer un mot de passe ',
+                        'message' => 'Veuillez entrer un mot de passe ',
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'votre mot de passe doit comporter au minimun  {{ limit }} characters',
+                        'minMessage' => 'Votre mot de passe doit comporter au minimun  {{ limit }} characters',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
