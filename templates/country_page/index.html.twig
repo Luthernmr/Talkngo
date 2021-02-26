@@ -1,7 +1,7 @@
 
 {% extends "base.html.twig" %}
 
-{% block title %}{{ countryPage.countryNameFr }}{% endblock %}
+{% block title %}{{ countryPage.countryName }}{% endblock %}
   
 
 {% block body %}
@@ -14,8 +14,8 @@
 
 </h1>
     
-        {% if countryPage.countryNameFr %}
-                <h1>Ces voyeugeurs vont découvrir '{{ countryPage.countryNameFr }}', {{ user.firstName}}, trouve ton partenaire de voyage</h1>
+        {% if countryPage.countryName %}
+                <h1>Ces voyeugeurs vont découvrir '{{ countryPage.countryName }}', {{ user.firstName}}, trouve ton partenaire de voyage</h1>
            
         {% endif %}
       
@@ -31,7 +31,7 @@
         <h3>{{ publication.user.firstName }}</h3>
       </div>
       <div class="date">
-        <h4>{{ publication.user.location }} <i class="fas fa-plane"></i> {{ countryPage.countryNameFr }}</h4>
+        <h4>{{ publication.user.location }} <i class="fas fa-plane"></i> {{ countryPage.countryName }}</h4>
         <h4 class=""> départ le {{ publication.date | date('d/m/Y')}}</h4>
       </div>
       <a href="{{ path('profil_voyageur',{'id':publication.user.id } ) }}" class="button-info-1">A propos de {{ publication.user.firstName }}</a>
@@ -39,6 +39,8 @@
     </div>
   </div>
   {% endif %}
+  {% else %}
+  
 {% endfor %}
 </article>
         
