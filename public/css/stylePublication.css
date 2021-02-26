@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Calistoga&display=swap');
+
+
+*{
+    list-style: none;
+    outline-style: none;
+  
+}
+
+
+.form-largescreens{
+    padding: 50px;
+    border-radius: 25px;
+    background-color: #36333a;
+    box-shadow: 3px 5px 7px 2px rgba(0,0,0,0.61);
+}
+
+.title{
+ text-align: center;
+ font-family: 'calistoga';
+ color: rgb(0, 0, 0);
+
+}
+
+
+.form-control{
+    margin: 5px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    padding: 8px;
+    border: #ffffff 1px solid;
+    background-color: rgb(218, 218, 218);
+    border-radius: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+select {
+    word-wrap: normal;
+    border-radius: 5px;
+    margin-left: 5px;
+    background:  rgb(218, 218, 218);
+    width: 145px;
+    height: 30px;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: .5rem;
+    color: #fff;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.submit{
+    border: 1px solid #6923E5;
+    padding : 20px;
+    border-radius: 20px;
+    height: 40px;
+    background-color: #fff;
+    display: block;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+
+
+}
+
+.card{
+    display: flex;
+    flex-direction: row;
+}
+
+article{
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid blue;
+}
+.date{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.button-info-1{
+    padding: 2%;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 2px 5px #6923E5;
+    color: #fff;
+    background-color: #6923E5;
+}
+.button-info-2{
+    padding: 2%;
+    border-radius: 20px;
+    border: 1px solid #6923E5;
+    color: #6923E5;
+    background-color: #fff;
+}
+
+@media (max-width: 840px) {
+
+    .form-phonescreen {
+        padding: 50px;
+        margin: 5vh auto 0 auto;
+        width:350px;
+        border-radius: 25px;
+        background-color: #6923E5;
+        box-shadow: 3px 5px 7px 2px rgba(0,0,0,0.61);
+    }
+    
+
+    .form-largescreen{
+        display: none;
+    }
+
+
+    .short, .long{
+
+        width: 250px;
+        margin: 30px auto;
+	    display: block;
+
+    }
+
+}

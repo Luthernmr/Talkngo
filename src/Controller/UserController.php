@@ -2,7 +2,15 @@
 
 namespace App\Controller;
 
+<<<<<<< HEAD
 use App\Entity\Country;
+=======
+use App\Entity\User;
+
+use App\Entity\Country;
+use App\Form\UpdateAdminFormType;
+use App\Form\RegistrationFormType;
+>>>>>>> b44a7c50c82d8cac832c2bbade758fb00db66fda
 use App\Repository\UserRepository;
 
 use Symfony\Component\HttpFoundation\Request;
@@ -17,7 +25,12 @@ class UserController extends AbstractController
      * @Route("/admin/user", name="admin_user")
      */
     public function index(UserRepository $userRepository): Response
+<<<<<<< HEAD
     { $repo = $this->getDoctrine()->getRepository(Country::class);
+=======
+    {
+        $repo = $this->getDoctrine()->getRepository(Country::class);
+>>>>>>> b44a7c50c82d8cac832c2bbade758fb00db66fda
         $countrys = $repo->findAll();
         $users = $userRepository->findAll();
         $utilisateurs = [];
@@ -43,6 +56,8 @@ class UserController extends AbstractController
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
+        $repo = $this->getDoctrine()->getRepository(Country::class);
+        $countrys = $repo->findAll();
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
@@ -69,6 +84,7 @@ class UserController extends AbstractController
 
         return $this->render('admin/userCreate.html.twig', [
             'registrationForm' => $form->createView(),
+            'countrys' =>$countrys
         ]);
     }
         
@@ -81,6 +97,8 @@ class UserController extends AbstractController
         $user = $userRepository->find($id);
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
+        $repo = $this->getDoctrine()->getRepository(Country::class);
+        $countrys = $repo->findAll();
 
         if ($form->isSubmitted() && $form->isValid()) {
             $oldNomImg = $user->getImg(); //ancien image
