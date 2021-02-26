@@ -8,19 +8,36 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
     <div class="profile container">
         <img src="{{user.img}}" alt="">
-        <h1>{{ user.firstname }}</h1>
+        <h3>{{ user.firstname }}</h1>
+        <h3>{{ user.name }}</h2>
+        <h3>{{ user_age.age}} ans</h3>
+        <h3>{{ user.location }}</h3>
         <p>{{user.description}}</p>
     </div>
+
+    
+            
+<div>
+    <h2>Mes voyages</h2>
+    {% for publication in publications %}
+        {% if publication.user.id == user.id %}
+            {{publication.countryName}}
+        {% endif %}
+        {% else %}
+            <h2> Aucun voyages effectué</h2>
+    {% endfor %}
 </div>
 
-        
-<div class="form-largescreen">
+   
+<div class="formulaire container">
+    <h2>Ajouter un nouveau voyage</h2>
 {{ form_start(formPublication) }}
     
-    {{ form_widget(formPublication,{'attr':{'class':'form-control'} }) }}
+    {{ form_row(formPublication.countryName,{'attr':{'class':'fomulaire'} }) }}
+    {{ form_row(formPublication.date,{'attr':{'class':'fomulaire'} }) }}
+    {{ form_row(formPublication.duration,{'attr':{'class':'fomulaire'} }) }}
 
     <button type="submit" class="submit">Publier l'annonce</button>
 {{ form_end(formPublication) }}

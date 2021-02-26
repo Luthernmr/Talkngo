@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Country;
 use App\Entity\Publication;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,14 +20,20 @@ class ProfilController extends AbstractController
     /**
      * @Route("/profil", name="profil")
      */
-    public function index(Request $request,EntityManagerInterface $entityManager): Response
+    public function index(Request $request,EntityManagerInterface $entityManager,UserRepository $userRepository): Response
     {
        
         $repo = $this->getDoctrine()->getRepository(Country::class);
         $countrys = $repo->findAll();
         $publications = $this->getDoctrine()->getManager()->getRepository(Publication::class)->findAll();
         $user = $this->getUser();
-
+        
+        
+            $datetime = date_format($user->getAge(), 'Y-m-d H:i:s');
+            $timestamp = strtotime($datetime);
+            $utilisateurs['age'] = abs((time() - $timestamp) / (3600 * 24 * 365));
+        
+    
 
         $publication = new Publication();
         $form =$this->createFormBuilder($publication)
@@ -53,6 +60,7 @@ class ProfilController extends AbstractController
                     'with_years'  => false,
                     'with_months' => true,
                     'with_days'   => true,
+                    'label' => 'Combien mois ou de jours resterez-vous ?'
                 ])
                 ->getForm();
                 
@@ -79,7 +87,8 @@ class ProfilController extends AbstractController
             'user' => $user,
             'publications' => $publications,
             'countrys' => $countrys,
-            'formPublication' => $form->createView()
+            'formPublication' => $form->createView(),
+            'user_age' => $utilisateurs,
         ]);
     }
 
@@ -91,15 +100,21 @@ class ProfilController extends AbstractController
 
         $repo = $this->getDoctrine()->getRepository(Country::class);
         $countrys = $repo->findAll();
-
         $publications = $this->getDoctrine()->getManager()->getRepository(Publication::class)->findAll();
         $repo = $this->getDoctrine()->getRepository(User::class);
         $user = $repo->find($id);
+
+        $datetime = date_format($user->getAge(), 'Y-m-d H:i:s');
+        $timestamp = strtotime($datetime);
+        $utilisateurs['age'] = abs((time() - $timestamp) / (3600 * 24 * 365));
+       
 
         return $this->render('profil/publierProfil.html.twig', [
             'user' => $user,
             'countrys' => $countrys,
             'publications' => $publications,
+            'user_age' => $utilisateurs,
+        
         ]);
     }
 

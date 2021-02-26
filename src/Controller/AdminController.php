@@ -33,7 +33,7 @@ class AdminController extends AbstractController
     { $repo = $this->getDoctrine()->getRepository(Country::class);
         $countrys = $repo->findAll();
 
-        $country = new Country();
+       
         
         return $this->render('admin/addCountry.html.twig', [
             'controller_name' => 'AdminController',
