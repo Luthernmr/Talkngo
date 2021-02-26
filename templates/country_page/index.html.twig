@@ -1,11 +1,7 @@
 
 {% extends "base.html.twig" %}
-<<<<<<< HEAD
 
 {% block title %}{{ countryPage.countryNameFr }}{% endblock %}
-=======
-{% block title %}Hello CountryPageController!{% endblock %}
->>>>>>> cc601a5077ba7742a4f6fae72053eedf898f9fb8
 
 {% block body %}
 <style>
@@ -14,40 +10,6 @@
 </style>
 
 <div class="example-wrapper">
-<<<<<<< HEAD
-
-
-    
-        {% if countryPage.countryNameFr %}
-                <h1>{{ countryPage.countryNameFr }}! ✅</h1>
-        {% endif %}
-      
-        
-            
-<article class=" ">
-  {% for publication in publications %}
-  {% if countryPage.countryName == publication.countryName  %}
-  <div class="">
-    <div class="presentation">
-      <div class="user-info">
-        <img src="{{asset('img/profil/publication.user.img')}}" alt="pdp">
-        <h3>{{publication.user.name}}</h3>
-      </div>
-      <div class="date">
-        <h4>{{publication.user.location}} <i class="fas fa-plane"></i> {{countryPage.countryNameFr}}</h4>
-        <h4 class="">départ le {{publication.date | date('d/m/Y')}}</h4>
-      </div>
-      <button class="button-info-1">En savoir plus</button>
-      <button class="button-info-2">Contacter</button>
-    </div>
-  </div>
-  {% endif %}
-{% endfor %}
-</article>
-        
-          
-</body>
-=======
 {% if countryPage.countryNameFr %}
         <h1>Hello {{ countryPage.countryNameFr }}! ✅</h1>
 {% endif %}
@@ -78,5 +40,4 @@
 {% endfor %}
 
 </div>
->>>>>>> cc601a5077ba7742a4f6fae72053eedf898f9fb8
 {% endblock %}
