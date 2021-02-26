@@ -29,7 +29,7 @@
     
                 function searchFunction() 
                 {
-                    var input, filter, ul, li, a, i, txtValue, find_path, path, m;
+                    var input, filter, ul, li, a, i, txtValue, path, m;
                     input = document.getElementById("myInput");
                     m = 0;
                     filter = input.value.toUpperCase();
@@ -47,21 +47,13 @@
                         if (txtValue.toUpperCase().indexOf(filter) > -1) 
                         {
                             li[i].style.display = "";
+                            if (event.keyCode === 13) {
+                                path = li[i].getElementById("pays").getAttribute("href");
+                                window.location.href=path;
+                            }
                         } else {
                             li[i].style.display = "none";
                         }
-                    }
-                    while (m === 0) 
-                        {   
-                            if (txtValue.toUpperCase().indexOf(filter) > -1)
-                            {
-                                find_path = li[i];
-                                m++;
-                            }                                
-                        } 
-                    if (event.keyCode === 13) {
-                        path = find_path.getElementById("pays").getAttribute("href");
-                        window.location.href=path;
                     }
                 }
             

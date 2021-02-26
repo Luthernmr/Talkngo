@@ -1,42 +1,42 @@
 
 {% extends "base.html.twig" %}
-
 {% block title %}Hello CountryPageController!{% endblock %}
 
 {% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
 
+<div class="example-wrapper">
+{% if countryPage.countryNameFr %}
+        <h1>Hello {{ countryPage.countryNameFr }}! ✅</h1>
+{% endif %}
 
-
-<body>
+{{ form_start(formPublication) }}
     
-        {% if countryPage.countryNameFr %}
-                <h1>{{ countryPage.countryNameFr }}! ✅</h1>
-        {% endif %}
-        
-        <div class="form-largescreens">
-        {{ form_start(formPublication) }}
-            
-            {{ form_widget(formPublication) }}
-        
-            <button type="submit" class="submit">Publier l'annonce</button>
-        {{ form_end(formPublication) }}
-        </div>
-        
+    {{ form_widget(formPublication) }}
+
+    <button type="submit">Publier l'annonce</button>
+{{ form_end(formPublication) }}
+
+{% for publication in publications %}
+    {% if countryPage.countryName == publication.countryName  %}
         <div>
-        {% for publication in publications %}
-            {% if countryPage.countryName == publication.countryName  %}
-                <div>
-                    <img src="{{ publication.img}}" alt="">
-                    <h3>Road to </h3> 
-                    <p>{{publication.duration}}</p>
-                    <p>{{publication.date | date('d/m/Y')}}</p>
-                    <img src="{{asset('img/profil/publication.user.img')}}" alt="pdp">
-                    <p>{{publication.user.name}} </p>
-                    <p>{{publication.user.location}}  {{countryPage.countryNameFr}}</p>
-                </div>     
-                
-            {% endif %}
-        {% endfor %}
-          
-</body>
+            <img src="{{ publication.img}}" alt="">
+            <h3>Road to </h3> 
+            <p>{{publication.duration}}</p>
+            <p>{{publication.date | date('d/m/Y')}}</p>
+            <img src="{{asset('img/profil/publication.user.img')}}" alt="pdp">
+            <p>{{publication.user.name}} </p>
+            <p>{{publication.user.location}} -> {{countryPage.countryNameFr}}</p>
+            
+        </div>
+        <div>
+            
+        </div>
+    {% endif %}
+{% endfor %}
+
+</div>
 {% endblock %}
