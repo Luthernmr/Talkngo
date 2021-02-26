@@ -29,13 +29,19 @@
     
                 function searchFunction() 
                 {
-                    var input, filter, ul, li, a, i, txtValue;
+                    var input, filter, ul, li, a, i, txtValue, find_path, path, m;
                     input = document.getElementById("myInput");
+                    m = 0;
                     filter = input.value.toUpperCase();
                     ul = document.getElementById("myUL");
                     li = ul.getElementsByTagName("li");
                     for (i = 0; i < li.length; i++) 
-                    {
+                    {   
+                        if (txtValue != null)
+                        {
+                            li[i].style.display = "";
+                        }
+                        
                         a = li[i].getElementsByClassName("pays")[0];
                         txtValue = a.textContent || a.innerText;
                         if (txtValue.toUpperCase().indexOf(filter) > -1) 
@@ -45,8 +51,17 @@
                             li[i].style.display = "none";
                         }
                     }
+                    while (m === 0) 
+                        {   
+                            if (txtValue.toUpperCase().indexOf(filter) > -1)
+                            {
+                                find_path = li[i];
+                                m++;
+                            }                                
+                        } 
                     if (event.keyCode === 13) {
-                        
+                        path = find_path.getElementById("pays").getAttribute("href");
+                        window.location.href=path;
                     }
                 }
             
@@ -60,11 +75,11 @@
             <a href="{{path('')}}"><img class="logo" src="{{asset('css/img/logo-horizontal-1.svg')}}" alt="logo talkngo"></a>
             <div class="header-content">
                 <div class="liste-searchbar">
-                <input class="searchbar" onClick="afficheListe()" type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeyup="searchFunction()">
+                <input class="searchbar" onClick="afficheListe()" type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeydown="searchFunction()">
                     <ul id="myUL">
                        {% for country in countrys %}
                         <li>
-                            <a class="pays" href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryName }}</a>
+                            <a class="pays" id="pays" href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryName }}</a>
                         </li>
                         {% endfor %} 
                     </ul>
