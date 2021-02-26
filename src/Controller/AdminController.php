@@ -11,9 +11,9 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin", name="admin")
      */
-    public function index(BaseController $baseController): Response
-    {  
-        $countrys = $baseController->ajout();
+    public function index(): Response
+    { $repo = $this->getDoctrine()->getRepository(Country::class);
+        $countrys = $repo->findAll();
 
         return $this->render('admin/admin.html.twig', [
             'controller_name' => 'AdminController',

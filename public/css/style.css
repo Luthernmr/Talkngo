@@ -17,6 +17,7 @@ header.phone-screen{
     padding: 0px 50px 0px 50px;
     margin-left:auto ;
     margin-right: auto;
+    height: 8em;
     width: 100%;
     box-shadow: 0px 11px 7px 0px rgba(0,0,0,0.2);
     
@@ -49,6 +50,7 @@ a:link{
 
 
 .logo{
+    margin-top: 1em;
     width: 200px;
     height: 100px;
 }
@@ -70,11 +72,12 @@ a:link{
 }
 
 #myUL{
-position: absolute;
+    display: none;
+    z-index: 1000;
+    position: absolute;
     height: 200px;
     width: 500px;
     background-color: #fff;
-    /* overflow: ; */
     border: 1px solid #6923E5;
     border-top: none;
     border-radius: 25px;

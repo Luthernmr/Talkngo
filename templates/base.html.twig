@@ -18,39 +18,50 @@
         {% block javascripts %}
         <script>
 
-                function afficheListe() 
-                {
-                    var x = document.getElementById("myUL");
-                    if (x.style.display === "none") {
-                      x.style.display = "block";
-                    } else {
-                      x.style.display = "none";
-                    }
-                } 
-    
-                function searchFunction() 
-                {
-                    var input, filter, ul, li, a, i, txtValue;
-                    input = document.getElementById("myInput");
-                    filter = input.value.toUpperCase();
-                    ul = document.getElementById("myUL");
-                    li = ul.getElementsByTagName("li");
-                    for (i = 0; i < li.length; i++) 
+            function afficheListe() 
+            {
+                var x = document.getElementById("myUL");
+                if (x.style.display === "none") {
+                  x.style.display = "block";
+                } else {
+                  x.style.display = "none";
+                }
+            } 
+
+            function afficheListekeyboard() 
+            {
+                var x = document.getElementById("myUL");
+                if (x.style.display === "none" && event.keyCode !== 13) {
+                  x.style.display = "block";
+                }
+            }
+
+            function searchFunction() 
+            {
+                var input, filter, ul, li, a, i, txtValue, path;
+                input = document.getElementById("myInput");
+                m = 0;
+                filter = input.value.toUpperCase();
+                ul = document.getElementById("myUL");
+                li = ul.getElementsByTagName("li");
+                for (i = 0; i < li.length; i++) 
+                {   
+
+                    a = li[i].getElementsByClassName("pays")[0];
+                    txtValue = a.textContent || a.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) 
                     {
-                        a = li[i].getElementsByClassName("pays")[0];
-                        txtValue = a.textContent || a.innerText;
-                        if (txtValue.toUpperCase().indexOf(filter) > -1) 
-                        {
-                            li[i].style.display = "";
-                        } else {
-                            li[i].style.display = "none";
+                        li[i].style.display = "";
+                        if (event.keyCode === 13) {
+                            path = a.getAttribute("href");
+                            window.location.href=path;
                         }
-                    }
-                    if (event.keyCode === 13) {
-                        
+                    } else {
+                        li[i].style.display = "none";
                     }
                 }
-            
+            }
+        
         </script>
             {#{{ encore_entry_script_tags('app') }}#}
         {% endblock %}
@@ -61,11 +72,11 @@
             <a href="{{path('home')}}"><img class="logo" src="{{asset('css/img/logo-horizontal-1.svg')}}" alt="logo talkngo"></a>
             <div class="header-content">
                 <div class="liste-searchbar">
-                <input class="searchbar"  type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeyup="searchFunction()">
+                <input class="searchbar" onClick="afficheListe()" type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeydown="searchFunction(); afficheListekeyboard()">
                     <ul id="myUL">
                        {% for country in countrys %}
                         <li>
-                            <a class="pays" href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryName }}</a>
+                            <a class="pays" id="pays" href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryName }}</a>
                         </li>
                         {% endfor %} 
                     </ul>
