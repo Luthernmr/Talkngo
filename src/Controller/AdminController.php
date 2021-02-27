@@ -32,20 +32,72 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/add", name="add_country")
      */
-    public function ajoutInformationPays(Request $request): Response
-    { $repo = $this->getDoctrine()->getRepository(Country::class);
-        $country = $repo->findAll();
-
-        $countrys = new Country();
-        $form = $this->createForm(CountryFormType::class, $countrys);
-        $form->handleRequest($request);
-       
+    public function indexPays(CountryRepository $countryRepository): Response
+    { 
+      
+        $repo = $this->getDoctrine()->getRepository(Country::class);
+        $countrys = $repo->findAll();
+        $country = $countryRepository->findAll();
         
         return $this->render('admin/addCountry.html.twig', [
-                'countryForm' => $form->createView(),
-                'countrys' => $country
+            'country' => $country,
+            'countrys' => $countrys
         ]);
     }
+
+
+
+    /**
+     * @Route("/admin/add/update-{id}", name="country_update")
+     */
+    public function updatePays(CountryRepository $countryRepository, $id, Request $request): Response
+    { 
+        
+        $country = $countryRepository->find($id);
+        $form = $this->createForm(CountryFormType::class, $country);
+        $form->handleRequest($request);
+        $repo = $this->getDoctrine()->getRepository(Country::class);
+        $countrys = $repo->findAll();
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $oldNomImg = $country->getImagePays(); //ancien image
+            $oldCheminImg = $this->getParameter('dossier_photos_pays') . '/' . $oldNomImg;
+
+            if (file_exists($oldCheminImg)) {
+                unlink($oldCheminImg);
+            }
+
+            $infoImg = $form['imagePays']->getData();
+            $extensionImg = $infoImg->guessExtension();
+
+            $nomImg = time() . '.' . $extensionImg;
+            $infoImg->move($this->getParameter('dossier_photos_pays'), $nomImg);
+            $country->setImagePays($nomImg);
+
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($country);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                'La page pays a bien été modifiée'
+            );
+
+           
+       
+        return $this->redirectToRoute('add_country');
+        }
+        return $this->render('admin/updateCountry.html.twig', [
+            'countryForm' => $form->createView(),
+            'countrys' => $countrys,
+            'country'  => $country
+        ]);
+    }
+
+
+
+
+
      /**
      * @Route("/admin/user", name="admin_user")
      */

@@ -1,5 +1,48 @@
-<h1>Oui</h1>
 
-{{ form_start(countryForm,) }}
-{{ form_row(countryForm.description,{'attr':{'class':'form-control'} }) }}
-{{ form_end(countryForm) }}
+{% extends "baseAdmin.html.twig" %}
+
+{% block title %}Pays{% endblock %}
+
+{% block body %}
+
+    <h2>Pays</h2>
+    
+    <table class="table">
+        <thead>
+            <tr>
+            <th>Abréviations</th>
+             <th>Nom du Pays</th>
+             <th>Image </th>
+             <th>description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for country in countrys %}
+            <tr>
+            
+                <td>{{ country.countryName }}</td>
+                <td>{{ country.description }}</td>
+                <td><img height="100px" width="200px" src="{{ asset('img/pays/') ~ country.imagePays }}" alt="pas d'images dipsonible"></td>
+              
+                <td>
+                    <a href=" {{ path('country_update', {'id':country.id})  }} ">modifier user</a> 
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+           
+        
+        
+        {% endblock %}
+
+
+
+
+
+
+
+
+
+
