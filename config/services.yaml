@@ -5,6 +5,8 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
      dossier_photos_user: '%kernel.project_dir%/public/img/profil'
+     dossier_photos_pays: '%kernel.project_dir%/public/img/pays'
+     dossier_photos_publication: '%kernel.project_dir%/public/img/publication'
 
 services:
     # default configuration for services in *this* file

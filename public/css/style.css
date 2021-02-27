@@ -6,7 +6,9 @@
     margin: 0;
     padding: 0;
 }
-
+.profile .profile-img{
+    clip-path: circle(10%);
+}
  
 @media only screen and (min-width: 1200px) { 
 
@@ -15,6 +17,7 @@ header.phone-screen{
 }
 
  header.large-screen{
+     position: sticky;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

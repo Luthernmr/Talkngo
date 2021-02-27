@@ -48,11 +48,7 @@ class Publication
      */
     private $countryStart;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $countryCode;
-
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -130,15 +126,4 @@ class Publication
         return $this;
     }
 
-    public function getCountryCode(): ?string
-    {
-        return $this->countryCode;
-    }
-
-    public function setCountryCode(string $countryCode): self
-    {
-        $this->countryCode = $countryCode;
-
-        return $this;
-    }
 }

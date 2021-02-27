@@ -12,28 +12,29 @@
         <img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profile-img" width="80px" height="80px">
         <h3>{{ user.firstname }}</h1>
         <h3>{{ user.name }}</h2>
-        <h3>{{ user_age}} ans</h3>
-        <h3>{{ user.location }}</h3>
+        <h4>{{ user_age}} ans</h3>
+        <h4>{{ user.location }}</h3>
         <p>{{user.description}}</p>
     </div>
 
     <article class="container">
     <h2>Mes voyages</h2>         
-    <div class="container travel-list scroll-1">
+    <div class="container travel-list scroll-1" data-scroll-container>
     {% for publication in publications %}
         {% if publication.user.id == user.id %}
-        <div class="col-5 m-1 card own-travel">
+        <div class="col-5 m-1 card own-travel" data-scroll data-scroll-speed='1'>
             <div class="presentation p-2">
               <div class="user-info m-2" >
                 <a href="{{ path('profil_voyageur',{'id':publication.user.id } ) }}"><img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profile-img" width="80px" height="80px"></a>
-                <h3>{{ publication.user.firstName }}</h3>
+                <h3>{% if user %}
+                    Own
+                {% endif %}</h3>
               </div>
               <div class="date">
                 <h4>{{ publication.countryStart | country_name}} <i class="fas fa-plane"></i> {{ publication.countryName | country_name }} </h4>
                 <h4 class=""> départ le {{ publication.date | date('d/m/Y')}}</h4>
               </div>
-              <a href="{{ path('profil_voyageur',{'id':publication.user.id } ) }}" class="button-info-1 m-2">A propos de {{ publication.user.firstName }}</a>
-              <a class="button-info-2 m-2">Contacter</a>
+              
             </div>
           </div>
         {% endif %}
@@ -48,10 +49,10 @@
     <h2>Ajouter un nouveau voyage</h2>
 {{ form_start(formPublication) }}
 
-    {{ form_row(formPublication.countryStart,{'attr':{'class':'form-control' , 'placeholder' : 'exemple'} }) }}
-    {{ form_row(formPublication.countryName,{'attr':{'class':'form-control' , 'placeholder' : 'exemple'} }) }}
+    {{ form_row(formPublication.countryStart,{'attr':{'class':'form-control-publication' , 'placeholder' : 'exemple'} }) }}
+    {{ form_row(formPublication.countryName,{'attr':{'class':'form-control-publication' , 'placeholder' : 'exemple'} }) }}
     {{ form_row(formPublication.date) }}
-    {{ form_row(formPublication.duration,{'attr':{'class':'form-control'} }) }}
+    {{ form_row(formPublication.duration,{'attr':{'class':'form-control-publication'} }) }}
     {{ form_row(formPublication.img ) }}
 
     <button type="submit" class="submit">Publier l'annonce</button>
