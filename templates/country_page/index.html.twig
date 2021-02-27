@@ -1,7 +1,7 @@
 
 {% extends "base.html.twig" %}
 
-{% block title %}{{ countryPage.countryName }}{% endblock %}
+{% block title %}{{ country.countryName }}{% endblock %}
   
 
 {% block body %}
@@ -9,9 +9,9 @@
 
 
 
-<div class="country-img" style="background-image:url('{{countryPage.imagePays}}');">
-    {% if countryPage.countryName %}
-                <h1>{{ countryPage.countryName }}... Une envie de partir ? </h1>     
+<div class="country-img" style="background-image:url('{{country.imagePays}}');">
+    {% if country.countryName %}
+                <h1>{{ country.countryName }}... Une envie de partir ? </h1>     
         {% endif %}
 </div>
   
@@ -22,7 +22,7 @@
             
 <article class="container   p-auto">
   {% for publication in publications %}
-  {% if countryPage.countryName == publication.countryName  %}
+  {% if country.countryCode == publication.countryName  %}
   <div class="col-5 m-3 p-3 card">
     <div class="presentation p-2">
       <div class="user-info m-2" >
@@ -30,7 +30,7 @@
         <h3>{{ publication.user.firstName }}</h3>
       </div>
       <div class="date">
-        <h4>{{ publication.user.location }} <i class="fas fa-plane"></i> {{ countryPage.countryName }}</h4>
+        <h4>{{ publication.countryStart | country_name }}<i class="fas fa-plane"></i> {{ publication.countryName | country_name }} </h4>
         <h4 class=""> départ le {{ publication.date | date('d/m/Y')}}</h4>
       </div>
       <a href="{{ path('profil_voyageur',{'id':publication.user.id } ) }}" class="button-info-1">A propos de {{ publication.user.firstName }}</a>

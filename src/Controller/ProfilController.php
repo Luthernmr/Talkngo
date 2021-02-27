@@ -10,11 +10,14 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\DateIntervalType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\ChoiceList\ChoiceList;
 
 class ProfilController extends AbstractController
 {
@@ -30,16 +33,24 @@ class ProfilController extends AbstractController
         $user = $this->getUser();
         
         
+        
             $datetime = date_format($user->getAge(), 'Y-m-d');
             $timestamp = strtotime($datetime);
             $age = abs((time() - $timestamp) / (3600 * 24 * 365));
             $age = number_format($age,0);
-
+        
         $publication = new Publication();
         $form =$this->createFormBuilder($publication)
                 
-                ->add('countryName',TextType::class, [
-                    'label' => 'Destination',
+                ->add('countryStart', CountryType::class, [
+                    'label' => 'd\'où partez vous',
+                    
+                    
+                ])
+
+                ->add('countryName',CountryType::class, [
+                    'label' => 'ou allez vous'
+         
                     
                         
                 ])
@@ -58,7 +69,8 @@ class ProfilController extends AbstractController
                 ])
                 ->add('img', FileType::class, [
                     // render a text field for each part
-                    'label' => 'Décore ton annonce'
+                    'label' => 'Décore ton annonce',
+                    
                 ])
                 ->getForm();
                 
@@ -77,7 +89,7 @@ class ProfilController extends AbstractController
             $manager->flush();
 
             $this->addFlash('message', 'Votre annoce à bien été publié');
-            return $this->redirectToRoute('');
+            return $this->redirectToRoute('profil');
         } 
     
       
@@ -88,6 +100,7 @@ class ProfilController extends AbstractController
             'countrys' => $countrys,
             'formPublication' => $form->createView(),
             'user_age' => $age,
+            
          
         ]);
     }
