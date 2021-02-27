@@ -4,7 +4,10 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Country;
+use App\Form\CountryFormType;
+use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
+use App\Repository\CountryRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -29,16 +32,18 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/add", name="add_country")
      */
-    public function ajoutInformationPays(): Response
+    public function ajoutInformationPays(Request $request): Response
     { $repo = $this->getDoctrine()->getRepository(Country::class);
-        $countrys = $repo->findAll();
+        $country = $repo->findAll();
 
+        $countrys = new Country();
+        $form = $this->createForm(CountryFormType::class, $countrys);
+        $form->handleRequest($request);
        
         
         return $this->render('admin/addCountry.html.twig', [
-            'controller_name' => 'AdminController',
-            'countrys' => $countrys
-    
+                'countryForm' => $form->createView(),
+                'countrys' => $country
         ]);
     }
      /**

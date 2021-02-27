@@ -25,7 +25,7 @@ class CountryPageController extends AbstractController
     /**
      * @Route("/country/page/{id}", name="country_page")
      */
-    public function index(Request $request, $id,EntityManagerInterface $entityManager){
+    public function index(Request $request, $id, EntityManagerInterface $entityManager){
         //récupération des données
         $repo = $this->getDoctrine()->getRepository(Country::class);
         $countrys = $repo->findAll();
