@@ -1,3 +1,6 @@
 .formulaire{
     display: flex;
 }
+h2{
+    background-color: aqua;
+}

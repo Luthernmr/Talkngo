@@ -23,10 +23,10 @@
 <article class="container   p-auto">
   {% for publication in publications %}
   {% if countryPage.countryName == publication.countryName  %}
-  <div class="card col-5 m-3 p-3">
-    <div class="presentation">
-      <div class="user-info">
-        <a href=""><img src="{{asset('img/profil/publication.user.img')}}" alt="pdp"></a>
+  <div class="col-5 m-3 p-3 card">
+    <div class="presentation p-2">
+      <div class="user-info m-2" >
+        <a href="{{ path('profil_voyageur',{'id':publication.user.id } ) }}"><img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profile-img" width="80px" height="80px"></a>
         <h3>{{ publication.user.firstName }}</h3>
       </div>
       <div class="date">

@@ -9,10 +9,10 @@
 </style>
 
     <div class="profile container">
-        <img src="{{user.img}}" alt="">
+        <img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profile-img" width="80px" height="80px">
         <h3>{{ user.firstname }}</h1>
         <h3>{{ user.name }}</h2>
-        <h3>{{ user_age.age}} ans</h3>
+        <h3>{{ user_age}} ans</h3>
         <h3>{{ user.location }}</h3>
         <p>{{user.description}}</p>
     </div>
@@ -38,6 +38,7 @@
     {{ form_row(formPublication.countryName,{'attr':{'class':'fomulaire' , 'placeholder' : 'exemple'} }) }}
     {{ form_row(formPublication.date,{'attr':{'class':'fomulaire'} }) }}
     {{ form_row(formPublication.duration,{'attr':{'class':'fomulaire'} }) }}
+    {{ form_row(formPublication.img,{'attr':{'class':'fomulaire'} }) }}
 
     <button type="submit" class="submit">Publier l'annonce</button>
 {{ form_end(formPublication) }}

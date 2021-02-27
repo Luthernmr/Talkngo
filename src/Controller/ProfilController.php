@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\DateIntervalType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class ProfilController extends AbstractController
 {
@@ -29,11 +30,10 @@ class ProfilController extends AbstractController
         $user = $this->getUser();
         
         
-            $datetime = date_format($user->getAge(), 'Y-m-d H:i:s');
+            $datetime = date_format($user->getAge(), 'Y-m-d');
             $timestamp = strtotime($datetime);
-            $utilisateurs['age'] = abs((time() - $timestamp) / (3600 * 24 * 365));
-        
-    
+            $age = abs((time() - $timestamp) / (3600 * 24 * 365));
+            $age = number_format($age,0);
 
         $publication = new Publication();
         $form =$this->createFormBuilder($publication)
@@ -56,6 +56,10 @@ class ProfilController extends AbstractController
                     // render a text field for each part
                     'label' => 'Combien mois ou de jours resterez-vous ?'
                 ])
+                ->add('img', FileType::class, [
+                    // render a text field for each part
+                    'label' => 'Décore ton annonce'
+                ])
                 ->getForm();
                 
     
@@ -72,7 +76,8 @@ class ProfilController extends AbstractController
             $manager->persist($publication);
             $manager->flush();
 
-              $this->addFlash('message', 'Votre annoce à bien été publié');
+            $this->addFlash('message', 'Votre annoce à bien été publié');
+            return $this->redirectToRoute('');
         } 
     
       
@@ -82,7 +87,7 @@ class ProfilController extends AbstractController
             'publications' => $publications,
             'countrys' => $countrys,
             'formPublication' => $form->createView(),
-            'user_age' => $utilisateurs,
+            'user_age' => $age,
          
         ]);
     }
@@ -101,14 +106,14 @@ class ProfilController extends AbstractController
 
         $datetime = date_format($user->getAge(), 'Y-m-d H:i:s');
         $timestamp = strtotime($datetime);
-        $utilisateurs['age'] = abs((time() - $timestamp) / (3600 * 24 * 365));
-       
+        $age = abs((time() - $timestamp) / (3600 * 24 * 365));
+        $age = number_format($age,0);
 
         return $this->render('profil/publierProfil.html.twig', [
             'user' => $user,
             'countrys' => $countrys,
             'publications' => $publications,
-            'user_age' => $utilisateurs,
+            'user_age' => $age,
         
         ]);
     }

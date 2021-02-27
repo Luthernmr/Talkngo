@@ -9,18 +9,26 @@
 </style>
 
 <div class="profile container">
-    <img src="{{user.img}}" alt="">
+    <img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profile-img">
     <h3>{{ user.firstname }}</h1>
     <h3>{{ user.name }}</h2>
-    <h3>{{ user_age.age}} ans</h3>
+    <h3>{{ user_age}} ans</h3>
     <h3>{{ user.location }}</h3>
     <p>{{user.description}}</p>
 </div>
 
-<div>
-    <h2>mes voyages</h2>
-    <div>{{publication}}</div>
-</div>
+
+    <div>
+        <h2>Mes voyages</h2>
+        {% for publication in publications %}
+            {% if publication.user.id == user.id %}
+                {{publication.countryName}}
+            {% endif %}
+            {% else %}
+                <h2> Aucun voyages effectué</h2>
+        {% endfor %}
+    </div>
+
 
         
 
