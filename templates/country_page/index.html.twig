@@ -13,7 +13,8 @@
     {% if publication | length == 0 %}
                 <h1>{{ country.countryName }}... Une envie de partir ? </h1>     
                 {%  else %}
-                <h1>Zut il n'y a pas de voyage prévu pour ce pays</h1>
+                <h1>Désolé {{user.firstname}} il n'y a pas de voyage prévu pour ce pays</h1>
+                <h3>Tu peux toujours proposé un voyage</h3>
                 <a href="{{path('profil')}}" class="boutton-info-2">Publier une annonce</a>
 
       {% endif %}
