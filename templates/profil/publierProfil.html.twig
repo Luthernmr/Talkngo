@@ -9,7 +9,7 @@
 </style>
 
 <div class="profile container">
-    <img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profile-img">
+    <img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profile-img" width="80px" height="80px">
     <h3>{{ user.firstname }}</h1>
     <h3>{{ user.name }}</h2>
     <h3>{{ user_age}} ans</h3>
@@ -19,7 +19,7 @@
 
 
     <div>
-        <h2>Mes voyages</h2>
+        <h2>Les vohes de {{user.}}</h2>
         {% for publication in publications %}
             {% if publication.user.id == user.id %}
                 {{publication.countryName}}

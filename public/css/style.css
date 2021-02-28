@@ -18,6 +18,8 @@ header.phone-screen{
 
  header.large-screen{
      position: sticky;
+     background-color: #fff;
+     z-index: 999;
      top: 0px;
     display: flex;
     flex-wrap: wrap;
