@@ -63,9 +63,7 @@ class AdminController extends AbstractController
             $oldNomImg = $country->getImagePays(); //ancien image
             $oldCheminImg = $this->getParameter('dossier_photos_pays') . '/' . $oldNomImg;
 
-            if (file_exists($oldCheminImg)) {
-                unlink($oldCheminImg);
-            }
+            
 
             $infoImg = $form['imagePays']->getData();
             $extensionImg = $infoImg->guessExtension();
