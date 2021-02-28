@@ -24,7 +24,7 @@
     <div class="container travel-list scroll-1" data-scroll-container>
     {% for publication in publications %}
         {% if publication.user.id == user.id %}
-        <div class="col-5 m-1 card own-travel" data-scroll data-scroll-speed='1'>
+        <div class="col-5 m-1 own-travel" data-scroll data-scroll-speed='1'>
             <div class="presentation p-2">
               <div class="user-info m-2" >
                 <a href="{{ path('profil_voyageur',{'id':publication.user.id } ) }}"><img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profile-img" width="80px" height="80px"></a>

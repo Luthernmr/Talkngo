@@ -10,36 +10,41 @@
 
 
 <div class="country-img container" style="background-image:url('{{country.imagePays}}');">
-    {% if publication | length == 0 %}
-                <h1>{{ country.countryName }}... Une envie de partir ? </h1>     
-                {%  else %}
-                <h1>Désolé {{user.firstname}} il n'y a pas de voyage prévu pour ce pays</h1>
-                <h3>Tu peux toujours proposé un voyage</h3>
-                <a href="{{path('profil')}}" class="boutton-info-2">Publier une annonce</a>
+    {% if publications|length >= 1 %}
+          <h1>{{ country.countryName }}... Une envie de partir ? </h1>     
+    
+    {%  else  %}
+
+          <h1>Désolé {{user.firstname}} il n'y a pas de voyage prévu pour ce pays</h1>
+          <h3>Tu peux toujours proposé un voyage</h3>
+          <a href="{{path('profil')}}" class="boutton-info-2">Publier une annonce</a>
 
       {% endif %}
 </div>
   
-
+{{publication.countryName}}
+{{country.countryName}}
         
       
-        
+        <p>{{publications|length}}</p>
             
-<article class="container   p-auto">
+<article class="container col-7  p-auto">
   {% for publication in publications %}
   {% if country.countryCode == publication.countryName  %}
-  <div class="col-5 m-3 p-3 card">
-    <div class="presentation p-2">
-      <div class="user-info m-2" >
+  <div class="container col-3 m-3 p-3 d-flex card">
+    <div class="presentation p-2 ">
+      <div class="user-info container m-2 d-flex align-items-center" >
         <a href="{{ path('profil_voyageur',{'id':publication.user.id } ) }}"><img src="{{asset('img/profil/' ~ publication.user.img)}}" alt="pdp" class="profile-img" width="80px" height="80px"></a>
-        <h3>{{ publication.user.firstName }}</h3>
+        <h3 class="m-2">{{ publication.user.firstName }}</h3>
       </div>
-      <div class="date">
-        <h4>{{ publication.countryStart | country_name }}<i class="fas fa-plane"></i> {{ publication.countryName | country_name }} </h4>
-        <h4 class=""> départ le {{ publication.date | date('d/m/Y')}}</h4>
+      <div class="date container d-flex-column">
+        <h4>{{ publication.countryStart | country_name }}<i class="fas fa-plane m-3"></i> {{ publication.countryName | country_name }} </h4>
+        <h4 class="content"> départ le {{ publication.date | date('d/m/Y')}}</h4>
       </div>
-      <a href="{{ path('profil_voyageur',{'id':publication.user.id } ) }}" class="button-info-1">A propos de {{ publication.user.firstName }}</a>
-      <a class="button-info-2">Contacter</a>
+      <div>
+      <a href="{{ path('profil_voyageur',{'id':publication.user.id } ) }}" class="button-info-1 m-2">A propos de {{ publication.user.firstName }}</a>
+      <a class="button-info-2 m-2">Contacter</a>
+    </div>
     </div>
   </div>
   {% endif %}
