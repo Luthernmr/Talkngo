@@ -9,6 +9,8 @@
 
 .card{
     box-shadow: 3px 0px 5px black;
+    border: 2px solid #6923E5;
+    border-radius: 50px;
 }
 
 
