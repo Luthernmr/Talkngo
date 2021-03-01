@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Mes voyages{% endblock %}
+
+{% block body %}
+
+ <h1> Ajouter les moficication pour </h1>
+ <div class="form-largescreen">
+{{ form_start(publicationForm,) }}
+{{ form_row(publicationForm.date,{'attr':{'class':'form-control'} }) }}
+{{ form_row(publicationForm.duration,{'attr':{'class':'form-control'} }) }}
+{{ form_row(publicationForm.img,{'attr':{'class':'form-control'} }) }}
+
+{{ form_row(publicationForm.countryStart,{'attr':{'class':'form-select' , 'placeholder' : 'exemple'} }) }}
+{{ form_row(publicationForm.countryName,{'attr':{'class':'form-select' , 'placeholder' : 'exemple'} }) }}
+
+
+<button class="submit" type="submit" class="btn btn-success">valider form</button>
+{{ form_end(publicationForm) }} 
+</div>
+
+<a href=" {{path('admin')}} "> retour </a>
+
+{% endblock %}
