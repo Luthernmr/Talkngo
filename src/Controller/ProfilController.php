@@ -8,6 +8,7 @@ use App\Entity\Publication;
 use App\Form\PublicationType;
 use App\Form\UpdateProfilFormType;
 use App\Repository\UserRepository;
+use App\Form\ContactVoyageurFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\PublicationRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -151,7 +152,7 @@ class ProfilController extends AbstractController
     /**
      * @Route("/profil/{id}", name="profil_voyageur")
      */
-    public function afficheProfilVoyageur($id){
+    public function afficheProfilVoyageur($id, Request $request, UserRepository $userRepository){
 
         $repo = $this->getDoctrine()->getRepository(Country::class);
         $countrys = $repo->findAll();
@@ -164,13 +165,41 @@ class ProfilController extends AbstractController
         $age = abs((time() - $timestamp) / (3600 * 24 * 365));
         $age = floor($age);
 
+        $form = $this->createForm(ContactVoyageurFormType::class);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $recepteur = $userRepository->find($id)->getEmail();
+            $expediteur = $this->get('security.token_storage')->getToken()->getUser()->getEmail();
+
+            $donnes = $form->getData();
+            // $userReceveur = $UserRepository->findOneByEmail($donnes['email']);
+            $message = (new \Swift_Message('comfirmation de votre email '))
+                ->setFrom($expediteur)
+                ->setTo($recepteur)
+                ->setBody(
+                $this->renderView(
+                    'profil/emailContactUser.html.twig',[
+                        'formData' => $donnes
+                    ]
+                ),
+                'text/html'
+            )
+            ;
+            return $this->render('profil/publierProfil.html.twig', [
+                'contactVoyageurForm' => $form->createView(),
+            ]);
+        }
+
         return $this->render('profil/publierProfil.html.twig', [
             'user' => $user,
             'countrys' => $countrys,
             'publications' => $publications,
             'user_age' => $age,
-        
+            'contactVoyageurForm' => $form->createView()
         ]);
+
+       
     }
 
 }
