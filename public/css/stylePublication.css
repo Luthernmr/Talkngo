@@ -25,21 +25,12 @@ article{
     clip-path: circle(50%);
 }
 
-<<<<<<< HEAD
-.title{
- text-align: center;
- font-family: 'calistoga';
- color:#6923E5;
- 
-
-=======
 .card{
     box-shadow: 0px 2px 5px gray;
     border-radius: 20px;
     align-items: center;
     justify-content: flex-start;
     
->>>>>>> 3802577eceabac6394ad579bc818cf9080b2eb43
 }
 
 h1{
