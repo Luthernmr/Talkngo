@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 
 class PublicationType extends AbstractType
 {
@@ -19,7 +20,21 @@ class PublicationType extends AbstractType
                 
         ])
             
-            ->add('date')
+        ->add('date',BirthdayType::class,[
+            'label' => 'modifier les dates',
+            'required' => true,
+            'widget' => 'single_text',
+            'html5' => 'false',
+            'attr' => [
+                'class' => 'datepicker form-control'
+            ],
+            'placeholder' => [
+                'year' => 'Year', 'month' => 'Month', 'day' => 'Day',
+            ]
+            
+            
+            
+        ])
             ->add('duration')
             ->add('img', FileType::class, [
 
