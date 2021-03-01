@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Pays{% endblock %}
+
+{% block body %}
+
+ <h1> Ajouter les moficication pour {{ country.countryName }} </h1>
+
+{{ form_start(countryForm,) }}
+{{ form_row(countryForm.description,{'attr':{'class':'form-control'} }) }}
+{{ form_row(countryForm.imagePays) }}
+
+<button type="submit" class="btn btn-success">valider form</button>
+{{ form_end(countryForm) }} 
+
+<a href=" {{path('admin')}} "> retour </a>
+
+{% endblock %}

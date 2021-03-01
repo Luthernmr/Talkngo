@@ -4,7 +4,10 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Country;
+use App\Form\CountryFormType;
+use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
+use App\Repository\CountryRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -29,18 +32,70 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/add", name="add_country")
      */
-    public function ajoutInformationPays(): Response
-    { $repo = $this->getDoctrine()->getRepository(Country::class);
+    public function indexPays(CountryRepository $countryRepository): Response
+    { 
+      
+        $repo = $this->getDoctrine()->getRepository(Country::class);
         $countrys = $repo->findAll();
-
-        $country = new Country();
+        $country = $countryRepository->findAll();
         
         return $this->render('admin/addCountry.html.twig', [
-            'controller_name' => 'AdminController',
+            'country' => $country,
             'countrys' => $countrys
-    
         ]);
     }
+
+
+
+    /**
+     * @Route("/admin/add/update-{id}", name="country_update")
+     */
+    public function updatePays(CountryRepository $countryRepository, $id, Request $request): Response
+    { 
+        
+        $country = $countryRepository->find($id);
+        $form = $this->createForm(CountryFormType::class, $country);
+        $form->handleRequest($request);
+        $repo = $this->getDoctrine()->getRepository(Country::class);
+        $countrys = $repo->findAll();
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $oldNomImg = $country->getImagePays(); //ancien image
+            $oldCheminImg = $this->getParameter('dossier_photos_pays') . '/' . $oldNomImg;
+
+            
+
+            $infoImg = $form['imagePays']->getData();
+            $extensionImg = $infoImg->guessExtension();
+
+            $nomImg = time() . '.' . $extensionImg;
+            $infoImg->move($this->getParameter('dossier_photos_pays'), $nomImg);
+            $country->setImagePays($nomImg);
+
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($country);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                'La page pays a bien été modifiée'
+            );
+
+           
+       
+        return $this->redirectToRoute('add_country');
+        }
+        return $this->render('admin/updateCountry.html.twig', [
+            'countryForm' => $form->createView(),
+            'countrys' => $countrys,
+            'country'  => $country
+        ]);
+    }
+
+
+
+
+
      /**
      * @Route("/admin/user", name="admin_user")
      */

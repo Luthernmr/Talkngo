@@ -7,22 +7,64 @@
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
-
-<div class="example-wrapper">
+<body>
+    
+</body data-scroll-container>
     <div class="profile container">
-        <img src="{{user.img}}" alt="">
-        <h1>{{ user.firstname }}</h1>
+        <img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profile-img" width="80px" height="80px">
+        <h3>{{ user.firstname }}</h1>
+        <h3>{{ user.name }}</h2>
+        <h4>{{ user_age}} ans</h3>
+        <h4>{{ user.location }}</h3>
         <p>{{user.description}}</p>
     </div>
-</div>
 
-        
-<div class="form-largescreen">
+    <article class="container" >
+    <h2>Mes voyages</h2>         
+    <div class="container travel-list scroll-1" data-scroll-container>
+    {% for publication in publications %}
+        {% if publication.user.id == user.id %}
+        <div class="col-5 m-1 own-travel" data-scroll data-scroll-speed='1'>
+            <div class="presentation p-2">
+              <div class="user-info m-2" >
+                <a href="{{ path('profil_voyageur',{'id':publication.user.id } ) }}"><img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profile-img" width="80px" height="80px"></a>
+                <h3>{% if user %}
+                    Ma publication
+                {% endif %}</h3>
+              </div>
+              <div class="date">
+                <h4>{{ publication.countryStart | country_name}} <i class="fas fa-plane"></i> {{ publication.countryName | country_name }} </h4>
+                <h4 class=""> départ le {{ publication.date | date('d/m/Y')}}</h4>
+              </div>
+              
+            </div>
+          </div>
+        {% endif %}
+        {% else %}
+            <h2> Aucun voyages effectué</h2>
+    {% endfor %}
+        </div>
+    </article>
+
+   
+<div class="form-largescrern container" data-scroll data-scroll-speed>
+    <h2>Ajouter un nouveau voyage</h2>
 {{ form_start(formPublication) }}
-    
-    {{ form_widget(formPublication,{'attr':{'class':'form-control'} }) }}
+
+    {{ form_row(formPublication.countryStart,{'attr':{'class':'form-select' , 'placeholder' : 'exemple'} }) }}
+    {{ form_row(formPublication.countryName,{'attr':{'class':'form-control-publication' , 'placeholder' : 'exemple'} }) }}
+    {{ form_row(formPublication.date) }}
+    {{ form_row(formPublication.duration,{'attr':{'class':'form-control-publication'} }) }}
+    {{ form_row(formPublication.img ) }}
 
     <button type="submit" class="submit">Publier l'annonce</button>
 {{ form_end(formPublication) }}
 </div>
+{% for message in app.flashes('message') %}
+<div class="alert alert-success " role="alert">
+    {{message}}
+</div>
+{% endfor %} 
+
+</body>
 {% endblock %}
