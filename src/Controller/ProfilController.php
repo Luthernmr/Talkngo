@@ -37,7 +37,7 @@ class ProfilController extends AbstractController
             $datetime = date_format($user->getAge(), 'Y-m-d');
             $timestamp = strtotime($datetime);
             $age = abs((time() - $timestamp) / (3600 * 24 * 365));
-            $age = number_format($age,0);
+            $age = floor($age);
         
         $publication = new Publication();
         $form =$this->createFormBuilder($publication)
@@ -120,7 +120,7 @@ class ProfilController extends AbstractController
         $datetime = date_format($user->getAge(), 'Y-m-d H:i:s');
         $timestamp = strtotime($datetime);
         $age = abs((time() - $timestamp) / (3600 * 24 * 365));
-        $age = number_format($age,0);
+        $age = floor($age);
 
         return $this->render('profil/publierProfil.html.twig', [
             'user' => $user,

@@ -107,7 +107,7 @@ class AdminController extends AbstractController
         $users = $userRepository->findAll();
         $utilisateurs = [];
         for ($i=0; $i<count($users); $i++) {
-            $datetime = date_format($users[$i]->getAge(), 'Y-m-d H:i:s');
+            $datetime = date_format($users[$i]->getAge(), 'Y-m-d');
             $timestamp = strtotime($datetime);
             $utilisateurs['age'][$i] = abs((time() - $timestamp) / (3600 * 24 * 365));
         }
