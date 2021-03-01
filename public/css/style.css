@@ -614,21 +614,10 @@ div.map{
     }
 
         div.map{
-<<<<<<< HEAD
-    height: 230px;
-    width: 460px;
-    margin-top: 5vh;
-    margin-left:auto ;
-    margin-right: auto;
-    border:5px solid #6923E5;
-    border-radius: 5px;
-    }
-=======
             height: auto;
             margin-top: 5vh;
             margin-left:auto ;
             margin-right: auto;
         }
->>>>>>> c0655b5632aaa4e8a1eda040e24b8eb097539139
 
 }

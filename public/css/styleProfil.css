@@ -1,1 +1,17 @@
 
+ .profil{
+    display: flex;
+    margin-top: 3%;
+   border-radius: 10px;
+   box-shadow: 0 5px 5px gray;
+}
+.info-profil{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.description-profil{
+    background: rgb(218, 218, 218);
+   border-radius: 10px;
+
+}
