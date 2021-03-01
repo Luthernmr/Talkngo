@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Entity\Country;
 use App\Entity\Publication;
 use App\Form\PublicationType;
+use App\Form\UpdateProfilFormType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\PublicationRepository;
@@ -109,18 +110,18 @@ class ProfilController extends AbstractController
     { 
         
         $publication = $publicationRepository->find($id);
-        $form = $this->createForm(PublicationType::class, $publication);
-        $form->handleRequest($request);
+        $formModifPublication = $this->createForm(PublicationType::class, $publication);
+        $formModifPublication->handleRequest($request);
         $repo = $this->getDoctrine()->getRepository(Publication::class);
         $countrys = $repo->findAll();
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ( $formModifPublication->isSubmitted() &&  $formModifPublication->isValid()) {
             $oldNomImg = $publication->getImg(); //ancien image
             $oldCheminImg = $this->getParameter('dossier_photos_pays') . '/' . $oldNomImg;
 
             
 
-            $infoImg = $form['img']->getData();
+            $infoImg =  $formModifPublication['img']->getData();
             $extensionImg = $infoImg->guessExtension();
 
             $nomImg = time() . '.' . $extensionImg;
@@ -141,7 +142,7 @@ class ProfilController extends AbstractController
         return $this->redirectToRoute('profil');
         }
         return $this->render('profil/updatePublication.html.twig', [
-            'publicationForm' => $form->createView(),
+            'publicationModifForm' =>  $formModifPublication->createView(),
             'countrys' => $countrys,
             'publication'  => $publication
         ]);
