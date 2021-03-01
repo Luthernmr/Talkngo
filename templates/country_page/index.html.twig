@@ -3,13 +3,17 @@
 
 {% block title %}{{ country.countryName }}{% endblock %}
   
+{% block stylesheets %}
 
+            
+{% endblock %}
 {% block body %}
 
 
 <main style='background-image:url("{{asset('img/pays/' ~ country.imagePays)}}")'>
-  <h1 >{{ country.countryName }}</h1>
+  <h1 style='color:white'>{{ country.countryName }}</h1>
   <h2>C'est le moment de partir à la découverte</h2>
+  <h4>( Trouve ton partenaire de voyage )</h4>
 </main>
 <div class="container">
 <h2>Description</h2>
@@ -17,7 +21,6 @@
 </div>
 
 {% if user %}
-
 
            
 <article class="container d-flex justify-content-center col-8 m-auto">
@@ -49,10 +52,12 @@
 </article>
         
           
-</body>
+
+
 {% else %}
 <h2>Vous devez etre connecter pour acceder à ce contenu</h2>
 <a href="{{ path('app_login') }}">Connexion</a>
 {% endif %}
+</body>
 {% endblock %}
 

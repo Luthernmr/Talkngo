@@ -16,7 +16,6 @@ main{
     background: no-repeat center ;
 }
 article{
-    border: 2px solid blue;
     display: flex;
     align-items: center;
    justify-content: center;
