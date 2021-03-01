@@ -14,7 +14,11 @@
 </style>
 <body>
     
-</body >
+{% for message in app.flashes('message') %}
+<div class="alert alert-success " role="alert">
+    {{message}}
+</div>
+{% endfor %}
     <div class="profil container ">
         <div class=" info-profil container d-flex justify-content-around">
         
@@ -72,11 +76,7 @@
     <button type="submit" class="submit">Publier l'annonce</button>
 {{ form_end(formPublication) }}
 </div>
-{% for message in app.flashes('message') %}
-<div class="alert alert-success " role="alert">
-    {{message}}
-</div>
-{% endfor %} 
+ 
 
 </body>
 {% endblock %}
