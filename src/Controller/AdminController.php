@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Country;
 use App\Form\CountryFormType;
+use App\Form\UpdateAdminFormType;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
 use App\Repository\CountryRepository;
@@ -166,7 +167,7 @@ class AdminController extends AbstractController
     public function updateUser(UserRepository $userRepository, $id, Request $request)
     {
         $user = $userRepository->find($id);
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(UpdateAdminFormType::class, $user);
         $form->handleRequest($request);
         $repo = $this->getDoctrine()->getRepository(Country::class);
         $countrys = $repo->findAll();
@@ -177,16 +178,16 @@ class AdminController extends AbstractController
             $oldNomImg = $user->getImg(); //ancien image
             $oldCheminImg = $this->getParameter('dossier_photos_user') . '/' . $oldNomImg;
 
-            if (file_exists($oldCheminImg)) {
-                unlink($oldCheminImg);
-            }
+            // if (file_exists($oldCheminImg)) {
+            //     unlink($oldCheminImg);
+            // }
 
-            $infoImg = $form['img']->getData();
-            $extensionImg = $infoImg->guessExtension();
+            // $infoImg = $form['img']->getData();
+            // $extensionImg = $infoImg->guessExtension();
 
-            $nomImg = time() . '.' . $extensionImg;
-            $infoImg->move($this->getParameter('dossier_photos_user'), $nomImg);
-            $user->setImg($nomImg);
+            // $nomImg = time() . '.' . $extensionImg;
+            // $infoImg->move($this->getParameter('dossier_photos_user'), $nomImg);
+            // $user->setImg($nomImg);
 
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($user);
@@ -200,7 +201,7 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('admin_user');
         }
         return $this->render('admin/updateUser.html.twig', [
-            'registrationForm' => $form->createView(),
+            'updateAdminForm' => $form->createView(),
             'countrys' => $countrys
         ]);
     }

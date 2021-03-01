@@ -12,21 +12,20 @@
     <div class="col-4 offset-4">
 
     
-            {{ form_start(registrationForm,) }}
-        {{ form_row(registrationForm.name,{'attr':{'class':'form-control'} }) }}
-        {{ form_row(registrationForm.first_name,{'attr':{'class':'form-control'} }) }}
-        {{ form_row(registrationForm.email,{'attr':{'class':'form-control'} }) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.age, {'attr':{'class':'form-control'} }) }}
-        {{ form_row(registrationForm.location,{'attr':{'class':'form-control'} }) }}
-        {{ form_row(registrationForm.description,{'attr':{'class':'form-control'} }) }}
-        {{ form_row(registrationForm.img) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+            {{ form_start(updateAdminForm,) }}
+        {{ form_row(updateAdminForm.name,{'attr':{'class':'form-control'} }) }}
+        {{ form_row(updateAdminForm.first_name,{'attr':{'class':'form-control'} }) }}
+        {{ form_row(updateAdminForm.email,{'attr':{'class':'form-control'} }) }}
+        {{ form_row(updateAdminForm.roles,) }}
+        {{ form_row(updateAdminForm.age, {'attr':{'class':'form-control'} }) }}
+        {{ form_row(updateAdminForm.location,{'attr':{'class':'form-control'} }) }}
+        {{ form_row(updateAdminForm.description,{'attr':{'class':'form-control'} }) }}
+        {{ form_row(updateAdminForm.img) }}
+
+        
         
         <button type="submit" class="btn btn-success">valider </button>
-    {{ form_end(registrationForm) }}
+    {{ form_end(updateAdminForm) }}
       </div>
                   <a href=" {{path('admin_user')}} "> retour </a>
 </div>
