@@ -6,14 +6,13 @@
 
 
 
-<div class="container-fluid p-4">
-        <h2 class="text-center">Inscription </h2>
+        
 
 
 
-    <div class="col-4 offset-4">
 
-    
+    <div class="form-largescreen">
+        <h1>Inscription</h1>
             {{ form_start(registrationForm,) }}
         {{ form_row(registrationForm.name,{'attr':{'class':'form-control'} }) }}
         {{ form_row(registrationForm.first_name,{'attr':{'class':'form-control'} }) }}
@@ -24,17 +23,16 @@
         {{ form_row(registrationForm.age, {'attr':{'class':'form-control'} }) }}
         {{ form_row(registrationForm.location,{'attr':{'class':'form-control'} }) }}
         {{ form_row(registrationForm.description,{'attr':{'class':'form-control'} }) }}
-        {{ form_row(registrationForm.img,{'attr':{'class':'form-control'} }) }}
+        {{ form_row(registrationForm.img,{'attr':{'class':''} }) }}
 
-        <div class="form-largescreen">
+        
 
         {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn btn-success">valider form</button>
+        <button type="submit" class="submit">valider</button>
     {{ form_end(registrationForm) }}
       </div>
 
-</div>
 
 
 

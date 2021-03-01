@@ -64,7 +64,7 @@ class AdminController extends AbstractController
             $oldCheminImg = $this->getParameter('dossier_photos_pays') . '/' . $oldNomImg;
 
             if (file_exists($oldCheminImg)) {
-                unlink($oldCheminImg);
+                 unlink($oldCheminImg);
             }
 
             $infoImg = $form['imagePays']->getData();
