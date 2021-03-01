@@ -13,7 +13,6 @@
         {% endblock %}
         <link rel="stylesheet" href="{{asset('css/stylePublication.css')}}">
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/styleProfil.css')}}">
         <link rel="stylesheet" href="{{asset('css/style_home.css')}}">
         <link rel="stylesheet" href="{{asset('css/form.css')}}">
         <link rel="stylesheet" href="{{asset('css/stylePays.css')}}">
@@ -43,7 +42,7 @@
 
     <li>
         <a class="register" href="{{ path('profil') }}">Mon profil</a>
-        <a class="login" href="{{ path('app_logout') }}">déconnexion</a>
+        <a class="login" href="{{ path('app_logout') }}">Déconnexion</a>
     </li>
     {% else %}
     <li><a class="register" href="{{ path('app_register') }}">Inscription</a></li>
@@ -131,15 +130,22 @@
             <input class="searchbar" type="search" name="" placeholder="Chercher un pays">
     
             
-            <a class="register" href="{{path('app_register')}}">Inscription</a>
-            <a class="login" href="">Connexion</a>
-               
+            {% if app.user %}
+
+            <li>
+                <a class="register " href="{{ path('profil') }}">Mon profil</a>
+            </li>
+            {% else %}
+            <li><a class="register" href="{{ path('app_register') }}">Inscription</a></li>
+            <li><a class="login" href=" {{ path('app_login') }} ">Connexion</a></li>
+        
+            {% endif %}
     
         </header>
     
         {% block body %}<body>
 
-            <a href="{{ path('admin_user') }}">users</a>   
+         
                    
         </body>{% endblock %}
         <footer>

@@ -19,7 +19,7 @@
 
 
     <div>
-        <h2>Les vohes de {{user.}}</h2>
+        <h2>Les voyages de {{user.name}}</h2>
         {% for publication in publications %}
             {% if publication.user.id == user.id %}
                 {{publication.countryName}}
@@ -29,6 +29,14 @@
         {% endfor %}
     </div>
 
+   
+
+    <div class="message">
+
+        {{ form_start(contactVoyageurForm) }}
+        {{ form_end(contactVoyageurForm) }}
+
+    </div>
 
         
 

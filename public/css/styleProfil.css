@@ -1,1 +1,27 @@
 
+ .profil{
+    display: flex;
+    margin-top: 3%;
+   border-radius: 10px;
+   box-shadow: 0 5px 5px gray;
+}
+.info-profil{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.description-profil{
+    background: rgb(218, 218, 218);
+   border-radius: 10px;
+
+}
+.modif-btn{
+
+    display: flex;
+    justify-content: flex-end;
+    top: 5px;
+    left: 5px;
+}
+.fas:hover{
+    color: #0d9b9c;
+}

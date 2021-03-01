@@ -3,7 +3,10 @@
 
 {% block title %}{{ country.countryName }}{% endblock %}
   
+{% block stylesheets %}
 
+            
+{% endblock %}
 {% block body %}
 
 {% if country.imagePays == "" %}
@@ -17,14 +20,14 @@
 <main id="imagePays" style='background-image:url("{{asset('img/pays/' ~ country.imagePays)}}")'>
     <h1 id="sloganPays" class="mb-4">{{ country.countryName }}</h1>
     <h2 id="sloganPays">C'est le moment de partir à la découverte !</h2>
+    <h4>( Trouve ton partenaire de voyage )</h4>
 </main>
 <div class="container">
 <h2 class="mt-4 mb-4">À propos du pays</h2>
 <p>{{ country.description }}</p>
 </div>
-{% endif %}
-{% if user %}
 
+{% if user %}
 
 <div id="box-article">         
 <article class="m-auto flex-nowrap" id="sizeOfArticles">
@@ -55,11 +58,14 @@
 </article>
 </div>         
           
-</body>
+
+
 {% else %}
 <div class="container-fluid text-center">
   <h4 class="mb-5 mt-5">Vous devez être connecté pour acceder à ce contenu</h2>
   <a class="login" href="{{ path('app_login') }}">Connexion</a>  
 </div>
 {% endif %}
+</body>
 {% endblock %}
+

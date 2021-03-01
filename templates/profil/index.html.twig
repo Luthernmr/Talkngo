@@ -1,40 +1,80 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfilController!{% endblock %}
+{% block title %}Mon profil{% endblock %}
 
 {% block body %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{{asset('css/styleProfil.css')}}">
+    
+{% endblock stylesheet %}
+
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 <body>
     
-</body data-scroll-container>
-    <div class="profile container">
-        <img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profile-img" width="80px" height="80px">
-        <h3>{{ user.firstname }}</h1>
-        <h3>{{ user.name }}</h2>
-        <h4>{{ user_age}} ans</h3>
-        <h4>{{ user.location }}</h3>
-        <p>{{user.description}}</p>
+{% for message in app.flashes('message') %}
+<div class="alert alert-success " role="alert">
+    {{message}}
+</div>
+{% endfor %}
+    <div class="profil container ">
+
+        <div class=" info-profil container d-flex justify-content-around">
+        
+        <div class="d-flex">
+            <img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profil-img" width="80px" height="80px">
+            
+            <div class="container d-flex-column" > 
+                <h3 class=>{{ user.firstname }}  {{ user.name }}</h3>
+                <h6>{{ user_age}} ans</h6>
+                <h6>{{ user.location }}</h6>
+            </div>
+            <a class="modif-btn m-2" href="#" data-toggle="modal" data-target="#login"><i class="fas fa-user-edit"></i></a>
+
+        </div>
+
+            <p class="description-profil col-7 m-2 p-2">{{user.description}}</p>
+
+
+        </div>
+    </div>
+    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="signLabel" aria-hidden="true">
+       
+            <div class="modal-dialog modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="connexLabel"><em class="fa fa-user"></em> Modification du profil</h5>
+                <button type="button" class="close" data-dismiss="modal" ><i class="fas fa-times"></i></button>
+              </div>
+              <div class="modal-body">
+               {{form_start(updateProfilForm)}}
+
+                    {{form_widget(updateProfilForm)}}
+                    <button type="submit" class="submit">modifier les chnagement</button>
+
+               {{form_end(updateProfilForm)}}
+              </div>
+            </div>
+            </div>
+        
     </div>
 
     <article class="container" >
     <h2>Mes voyages</h2>         
-    <div class="container travel-list scroll-1" data-scroll-container>
+    <div class="container travel-list scroll-1 " >
     {% for publication in publications %}
         {% if publication.user.id == user.id %}
-        <div class="col-5 m-1 own-travel" data-scroll data-scroll-speed='1'>
+        <div class="col-5 m-1 own-travel" >
             <div class="presentation p-2">
               <div class="user-info m-2" >
-                <a href="{{ path('profil_voyageur',{'id':publication.user.id } ) }}"><img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profile-img" width="80px" height="80px"></a>
-                <h3>{% if user %}
-                    Ma publication
-                {% endif %}</h3>
+                <h3> Mon voyages</h3>
               </div>
               <div class="date">
                 <h4>{{ publication.countryStart | country_name}} <i class="fas fa-plane"></i> {{ publication.countryName | country_name }} </h4>
-                <h4 class=""> départ le {{ publication.date | date('d/m/Y')}}</h4>
+                <h4 class=""> {{ publication.date | date('d/m/Y')}}</h4>
+                <a class="" href="{{ path('publication_update', {'id': publication.id})  }}">Modifier mes voyages</a>
               </div>
               
             </div>
@@ -47,16 +87,11 @@
     </article>
 
    
-<div class="form-largescrern container" data-scroll data-scroll-speed>
+<div class="form-largescreen container" data-scroll data-scroll-speed>
     <h2>Ajouter un nouveau voyage</h2>
 {{ form_start(formPublication) }}
 
-    {{ form_row(formPublication.countryStart,{'attr':{'class':'form-select' , 'placeholder' : 'exemple'} }) }}
-    {{ form_row(formPublication.countryName,{'attr':{'class':'form-control-publication' , 'placeholder' : 'exemple'} }) }}
-    {{ form_row(formPublication.date) }}
-    {{ form_row(formPublication.duration,{'attr':{'class':'form-control-publication'} }) }}
-    {{ form_row(formPublication.img ) }}
-
+    {{form_widget(formPublication)}}
     <button type="submit" class="submit">Publier l'annonce</button>
 {{ form_end(formPublication) }}
 </div>
@@ -65,6 +100,8 @@
     {{message}}
 </div>
 {% endfor %} 
-
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 {% endblock %}
