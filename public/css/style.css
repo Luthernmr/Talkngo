@@ -113,6 +113,20 @@ a:link{
     color: #09999A;
 }
 
+footer a:hover {
+    color: #09999A;
+}
+
+.login:hover {
+    color: #6923E5;
+    background-color: white;
+}
+
+.register:hover {
+    color:white;
+    background-color: #6923E5;
+}
+
 .spacebar{
     height: 40px;
     width: 2px;
@@ -145,15 +159,7 @@ li{
     padding-left:15px;
 }
 
-div.map{
-    height: 600px;
-    width: 1200px;
-    margin-top: 5vh;
-    margin-left:auto ;
-    margin-right: auto;
-border:5px solid #6923E5;
-border-radius: 5px;
-}
+
 }
 
 
@@ -274,16 +280,7 @@ border-radius: 5px;
         padding-right: 15px;
         padding-left:15px ;
     }
-    
-    div.map{
-        height: 500px;
-        width: 1000px;
-        margin-top: 5vh;
-        margin-left:auto ;
-        margin-right: auto;
-    border:5px solid #6923E5;
-    border-radius: 5px;
-    }
+
 }
 
 @media only screen and (min-width: 990px) and (max-width: 1080px) {
@@ -410,15 +407,6 @@ border-radius: 5px;
     
 
 
-    div.map{
-        height: 450px;
-        width: 900px;
-        margin-top: 5vh;
-        margin-left:auto ;
-        margin-right: auto;
-        border:5px solid #6923E5;
-        border-radius: 5px;
-    }
 }
 
 @media only screen and (min-width: 840px) and (max-width: 990px) {
@@ -545,15 +533,6 @@ border-radius: 5px;
     
 
 
-    div.map{
-        height: 400px;
-        width: 800px;
-        margin-top: 5vh;
-        margin-left:auto ;
-        margin-right: auto;
-        border:5px solid #6923E5;
-        border-radius: 5px;
-    }
 }
 
 
@@ -610,16 +589,6 @@ border-radius: 5px;
             border-radius: 20px;
             background-color: #fff;
             
-        }
-
-        div.map{
-            height: 230px;
-            width: 460px;
-            margin-top: 5vh;
-            margin-left:auto ;
-            margin-right: auto;
-        border:5px solid #6923E5;
-        border-radius: 5px;
         }
 
 }
