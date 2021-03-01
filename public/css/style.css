@@ -143,17 +143,9 @@ li{
 }
 
 div.map{
-    height: 600px;
-    width: 1200px;
     margin-top: 5vh;
     margin-left:auto ;
     margin-right: auto;
-<<<<<<< HEAD
-
-=======
-border:5px solid #6923E5;
-border-radius: 5px;
->>>>>>> 9d63a624f5a75a1ac56e9562b967ee6bbc420ed5
 }
 }
 
@@ -278,13 +270,12 @@ border-radius: 5px;
     }
     
     div.map{
-        height: 500px;
+        height: auto;
         width: 1000px;
         margin-top: 5vh;
         margin-left:auto ;
         margin-right: auto;
-    border:5px solid #6923E5;
-    border-radius: 5px;
+
     }
 }
 
@@ -413,13 +404,11 @@ border-radius: 5px;
 
 
     div.map{
-        height: 450px;
+        height: auto;
         width: 900px;
         margin-top: 5vh;
         margin-left:auto ;
         margin-right: auto;
-        border:5px solid #6923E5;
-        border-radius: 5px;
     }
 }
 
@@ -548,13 +537,11 @@ border-radius: 5px;
 
 
     div.map{
-        height: 400px;
+        height: auto;
         width: 800px;
         margin-top: 5vh;
         margin-left:auto ;
         margin-right: auto;
-        border:5px solid #6923E5;
-        border-radius: 5px;
     }
 }
 
@@ -615,13 +602,11 @@ border-radius: 5px;
         }
 
         div.map{
-            height: 230px;
+            height: auto;
             width: 460px;
             margin-top: 5vh;
             margin-left:auto ;
             margin-right: auto;
-        border:5px solid #6923E5;
-        border-radius: 5px;
         }
 
 }
