@@ -16,7 +16,7 @@ header .register:hover{
     color: white;
 }
 
-header .login:hover{
+.login:hover{
     background-color: white;
     color: #6923E5;
 }

@@ -1,0 +1,22 @@
+#sloganPays {
+    color: white;
+}
+
+#imagePays {
+    background-size: cover;
+    height: 40em;
+}
+
+@media screen and (max-width: 480px;) {
+    #imagePays {
+        background-size: cover;
+        height: 20em;
+    }
+}
+
+@media screen and (max-width: 800px;) {
+    #imagePays {
+        background-size: cover;
+        height: 10px;
+    }
+}
