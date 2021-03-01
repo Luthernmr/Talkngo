@@ -159,7 +159,7 @@ class ProfilController extends AbstractController
         $repo = $this->getDoctrine()->getRepository(User::class);
         $user = $repo->find($id);
 
-        $datetime = date_format($user->getAge(), 'Y-m-d H:i:s');
+        $datetime = date_format($user->getAge(),'Y-m-d H:i:s');
         $timestamp = strtotime($datetime);
         $age = abs((time() - $timestamp) / (3600 * 24 * 365));
         $age = floor($age);
