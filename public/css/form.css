@@ -36,14 +36,28 @@ h1{
 
 
 .form-largescreen{
-    padding: 50px;
+    
     margin: 5vh auto 0 auto;
 	width:550px;
     border-radius: 25px;
-    background-color: #6923E5;
-    box-shadow: 3px 5px 7px 2px rgba(0,0,0,0.61);
+   
+    border-color: #6923E5;
 }
 
+label.required {
+    margin-right: 10px;
+    
+}
+
+.btn-connexion {
+    border: 1px solid #6923E5;
+    background-color:#6923E5;
+    width: 120px;
+    height: 39px;
+    color: #fff;
+    border-radius: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
 .title{
  text-align: center;
  font-family: calistoga;
@@ -56,11 +70,15 @@ h1{
     margin: 5px;
     margin-top: x;
     margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 8px;
     border: #ffffff 1px solid;
     background-color: rgb(218, 218, 218);
     border-radius: 20px;
     font-family: Arial, Helvetica, sans-serif;
+    
+    
 }
 
 
@@ -105,6 +123,7 @@ label {
 }
 
 @media (max-width: 840px) {
+    
 
     
     

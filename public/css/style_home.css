@@ -14,17 +14,17 @@ body {
     background-image: url("img/Image_accueil.png");
     background-repeat: no-repeat;
     background-size: cover;
-    width: 100%;
+    width: 110%;
     min-height: 40em;
 }
 
 h2 {
     color: #6923E5;
-    font-family: calistoga;
+    font-family: 'calistoga;'
 }
 
 h3 {
     color: #0d9b9c;
-    font-family: calistoga;
+    font-family: 'calistoga';
     font-size: 1.3em;
 }
