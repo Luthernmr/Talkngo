@@ -38,8 +38,10 @@ class RegistrationFormType extends AbstractType
             ->add('age',BirthdayType::class,[
                 'label' => 'Date de naissance',
                 'required' => true,
+                'widget' => 'single_text',
+                'html5' => 'false',
                 'attr' => [
-                    'class' => 'form-control js-datepicker'
+                    'class' => 'datepicker form-control'
                 ],
                 'placeholder' => [
                     'year' => 'Year', 'month' => 'Month', 'day' => 'Day',
@@ -75,14 +77,33 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('plainPassword', PasswordType::class, [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
+            // ->add('plainPassword', PasswordType::class, [
+            //     // instead of being set onto the object directly,
+            //     // this is read and encoded in the controller
+            //     'required' => true,
+            //     'mapped' => false,
+            //     'attr' => [
+            //         'class' => 'form-control '
+            //     ],
+            //     'constraints' => [
+            //         new NotBlank([
+            //             'message' => 'veuillez entrer un mot de passe ',
+            //         ]),
+            //         new Length([
+            //             'min' => 6,
+            //             'minMessage' => 'votre mot de passe doit comporter au minimun  {{ limit }} characters',
+            //             // max length allowed by Symfony for security reasons
+            //             'max' => 4096,
+            //         ]),
+            //     ],
+            // ])
+            ->add('password', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'invalid_message' => 'les deux mot de passe doivent corresponde .',
+                'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
-                'mapped' => false,
-                'attr' => [
-                    'class' => 'form-control '
-                ],
+                'first_options'  => ['label' => 'mot de passe'],
+                'second_options' => ['label' => 'confirmer mot de passe'],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez entrer un mot de passe ',
@@ -94,15 +115,8 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
-            ])
-            // ->add('password', RepeatedType::class, [
-            //     'type' => PasswordType::class,
-            //     'invalid_message' => 'les deux mot de passe doivent corresponde .',
-            //     'options' => ['attr' => ['class' => 'password-field']],
-            //     'required' => true,
-            //     'first_options'  => ['label' => 'mot de passe'],
-            //     'second_options' => ['label' => 'confirmer mot de passe'],
-            // ]);
+
+            ]);
             
         
         ;
