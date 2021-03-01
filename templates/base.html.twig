@@ -8,66 +8,19 @@
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
-            
-        <link rel="stylesheet" href="{{asset('css/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/style_home.css')}}">
-        <link rel="stylesheet" href="{{asset('css/form.css')}}">
-        <link rel="stylesheet" href="{{asset('css/stylePublication.css')}}">
+      
             {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
-
+        <link rel="stylesheet" href="{{asset('css/stylePublication.css')}}">
+        <link rel="stylesheet" href="{{asset('css/style.css')}}">
+        <link rel="stylesheet" href="{{asset('css/styleProfil.css')}}">
+        <link rel="stylesheet" href="{{asset('css/style_home.css')}}">
+        <link rel="stylesheet" href="{{asset('css/form.css')}}">
         {% block javascripts %}
-        <script>
-
-            function afficheListe() 
-            {
-                var x = document.getElementById("myUL");
-                if (x.style.display === "none") {
-                  x.style.display = "block";
-                } else {
-                  x.style.display = "none";
-                }
-            } 
-
-            function afficheListekeyboard() 
-            {
-                var x = document.getElementById("myUL");
-                if (x.style.display === "none" && event.keyCode !== 13) {
-                  x.style.display = "block";
-                }
-            }
-
-            function searchFunction() 
-            {
-                var input, filter, ul, li, a, i, txtValue, path;
-                input = document.getElementById("myInput");
-                m = 0;
-                filter = input.value.toUpperCase();
-                ul = document.getElementById("myUL");
-                li = ul.getElementsByTagName("li");
-                for (i = 0; i < li.length; i++) 
-                {   
-
-                    a = li[i].getElementsByClassName("pays")[0];
-                    txtValue = a.textContent || a.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) 
-                    {
-                        li[i].style.display = "";
-                        if (event.keyCode === 13) {
-                            path = a.getAttribute("href");
-                            window.location.href=path;
-                        }
-                    } else {
-                        li[i].style.display = "none";
-                    }
-                }
-            }
-        
-        </script>
+        <script src="{{ asset('js/searchbar.js') }}"></script>
             {#{{ encore_entry_script_tags('app') }}#}
         {% endblock %}
     </head>
-    <body>
         <header class="large-screen">
             
             <a href="{{path('home')}}"><img class="logo" src="{{asset('css/img/logo-horizontal-1.svg')}}" alt="logo talkngo"></a>
@@ -76,8 +29,8 @@
                 <input class="searchbar" onClick="afficheListe()" type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeydown="searchFunction(); afficheListekeyboard()">
                     <ul id="myUL">
                        {% for country in countrys %}
-                        <li>
-                            <a class="pays" id="pays" href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryNameFr }} </a>
+                       <li class="container-fluid" id="suggestion">
+                            <a class="pays" id="pays" href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryName }} </a>
                         </li>
                         {% endfor %} 
                     </ul>
@@ -89,6 +42,7 @@
 
     <li>
         <a class="register" href="{{ path('profil') }}">Mon profil</a>
+        <a class="login" href="{{ path('app_logout') }}">déconnexion</a>
     </li>
     {% else %}
     <li><a class="register" href="{{ path('app_register') }}">Inscription</a></li>

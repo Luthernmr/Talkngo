@@ -25,69 +25,27 @@ class CountryPageController extends AbstractController
     /**
      * @Route("/country/page/{id}", name="country_page")
      */
-    public function index(Request $request, $id,EntityManagerInterface $entityManager){
+    public function index(Request $request, $id, EntityManagerInterface $entityManager){
         //récupération des données
         $repo = $this->getDoctrine()->getRepository(Country::class);
         $countrys = $repo->findAll();
         $user = $this->getUser();
-        $countryPage = $repo->find($id);
+        $country = $repo->find($id);
         $publications = $this->getDoctrine()->getManager()->getRepository(Publication::class)->findAll();
-        
         
        //création du formulaire 
         $publication=new Publication();
-        $form =$this->createFormBuilder($publication)
-                
-                ->add('countryName',TextType::class, [
-                    'label' => 'Destination',
-                    
-                        
-                ])
-                        
-                ->add('date', BirthdayType::class,[
-                    'required' => true,
-                    'label' => 'Date de départ',
-                    'placeholder' => [
-                        'year' => 'Year', 'month' => 'Month', 'day' => 'Day',
-                    ]
-                     
-                ])
-                ->add('duration', DateIntervalType::class, [
-                    'input'      => 'string', // render a text field for each part
-                    // 'input'    => 'string',  // if you want the field to return a ISO 8601 string back to you
-                
-                    // customize which text boxes are shown
-                    'with_years'  => false,
-                    'with_months' => true,
-                    'with_days'   => true,
-                ])
-                ->getForm();
-                
-    
         
-        
-        $form->handleRequest($request);
-        
-        if($form->isSubmitted() && $form->isValid()){
-            //récuperer les tokens de l'utilisateur connecté
-            $user = $this->get('security.token_storage')->getToken()->getUser();
-            $publication->setUser($user);
-            
-            $manager= $this->getDoctrine()->getManager();
-            $manager->persist($publication);
-            $manager->flush();
-        }
 
         return $this->render('country_page/index.html.twig', [
-            'countryPage' => $countryPage,
+            'country' => $country,
             'publications' => $publications,
             'countrys' => $countrys,
-            'formPublication' => $form->createView(),
             'user' => $user,
             'publication' => $publication
         ]);
     }
-
+  
 
 
 
