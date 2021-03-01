@@ -7,6 +7,19 @@
     padding: 0;
 }
 
+footer a:hover{
+    color:#09999A;
+}
+
+header .register:hover{
+    background-color: #6923E5;
+    color: white;
+}
+
+header .login:hover{
+    background-color: white;
+    color: #6923E5;
+}
  
 @media only screen and (min-width: 1200px) { 
 
