@@ -9,48 +9,56 @@
 {% endblock %}
 {% block body %}
 
-
-<main style='background-image:url("{{asset('img/pays/' ~ country.imagePays)}}")'>
-  <h1 style='color:white'>{{ country.countryName }}</h1>
-  <h2>C'est le moment de partir à la découverte</h2>
-  <h4>( Trouve ton partenaire de voyage )</h4>
+{% if country.imagePays == "" %}
+<main>
+  <div id="bgPays" class="text-center">
+    <h1 id="sloganPaysAlt" class="mb-4">{{ country.countryName }}</h1>
+    <h2 id="sloganPaysAlt">C'est le moment de partir à l'aventure !</h2>
+  </div>
+</main>
+{% else %}
+<main id="imagePays" style='background-image:url("{{asset('img/pays/' ~ country.imagePays)}}")'>
+    <h1 id="sloganPays" class="mb-4">{{ country.countryName }}</h1>
+    <h2 id="sloganPays">C'est le moment de partir à l'aventure !</h2>
+    <h4>( Trouve ton partenaire de voyage )</h4>
 </main>
 <div class="container">
 <h2 class="mt-4 mb-4">À propos du pays</h2>
 <p>{{ country.description }}</p>
 </div>
+{% endif %}
+
 
 {% if user %}
 
-           
-<article class="container d-flex justify-content-center col-8 m-auto">
+<div id="box-article">         
+<article class="m-auto flex-nowrap" id="sizeOfArticles">
   {% for publication in publications %}
 
   {% if country.countryCode == publication.countryName  %}
-
-  <div class="container col-3 m-4 p-2 d-flex card">
-    <div class="presentation p-2 d-flex-column align-items-center">
+<div class="ml-1">
+  <div class="card">
+    <div class="presentation p-2 align-items-center">
 
       <div class="user-info d-flex align-items-center" >
         <a href="{{ path('profil_voyageur',{'id':publication.user.id } ) }}"><img src="{{asset('img/profil/' ~ publication.user.img)}}" alt="pdp" class="profil-img" width="60px" height="60px"></a>
         <h3 class="m-2">{{ publication.user.firstName }}</h3>
       </div>
 
-      <div class="date ">
+      <div class="date mt-2 pl-4">
         <h6>{{ publication.countryStart | country_name }}<i class="fas fa-plane m-2"></i> {{ publication.countryName | country_name }} </h6>
-        <h7 class="m-1">{{ publication.date | date('d/m/Y')}}</h7>
+        <h7>{{ publication.date | date('d/m/Y')}}</h7>
       </div>
     </div>
+    <div class="mt-auto mb-4">
       <a href="{{ path('profil_voyageur',{'id':publication.user.id } ) }}" class="button-info-1 m-1">A propos de {{ publication.user.firstName }}</a>
-    
-    
-  </div>
+    </div>
+  </div>  
+</div>
   {% endif %}
-  
-
 {% endfor %}
 </article>
-        
+</div>         
           
 
 

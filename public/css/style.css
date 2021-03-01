@@ -27,7 +27,7 @@ header.phone-screen{
     margin-right: auto;
     height: 8em;
     width: 100%;
-    box-shadow: 0px 11px 7px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 4px 7px 0px rgba(0,0,0,0.2);
   
 }
 
@@ -91,12 +91,12 @@ a:link{
     z-index: 1000;
     position: absolute;
     height: 179px;
-    width: 500px;
+    width: 482px;
     background-color: rgba(220, 220, 220, 0.8);
     border: 1px solid #6923E5;
     border-top: none;
     border-radius: 25px;
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 .pays {
@@ -111,6 +111,20 @@ a:link{
 
 .pays:hover {
     color: #09999A;
+}
+
+footer a:hover {
+    color: #09999A;
+}
+
+.login:hover {
+    color: #6923E5;
+    background-color: white;
+}
+
+.register:hover {
+    color:white;
+    background-color: #6923E5;
 }
 
 .spacebar{
@@ -145,15 +159,7 @@ li{
     padding-left:15px;
 }
 
-div.map{
-    height: 600px;
-    width: 1200px;
-    margin-top: 5vh;
-    margin-left:auto ;
-    margin-right: auto;
-border:5px solid #6923E5;
-border-radius: 5px;
-}
+
 }
 
 
@@ -177,7 +183,6 @@ border-radius: 5px;
             margin-left:auto ;
             margin-right: auto;
             height: 8em;
-            width: 100%;
             box-shadow: 0px 11px 7px 0px rgba(0,0,0,0.2);
     }
 
@@ -275,16 +280,7 @@ border-radius: 5px;
         padding-right: 15px;
         padding-left:15px ;
     }
-    
-    div.map{
-        height: 500px;
-        width: 1000px;
-        margin-top: 5vh;
-        margin-left:auto ;
-        margin-right: auto;
-    border:5px solid #6923E5;
-    border-radius: 5px;
-    }
+
 }
 
 @media only screen and (min-width: 990px) and (max-width: 1080px) {
@@ -411,15 +407,6 @@ border-radius: 5px;
     
 
 
-    div.map{
-        height: 450px;
-        width: 900px;
-        margin-top: 5vh;
-        margin-left:auto ;
-        margin-right: auto;
-        border:5px solid #6923E5;
-        border-radius: 5px;
-    }
 }
 
 @media only screen and (min-width: 840px) and (max-width: 990px) {
@@ -546,15 +533,6 @@ border-radius: 5px;
     
 
 
-    div.map{
-        height: 400px;
-        width: 800px;
-        margin-top: 5vh;
-        margin-left:auto ;
-        margin-right: auto;
-        border:5px solid #6923E5;
-        border-radius: 5px;
-    }
 }
 
 
@@ -611,16 +589,6 @@ border-radius: 5px;
             border-radius: 20px;
             background-color: #fff;
             
-        }
-
-        div.map{
-            height: 230px;
-            width: 460px;
-            margin-top: 5vh;
-            margin-left:auto ;
-            margin-right: auto;
-        border:5px solid #6923E5;
-        border-radius: 5px;
         }
 
 }
