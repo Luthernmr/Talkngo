@@ -83,6 +83,9 @@ class User implements UserInterface
      */
     private $reset_token;
 
+
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -271,4 +274,13 @@ class User implements UserInterface
 
         return $this;
     }
+    
+    public function __toString(){
+        // to show the name of the Category in the select
+        return $this->name;
+        // to show the id of the Category in the select
+        // return $this->id;
+    }
+ 
+
 }
