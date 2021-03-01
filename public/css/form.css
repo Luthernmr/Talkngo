@@ -36,12 +36,12 @@ h1{
 
 
 .form-largescreen{
-    
+    background-color: #6923E5;
     margin: 5vh auto 0 auto;
 	width:550px;
     border-radius: 25px;
-   
     border-color: #6923E5;
+    padding: 25px;
 }
 
 label.required {
