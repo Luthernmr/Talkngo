@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/style_home.css')}}">
         <link rel="stylesheet" href="{{asset('css/form.css')}}">
+        <link rel="stylesheet" href="{{asset('css/stylePays.css')}}">
         {% block javascripts %}
         <script src="{{ asset('js/searchbar.js') }}"></script>
             {#{{ encore_entry_script_tags('app') }}#}
@@ -41,7 +42,7 @@
 
     <li>
         <a class="register" href="{{ path('profil') }}">Mon profil</a>
-        <a class="login" href="{{ path('app_logout') }}">déconnexion</a>
+        <a class="login" href="{{ path('app_logout') }}">Déconnexion</a>
     </li>
     {% else %}
     <li><a class="register" href="{{ path('app_register') }}">Inscription</a></li>
@@ -137,7 +138,7 @@
     
         {% block body %}<body>
 
-            <a href="{{ path('admin_user') }}">users</a>   
+         
                    
         </body>{% endblock %}
         <footer>
