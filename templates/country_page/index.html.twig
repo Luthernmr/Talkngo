@@ -6,26 +6,24 @@
 
 {% block body %}
 
-
+{% if country.imagePays == "" %}
+<main>
+  <div id="bgPays" class="container text-center">
+    <h1 id="sloganPaysAlt" class="mb-4">{{ country.countryName }}</h1>
+    <h2 id="sloganPaysAlt">C'est le moment de partir à la découverte !</h2>
+  </div>
+</main>
+{% else %}
 <main id="imagePays" style='background-image:url("{{asset('img/pays/' ~ country.imagePays)}}")'>
-  <h1 id="sloganPays">{{ country.countryName }}</h1>
-  <h2 id="sloganPays">C'est le moment de partir à la découverte</h2>
+    <h1 id="sloganPays" class="mb-4">{{ country.countryName }}</h1>
+    <h2 id="sloganPays">C'est le moment de partir à la découverte !</h2>
 </main>
 <div class="container">
 <h2 class="mt-4 mb-4">À propos du pays</h2>
 <p>{{ country.description }}</p>
 </div>
-
-<div class="country-img container" style="background-image:url('{{country.imagePays}}');">
-    {% if publication | length == 0 %}
-                <h3>{{ country.countryName }}... Une envie de partir ? </h3>     
-                {%  else %}
-                <h3>{{ country.countryName }}</h3>
-                <div><img src="{{ asset('img/pays/') ~ country.imagePays }}" alt=""></div>
-                <div>{{country.description}}</div>
-                <h1>Désolé {{user.firstname}} il n'y a pas de voyage prévu pour ce pays</h1>
-                <h3>Tu peux toujours proposé un voyage</h3>
-                <a href="{{path('profil')}}" class="boutton-info-2">Publier une annonce</a>
+{% endif %}
+{% if user %}
 
 
            
