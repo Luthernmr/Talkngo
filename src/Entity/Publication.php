@@ -48,7 +48,7 @@ class Publication
      */
     private $countryStart;
 
-    
+
     public function getId(): ?int
     {
         return $this->id;
@@ -125,5 +125,9 @@ class Publication
 
         return $this;
     }
+
+ 
+
+
 
 }

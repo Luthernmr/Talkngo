@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfilController!{% endblock %}
+{% block title %}Mon profil{% endblock %}
 
 {% block body %}
 {% block stylesheet %}
@@ -47,6 +47,7 @@
               <div class="date">
                 <h4>{{ publication.countryStart | country_name}} <i class="fas fa-plane"></i> {{ publication.countryName | country_name }} </h4>
                 <h4 class=""> {{ publication.date | date('d/m/Y')}}</h4>
+                <a class="" href="{{ path('publication_update', {'id': publication.id})  }}">Modifier mes voyages</a>
               </div>
               
             </div>

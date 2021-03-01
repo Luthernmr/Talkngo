@@ -9,13 +9,6 @@
 {% endblock %}
 {% block body %}
 
-<<<<<<< HEAD
-
-<main style='background-image:url("{{asset('img/pays/' ~ country.imagePays)}}")'>
-  <h1 style='color:white'>{{ country.countryName }}</h1>
-  <h2>C'est le moment de partir à la découverte</h2>
-  <h4>( Trouve ton partenaire de voyage )</h4>
-=======
 {% if country.imagePays == "" %}
 <main>
   <div id="bgPays" class="container text-center">
@@ -27,7 +20,6 @@
 <main id="imagePays" style='background-image:url("{{asset('img/pays/' ~ country.imagePays)}}")'>
     <h1 id="sloganPays" class="mb-4">{{ country.countryName }}</h1>
     <h2 id="sloganPays">C'est le moment de partir à la découverte !</h2>
->>>>>>> caf56791096bbbf18c9d803ebcfe165186aba7fe
 </main>
 <div class="container">
 <h2 class="mt-4 mb-4">À propos du pays</h2>
@@ -74,10 +66,4 @@
   <a class="login" href="{{ path('app_login') }}">Connexion</a>  
 </div>
 {% endif %}
-<<<<<<< HEAD
-</body>
 {% endblock %}
-
-=======
-{% endblock %}
->>>>>>> caf56791096bbbf18c9d803ebcfe165186aba7fe
