@@ -18,7 +18,7 @@
         {{ form_row(registrationForm.name,{'attr':{'class':'form-control'} }) }}
         {{ form_row(registrationForm.first_name,{'attr':{'class':'form-control'} }) }}
         {{ form_row(registrationForm.email,{'attr':{'class':'form-control'} }) }}
-        {{ form_row(registrationForm.plainPassword, {
+        {{ form_row(registrationForm.password, {
             label: 'Password'
         }) }}
         {{ form_row(registrationForm.age, {'attr':{'class':'form-control'} }) }}
@@ -30,7 +30,7 @@
 
         {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn btn-success">valider form</button>
+        <button type="submit" class="btn-connexion">Inscription</button>
     {{ form_end(registrationForm) }}
       </div>
 
