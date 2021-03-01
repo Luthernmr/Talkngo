@@ -16,9 +16,10 @@
     
 </body >
     <div class="profil container ">
+
         <div class=" info-profil container d-flex justify-content-around">
         
-        <div class="d-f">
+        <div class="d-flex">
             <img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profil-img" width="80px" height="80px">
             
             <div class="container d-flex-column" > 
@@ -26,12 +27,34 @@
                 <h6>{{ user_age}} ans</h6>
                 <h6>{{ user.location }}</h6>
             </div>
+            <a class="modif-btn m-2" href="#" data-toggle="modal" data-target="#login"><i class="fas fa-user-edit"></i></a>
+
         </div>
 
-            <p class="description-profil p-2">{{user.description}}</p>
+            <p class="description-profil col-7 m-2 p-2">{{user.description}}</p>
 
-            <a href="">Modifier mon profil</a>
+
         </div>
+    </div>
+    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="signLabel" aria-hidden="true">
+       
+            <div class="modal-dialog modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="connexLabel"><em class="fa fa-user"></em> Modification du profil</h5>
+                <button type="button" class="close" data-dismiss="modal" ><i class="fas fa-times"></i></button>
+              </div>
+              <div class="modal-body">
+               {{form_start(updateProfilForm)}}
+
+                    {{form_widget(updateProfilForm)}}
+                    <button type="submit" class="submit">modifier les chnagement</button>
+
+               {{form_end(updateProfilForm)}}
+              </div>
+            </div>
+            </div>
+        
     </div>
 
     <article class="container" >
@@ -63,12 +86,7 @@
     <h2>Ajouter un nouveau voyage</h2>
 {{ form_start(formPublication) }}
 
-    {{ form_row(formPublication.countryStart,{'attr':{'class':'form-select' , 'placeholder' : 'exemple'} }) }}
-    {{ form_row(formPublication.countryName,{'attr':{'class':'form-control-publication' , 'placeholder' : 'exemple'} }) }}
-    {{ form_row(formPublication.date) }}
-    {{ form_row(formPublication.duration,{'attr':{'class':'form-control-publication'} }) }}
-    {{ form_row(formPublication.img ) }}
-
+    {{form_widget(formPublication)}}
     <button type="submit" class="submit">Publier l'annonce</button>
 {{ form_end(formPublication) }}
 </div>
@@ -77,6 +95,8 @@
     {{message}}
 </div>
 {% endfor %} 
-
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 {% endblock %}

@@ -5,11 +5,14 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Country;
 use App\Entity\Publication;
+use App\Form\PublicationType;
+use App\Form\UpdateProfilFormType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\ChoiceList\ChoiceList;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -17,7 +20,6 @@ use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\DateIntervalType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\ChoiceList\ChoiceList;
 
 class ProfilController extends AbstractController
 {
@@ -40,39 +42,7 @@ class ProfilController extends AbstractController
             $age = floor($age);
         
         $publication = new Publication();
-        $form =$this->createFormBuilder($publication)
-                
-                ->add('countryStart', CountryType::class, [
-                    'label' => 'd\'où partez vous',
-                    
-                    
-                ])
-
-                ->add('countryName',CountryType::class, [
-                    'label' => 'ou allez vous'
-         
-                    
-                        
-                ])
-                        
-                ->add('date', BirthdayType::class,[
-                    'required' => true,
-                    'label' => 'Date de départ',
-                    'placeholder' => [
-                        'year' => 'Year', 'month' => 'Month', 'day' => 'Day',
-                    ]
-                     
-                ])
-                ->add('duration', TextType::class, [
-                    // render a text field for each part
-                    'label' => 'Combien mois ou de jours resterez-vous ?'
-                ])
-                ->add('img', FileType::class, [
-                    // render a text field for each part
-                    'label' => 'Décore ton annonce',
-                    
-                ])
-                ->getForm();
+        $form =$this->createForm(PublicationType::class, $publication);
                 
     
         
@@ -87,11 +57,37 @@ class ProfilController extends AbstractController
             $manager= $this->getDoctrine()->getManager();
             $manager->persist($publication);
             $manager->flush();
+            
 
             $this->addFlash('message', 'Votre annoce à bien été publié');
             return $this->redirectToRoute('profil');
         } 
+
+
+
+
     
+// formulaire modif
+
+        $formProfil = $this->createForm(UpdateProfilFormType::class, $user);
+        $formProfil->handleRequest($request);
+        if ($formProfil->isSubmitted() && $formProfil->isValid()) {
+            $infoImg = $formProfil['img']->getData(); // récupère les infos de l'image 
+            $extensionImg = $infoImg->guessExtension(); // récupère le format de l'image 
+            $nomImg = time() . '.' . $extensionImg; // compose un nom d'image unique
+            $infoImg->move($this->getParameter('dossier_photos_user'), $nomImg); // déplace l'image
+            $user->setImg($nomImg);
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($user);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                'Information  a bien été modifiée'
+            );
+
+            return $this->redirectToRoute('profil');
+        }
       
        
         return $this->render('profil/index.html.twig', [
@@ -99,13 +95,13 @@ class ProfilController extends AbstractController
             'publications' => $publications,
             'countrys' => $countrys,
             'formPublication' => $form->createView(),
+            'updateProfilForm' => $formProfil->createView(),
             'user_age' => $age,
-            
-         
         ]);
-    }
-
-
+        
+        }
+    
+    
     /**
      * @Route("/profil/{id}", name="profil_voyageur")
      */
@@ -131,5 +127,4 @@ class ProfilController extends AbstractController
         ]);
     }
 
-    
 }

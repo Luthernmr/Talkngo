@@ -56,7 +56,93 @@
         </header>
 
 
-       
+        <header class="tablet-screen">
+            
+            <a href="{{path('home')}}"><img class="logo" src="{{asset('css/img/logo-horizontal-1.svg')}}" alt="logo talkngo"></a>
+            <div class="header-content">
+                <div class="liste-searchbar">
+                <input class="searchbar" onClick="afficheListe()" type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeydown="searchFunction(); afficheListekeyboard()">
+                    <ul id="myUL">
+                       {% for country in countrys %}
+                        <li>
+                            <a class="pays" id="pays" href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryName }}</a>
+                        </li>
+                        {% endfor %} 
+                    </ul>
+            </div>
+            <li>
+                <div class="spacebar"></div>
+            </li>
+    {% if app.user %}
+
+    <li>
+        <a class="register" href="{{ path('profil') }}">Mon profil</a>
+    </li>
+    {% else %}
+  
+    
+    <li><a class="register" href="{{ path('app_register') }}">Inscription</a></li>
+    <li><a class="login" href=" {{ path('app_login') }} ">Connexion</a></li>
+
+
+    {% endif %}
+                
+            
+                
+            </div>
+        </header>
+
+        <header class="small-screen">
+            
+            <a href="{{path('home')}}"><img class="logo" src="{{asset('css/img/logo-horizontal-1.svg')}}" alt="logo talkngo"></a>
+            <div class="header-content">
+                <div class="liste-searchbar">
+                <input class="searchbar" onClick="afficheListe()" type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeydown="searchFunction(); afficheListekeyboard()">
+                    <ul id="myUL">
+                       {% for country in countrys %}
+                        <li>
+                            <a class="pays" id="pays" href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryName }}</a>
+                        </li>
+                        {% endfor %} 
+                    </ul>
+            </div>
+            <li>
+                <div class="spacebar"></div>
+            </li>
+    {% if app.user %}
+
+    <li>
+        <a class="register" href="{{ path('profil') }}">Mon profil</a>
+    </li>
+    {% else %}
+    <li><a class="register" href="{{ path('app_register') }}">Inscription</a></li>
+    <li><a class="login" href=" {{ path('app_login') }} ">Connexion</a></li>
+
+    {% endif %}
+                
+            
+                
+            </div>
+        </header>
+    
+        <header class="phone-screen">
+            <a href="{{path('home')}}"><img class="logo" src="{{asset('css/img/logo-vertical-2.svg')}}" alt="logo talkngo"></a>
+            <input class="searchbar" type="search" name="" placeholder="Chercher un pays">
+    
+            
+            {% if app.user %}
+
+            <li>
+                <a class="register " href="{{ path('profil') }}">Mon profil</a>
+            </li>
+            {% else %}
+            <li><a class="register" href="{{ path('app_register') }}">Inscription</a></li>
+            <li><a class="login" href=" {{ path('app_login') }} ">Connexion</a></li>
+        
+            {% endif %}
+    
+        </header>
+    
         {% block body %}<body>
 
          
