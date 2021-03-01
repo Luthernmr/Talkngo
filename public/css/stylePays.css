@@ -7,16 +7,39 @@
     height: 40em;
 }
 
-@media screen and (max-width: 480px;) {
+#sloganPaysAlt {
+    color:white;
+}
+
+#bgPays {
+    background-color: #6923E5;
+    width: 50em;
+    height: 30em;
+    border-radius: 25px;
+    margin-top: 5em;
+    padding-top: 5em;
+}
+
+@media screen and (max-width: 480px) {
     #imagePays {
         background-size: cover;
-        height: 20em;
+        height: 22em;
+    }
+    h2#sloganPays{
+        font-size: 1.2rem;
+    }
+    #bgPays{
+        width: 30em;
+        height: 25em;
+    }
+    h2#sloganPaysAlt {
+        font-size: 1.2rem;
     }
 }
 
-@media screen and (max-width: 800px;) {
+@media screen and (max-width: 800px) and (min-width: 480px){
     #imagePays {
         background-size: cover;
-        height: 10px;
+        height: 30em;
     }
 }
