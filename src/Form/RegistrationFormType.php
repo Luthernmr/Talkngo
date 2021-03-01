@@ -99,8 +99,8 @@ class RegistrationFormType extends AbstractType
             // ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'invalid_message' => 'les deux mot de passe doivent corresponde .',
-                'options' => ['attr' => ['class' => 'password-field']],
+                'invalid_message' => 'les deux mots de passe doivent correspondre .',
+                'options' => ['attr' => ['class' =>'form-control']],
                 'required' => true,
                 'first_options'  => ['label' => 'mot de passe'],
                 'second_options' => ['label' => 'confirmer mot de passe'],

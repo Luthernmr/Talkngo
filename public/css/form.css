@@ -8,14 +8,40 @@
 }
 
 
+h1{
+
+    color: #fff;
+    font-family: calistoga;
+    text-align: center;
+
+}
+
+
+.lien-mdp{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    margin-top:5vh;
+}
+.liens-mdp-oublie{
+  
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    text-align: center;
+    color: #fff;
+}
+
+
 
 .form-largescreen{
-    
+    background-color: #6923E5;
     margin: 5vh auto 0 auto;
 	width:550px;
     border-radius: 25px;
-   
     border-color: #6923E5;
+    padding: 25px;
 }
 
 label.required {
@@ -42,7 +68,7 @@ label.required {
 
 .form-control{
     margin: 5px;
-    margin-top: 15px;
+    margin-top: x;
     margin-bottom: 30px;
     margin-left: auto;
     margin-right: auto;
@@ -55,54 +81,55 @@ label.required {
     
 }
 
+
+
 select {
     word-wrap: normal;
-    border-radius: 5px;
-    margin-left: 5px;
-    background:  rgb(218, 218, 218);
-    width: 145px;
-    height: 30px;
+    border-radius: 25px;
+    margin-left: 15px;
+    color: black;
+    background: rgb(218, 218, 218) ;
+    width: 125px;
+    height: 20px;
 }
 
 label {
     display: inline-block;
     margin-bottom: .5rem;
-    color: #000;
+    color: #fff;
     margin-bottom: 15px;
     margin-top: 15px;
 }
 
 .submit{
     border: 1px solid #6923E5;
-    padding : 20px;
+    padding : 10px;
     border-radius: 20px;
     background-color: #fff;
     margin: 5vh auto 0 auto;
     display: block;
     text-align: center;
-    width: 100px;
+    width: 150px;
     font-family: Arial, Helvetica, sans-serif;
 
 
 }
 
-
+.submit:hover{
+    transition: 1s;
+    background-color: #6923E5;
+    color: #fff;
+    border: 1px solid #fff;
+}
 
 @media (max-width: 840px) {
     
 
-    .form-phonescreen {
-        padding: 50px;
-        margin: 5vh auto 0 auto;
-        width:350px;
-        border-radius: 25px;
-        background-color: #6923E5;
-        box-shadow: 3px 5px 7px 2px rgba(0,0,0,0.61);
-    }
+    
     
 
     .form-largescreen{
-        display: none;
+       width: 350px;
     }
 
 
@@ -110,11 +137,18 @@ label {
 
         width: 250px;
         margin: 30px auto;
-	    display: block;
+	    display: inline;
 
     }
 
-    
-        
+    select {
+        word-wrap: normal;
+        border-radius: 25px;
+        margin-left: 25px;
+     
+        background:  rgb(218, 218, 218);
+        width: 75px;
+        height: 20px;
+    }
 
 }

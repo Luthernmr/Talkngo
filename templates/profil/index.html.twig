@@ -3,38 +3,50 @@
 {% block title %}Hello ProfilController!{% endblock %}
 
 {% block body %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{{asset('css/styleProfil.css')}}">
+    
+{% endblock stylesheet %}
+
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 <body>
     
-</body data-scroll-container>
-    <div class="profile container">
-        <img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profile-img" width="80px" height="80px">
-        <h3>{{ user.firstname }}</h1>
-        <h3>{{ user.name }}</h2>
-        <h4>{{ user_age}} ans</h3>
-        <h4>{{ user.location }}</h3>
-        <p>{{user.description}}</p>
+</body >
+    <div class="profil container ">
+        <div class=" info-profil container d-flex justify-content-around">
+        
+        <div class="d-f">
+            <img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profil-img" width="80px" height="80px">
+            
+            <div class="container d-flex-column" > 
+                <h3 class=>{{ user.firstname }}  {{ user.name }}</h3>
+                <h6>{{ user_age}} ans</h6>
+                <h6>{{ user.location }}</h6>
+            </div>
+        </div>
+
+            <p class="description-profil p-2">{{user.description}}</p>
+
+            <a href="">Modifier mon profil</a>
+        </div>
     </div>
 
     <article class="container" >
     <h2>Mes voyages</h2>         
-    <div class="container travel-list scroll-1" data-scroll-container>
+    <div class="container travel-list scroll-1 " >
     {% for publication in publications %}
         {% if publication.user.id == user.id %}
-        <div class="col-5 m-1 own-travel" data-scroll data-scroll-speed='1'>
+        <div class="col-5 m-1 own-travel" >
             <div class="presentation p-2">
               <div class="user-info m-2" >
-                <a href="{{ path('profil_voyageur',{'id':publication.user.id } ) }}"><img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profile-img" width="80px" height="80px"></a>
-                <h3>{% if user %}
-                    Ma publication
-                {% endif %}</h3>
+                <h3> Mon voyages</h3>
               </div>
               <div class="date">
                 <h4>{{ publication.countryStart | country_name}} <i class="fas fa-plane"></i> {{ publication.countryName | country_name }} </h4>
-                <h4 class=""> départ le {{ publication.date | date('d/m/Y')}}</h4>
+                <h4 class=""> {{ publication.date | date('d/m/Y')}}</h4>
               </div>
               
             </div>
@@ -47,7 +59,7 @@
     </article>
 
    
-<div class="form-largescrern container" data-scroll data-scroll-speed>
+<div class="form-largescreen container" data-scroll data-scroll-speed>
     <h2>Ajouter un nouveau voyage</h2>
 {{ form_start(formPublication) }}
 

@@ -19,7 +19,7 @@
 
 
     <div>
-        <h2>Les vohes de {{user.}}</h2>
+        <h2>Les voyages de {{user.name}}</h2>
         {% for publication in publications %}
             {% if publication.user.id == user.id %}
                 {{publication.countryName}}
