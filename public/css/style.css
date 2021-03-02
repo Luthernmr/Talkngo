@@ -29,6 +29,8 @@
     display: none;
 }
 
+
+
 footer{
 
     display: flex;
@@ -219,7 +221,6 @@ li{
     .header-content{
         display: flex;
         flex-direction: column;
-
     }
 
     footer{
@@ -252,8 +253,4 @@ li{
         .copyright {
             color:#6923E5 ;
         }
-}
-
-#h3-left {
-    text-align: left;
 }

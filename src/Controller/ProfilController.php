@@ -160,6 +160,7 @@ class ProfilController extends AbstractController
         $repo = $this->getDoctrine()->getRepository(User::class);
         $user = $repo->find($id);
 
+        //Calculer l'âge en fonction de la date de naissance
         $datetime = date_format($user->getAge(),'Y-m-d H:i:s');
         $timestamp = strtotime($datetime);
         $age = abs((time() - $timestamp) / (3600 * 24 * 365));
@@ -168,6 +169,7 @@ class ProfilController extends AbstractController
         $form = $this->createForm(ContactVoyageurFormType::class);
         $form->handleRequest($request);
 
+        //Envoie de mail Utilisateur à Utilisteur
         if($form->isSubmitted() && $form->isValid()){
             
             $nomUser = $userRepository->find($id)->getName();
