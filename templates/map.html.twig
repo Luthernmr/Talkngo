@@ -33,13 +33,7 @@
    
    }
    
-   .territory {
-       fill: #a9a9a9;
-   }
-   .territory:hover {
-       fill: #22aa44;
-      
-   }
+ 
    .compass {
        fill: #fff;
        stroke: #000;
@@ -56,6 +50,8 @@
    }
    .button:hover {
        stroke-width: 2;
+       fill: #6923E5;
+       cursor: crosshair;
    }
    .plus-minus {
        fill: #fff;
@@ -63,10 +59,10 @@
    }
 
    .fleche{
-
-      height: 50px;
-      width: 50px;
-      margin-left: 50%;
+    display: block;
+      height: 200px;
+      width: 200px;
+     margin: auto;
  
    }
    
@@ -76,7 +72,7 @@
 </style>
 
 
-<svg class="fleche">
+<svg class="fleche" viewBox="0 0 50 50">
     <path class="button" onclick="pan(0, 50)" d="M25 5 l6 10 a20 40 0 0 0 -12 0z" />
     <path class="button" onclick="pan(50, 0)" d="M5 25 l10 -6 a35 18 0 0 0 0 12z" />
     <path class="button" onclick="pan(0,-50)" d="M25 45 l6 -10 a20, 40 0 0,1 -12,0z" />
