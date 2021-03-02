@@ -87,17 +87,14 @@ a:link{
 }
 
 #myUL{
-    padding: 0.4em 0;
     display: none;
     z-index: 1000;
     position: absolute;
-    height: 179px;
-    width: max-content;
+    height: 180px;
     background-color: rgba(220, 220, 220, 0.8);
     border-top: none;
     overflow-y: auto;
     margin-left: 15px;
-    
 }
 
 .pays {
@@ -134,14 +131,12 @@ footer a:hover {
 }
 
 .spacebar{
-    height: 100px;
+    margin: 0 2em;
+    height: 60px;
     width: 2px;
     background-color: #6923E5;   
 }
 
-.liste-searchbar{
-    margin-right: 10px;
-}
 
 .register{
 padding : 6px 30px 10px 30px;
