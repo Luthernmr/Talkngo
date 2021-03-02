@@ -65,3 +65,38 @@ li{
     margin-left: auto;
     margin-right: auto;
 }
+
+#modification {
+    width: 220px;
+    height: 40px;
+    color: #6923E5;
+}
+
+#modification:hover {
+    width: 220px;
+    height: 40px;
+    color: #fff;
+}
+
+#connexLabel {
+   color: #6923E5;
+   font-style: calistoga;
+}
+
+.close {
+    color: #6923E5;
+}
+
+label {
+    color: #6923E5;
+    margin-left: 5px;
+}
+
+#file-upload-button {
+    margin: 20px;
+}
+
+.photo {
+    margin : 20px;
+    
+}

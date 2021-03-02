@@ -50,9 +50,14 @@
               </div>
               <div class="modal-body">
                {{form_start(updateProfilForm)}}
+               {{ form_row(updateProfilForm.location,{'attr':{'class':'form-control'} }) }}
+               {{ form_row(updateProfilForm.description,{'attr':{'class':'form-control'} }) }}
+               {{ form_row(updateProfilForm.email,{'attr':{'class':'form-control'} }) }}
+           
+              
 
                     {{form_widget(updateProfilForm)}}
-                    <button type="submit" class="submit">modifier les chnagement</button>
+                    <button id="modification" type="submit" class="submit">Modifier les changements</button>
 
                {{form_end(updateProfilForm)}}
               </div>
