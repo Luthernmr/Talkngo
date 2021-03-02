@@ -24,18 +24,18 @@
         <div class=" info-profil container d-flex justify-content-around">
         
         <div class="d-flex">
-            <img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profil-img" width="80px" height="80px">
+            <img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profil-img" width="80em" height="80em">
             
-            <div class="container d-flex-column" > 
-                <h3 class=>{{ user.firstname }}  {{ user.name }}</h3>
+            <div class="container d-flex-column ml-2" > 
+                <h3 id="nameOfUserProfil" class=>{{ user.firstname }}  {{ user.name }}</h3>
                 <h6>{{ user_age}} ans</h6>
                 <h6>{{ user.location }}</h6>
             </div>
-            <a class="modif-btn m-2" href="#" data-toggle="modal" data-target="#login"><i class="fas fa-user-edit"></i></a>
+            <a class="modif-btn m-2" href="#" data-toggle="modal" data-target="#login"><i class="fas fa-user-edit fa-3x" id="modifProfil"></i></a>
 
         </div>
 
-            <p class="description-profil col-7 m-2 p-2">{{user.description}}</p>
+            <p class="description-profil text-dark col-12 m-2 p-2">{{user.description}}</p>
 
 
         </div>
@@ -61,15 +61,14 @@
         
     </div>
 
-    <article class="container" >
-    <h2>Mes voyages</h2>         
-    <div class="container travel-list scroll-1 " >
+    <article class="container mb-5" >
+    <h2 class="mt-5">Mes voyages</h2>         
+    <div class="container travel-list scroll-1" id="sizesmallscreen" >
     {% for publication in publications %}
         {% if publication.user.id == user.id %}
         <div class="col-5 m-1 own-travel" >
             <div class="presentation p-2">
-              <div class="user-info m-2" >
-                <h3> Mon voyages</h3>
+              <div class="user-info m-2">
               </div>
               <div class="date">
                 <h4>{{ publication.countryStart | country_name}} <i class="fas fa-plane"></i> {{ publication.countryName | country_name }} </h4>
@@ -88,11 +87,11 @@
 
    
 <div class="form-largescreen container" data-scroll data-scroll-speed>
-    <h2>Ajouter un nouveau voyage</h2>
+    <h2 class="text-white mb-4">Ajouter un nouveau voyage :</h2>
 {{ form_start(formPublication) }}
 
     {{form_widget(formPublication)}}
-    <button type="submit" class="submit">Publier l'annonce</button>
+    <button type="submit" class="submit mt-2">Publier l'annonce</button>
 {{ form_end(formPublication) }}
 </div>
 {% for message in app.flashes('message') %}

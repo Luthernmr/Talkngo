@@ -74,14 +74,21 @@ class ProfilController extends AbstractController
         $formProfil = $this->createForm(UpdateProfilFormType::class, $user);
         $formProfil->handleRequest($request);
         if ($formProfil->isSubmitted() && $formProfil->isValid()) {
-            
-            
-            $infoImg = $formProfil['img']->getData(); // récupère les infos de l'image 
-            $extensionImg = $infoImg->guessExtension(); // récupère le format de l'image 
-            $nomImg = time() . '.' . $extensionImg; // compose un nom d'image unique
-            $infoImg->move($this->getParameter('dossier_photos_user'), $nomImg); // déplace l'image
-            $user->setImg($nomImg);
-            
+
+            if ($formProfil->get('img')->getData() !== null) {
+
+                $oldNomImg = $user->getImg(); //ancien image
+                $oldCheminImg = $this->getParameter('dossier_photos_user') . '/' . $oldNomImg;
+                if (file_exists($oldCheminImg)) {
+                    unlink($oldCheminImg);
+                }
+                $infoImg = $formProfil['img']->getData(); // récupère les infos de l'image 
+                $extensionImg = $infoImg->guessExtension(); // récupère le format de l'image 
+                $nomImg = time() . '.' . $extensionImg; // compose un nom d'image unique
+                $infoImg->move($this->getParameter('dossier_photos_user'), $nomImg); // déplace l'image
+                $user->setImg($nomImg);
+            }
+
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($user);
             $manager->flush();
@@ -120,17 +127,16 @@ class ProfilController extends AbstractController
         $countrys = $repo->findAll();
 
         if ( $formModifPublication->isSubmitted() &&  $formModifPublication->isValid()) {
-            $oldNomImg = $publication->getImg(); //ancien image
-            $oldCheminImg = $this->getParameter('dossier_photos_pays') . '/' . $oldNomImg;
 
-            
-
-            $infoImg =  $formModifPublication['img']->getData();
-            $extensionImg = $infoImg->guessExtension();
-
-            $nomImg = time() . '.' . $extensionImg;
-            $infoImg->move($this->getParameter('dossier_photos_pays'), $nomImg);
-            $publication->setImg($nomImg);
+                if ($$formModifPublication->get('img')->getData() !== null){
+                $oldNomImg = $publication->getImg(); //ancien image
+                $oldCheminImg = $this->getParameter('dossier_photos_pays') . '/' . $oldNomImg;
+                $infoImg =  $formModifPublication['img']->getData();
+                $extensionImg = $infoImg->guessExtension();
+                $nomImg = time() . '.' . $extensionImg;
+                $infoImg->move($this->getParameter('dossier_photos_pays'), $nomImg);
+                $publication->setImg($nomImg);
+                }
 
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($publication);
@@ -155,7 +161,7 @@ class ProfilController extends AbstractController
     /**
      * @Route("/profil/{id}", name="profil_voyageur")
      */
-    public function afficheProfilVoyageur($id, Request $request, UserRepository $userRepository){
+    public function afficheProfilVoyageur($id, Request $request, UserRepository $userRepository , \Swift_Mailer $Mailer){
 
         $repo = $this->getDoctrine()->getRepository(Country::class);
         $countrys = $repo->findAll();
@@ -172,23 +178,36 @@ class ProfilController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
+            
+
             $recepteur = $userRepository->find($id)->getEmail();
             $expediteur = $this->get('security.token_storage')->getToken()->getUser()->getEmail();
 
             $donnes = $form->getData();
             // $userReceveur = $UserRepository->findOneByEmail($donnes['email']);
-            $message = (new \Swift_Message('comfirmation de votre email '))
+           $message = (new \Swift_Message('demande de contact  '))
                 ->setFrom($expediteur)
                 ->setTo($recepteur)
                 ->setBody(
                 $this->renderView(
                     'profil/emailContactUser.html.twig',[
                         'formData' => $donnes,
-                        'countrys' => $countrys, ]),
-                'text/html');
-                    }
+                        'countrys' => $countrys,
+                        
+                    ]
+                ),
+                'text/html'
+            )
+            ; 
+            $Mailer->send($message);
+           $this->addFlash('message',' votre message a bien ete envoyer  ');
 
-            return $this->render('profil/publierProfil.html.twig', [
+           return $this->redirectToRoute('profil_vayageur');
+
+            }
+
+     
+       return $this->render('profil/publierProfil.html.twig', [
                 'contactVoyageurForm' => $form->createView(),
                 'countrys' => $countrys,
                 'user' => $user,
