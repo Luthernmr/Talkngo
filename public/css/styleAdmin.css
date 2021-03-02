@@ -7,6 +7,31 @@
     padding: 0;
 }
 
+#tableuseradmin {
+    overflow-x: auto;
+    margin-bottom: 1em;
+    padding: 0;
+}
+
+#boutonaduser {
+    color: white;
+    background-color: #6923E5;
+    border-radius: 20px;
+    padding: 0.2em 0.5em 0.4em 0.5em;
+    width: 11em;
+}
+
+td a:hover {
+    color: #09999A;
+}
+
+#boutonaduser:hover {
+    color: #6923E5;
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid #6923E5;
+}
+
 header.phone-screen{
     display: none;
 }
