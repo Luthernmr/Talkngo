@@ -3,9 +3,9 @@
      margin-left: auto;
      margin-right: auto;
      padding: 15px;
-     border: #6923E5 5px solid ;
+
      border-radius: 25px;
-     width: 800px;
+     width: 900px;
      height: 400px;
      margin-top: 5vh;
     display: flex;
@@ -20,9 +20,15 @@
 width: 50%;
  
 }
-
+h2{
+    margin-top: 50px;
+}
 li{
     color: black;
+}
+article{
+    display: flex;
+    justify-content: center;
 }
  .profile{
     display: flex;
@@ -56,7 +62,7 @@ li{
     top: 5px;
     left: 5px;
 }
-.fas:hover{
+.fas .times:hover{
     color: #0d9b9c;
 }
 
@@ -64,4 +70,39 @@ li{
     width: 400px;
     margin-left: auto;
     margin-right: auto;
+}
+
+#modification {
+    width: 220px;
+    height: 40px;
+    color: #6923E5;
+}
+
+#modification:hover {
+    width: 220px;
+    height: 40px;
+    color: #fff;
+}
+
+#connexLabel {
+   color: #6923E5;
+   font-style: calistoga;
+}
+
+.close {
+    color: #6923E5;
+}
+
+label {
+    color: #6923E5;
+    margin-left: 5px;
+}
+
+#file-upload-button {
+    margin: 20px;
+}
+
+.photo {
+    margin : 20px;
+    
 }

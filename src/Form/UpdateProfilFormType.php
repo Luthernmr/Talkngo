@@ -29,12 +29,12 @@ class UpdateProfilFormType extends AbstractType
         $builder
    
             ->add('location',TextType::class,[
-                'label' => 'ville',
+                'label' => 'Ville',
             ])
            
             ->add('description',TextareaType::class,[
                 'required' => false,
-                'label' => 'description',
+                'label' => 'Description',
                  
             ])
             ->add('img', FileType::class, [
@@ -43,11 +43,14 @@ class UpdateProfilFormType extends AbstractType
 
                 'mapped' => false,
                 'label' => 'Photo de profil',
+                'attr' => [
+                    'class' => 'photo'
+                ]
                 
             ])
 
             ->add('email',EmailType::class,[
-                'label' => 'email',
+                'label' => 'Email',
             ])
             
             

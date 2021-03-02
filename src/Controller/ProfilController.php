@@ -61,7 +61,7 @@ class ProfilController extends AbstractController
             $manager->flush();
             
 
-            $this->addFlash('message', 'Votre annoce à bien été publié');
+            $this->addFlash('message', 'Votre annonce à bien été publiée');
             return $this->redirectToRoute('profil');
         } 
 
@@ -147,7 +147,7 @@ class ProfilController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'La voyage a bien été modifiée'
+                'La voyage a bien été modifié'
             );
 
            
@@ -217,6 +217,8 @@ class ProfilController extends AbstractController
                 'publications' => $publications,
                 'user_age' => $age,
             ]);
-    }
+            }
+     
+        }
+    
 
-}

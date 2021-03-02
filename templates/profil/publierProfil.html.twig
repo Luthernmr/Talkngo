@@ -2,14 +2,19 @@
 
 {% block title %}profil{% endblock %}
 
+{% block javascripts %}
+<script>
+    const card = document.getElementsByClassName('contenuCard');
+
+    for (i = 0; i < card.length; i++) {
+        card[i].addEventListener('click', function () {
+            this.classList.toggle('active')
+        })
+    }
+</script>
+{% endblock %}
+
 {% block body %}
-
-{% for message in app.flashes('message') %}
-<div class="alert alert-success " role="alert">
-    {{message}}
-</div>
-
-{% endfor %}
 <style>
     .example-wrapper {
         margin: 1em auto;
@@ -36,30 +41,45 @@
 
     <div class="ligne"></div>
 
-    <div class="profil-voyage">
-        <h2>Les voyages de {{user.name}}</h2>
-        
+    <div class="msg">
+    
+            <h1>Envoyez un message </h1>
+            {{ form_start(contactVoyageurForm) }}
+            {{ form_row(contactVoyageurForm.sujet,{'attr':{'class':'form-control'} }) }}
+            {{ form_row(contactVoyageurForm.message,{'attr':{'class':'form-control'} }) }}
+            {{ form_row(contactVoyageurForm.envoyer,{'attr':{'class':'submit'} }) }}
+            {{ form_end(contactVoyageurForm) }}
+        </div>
+    </div>
+
+
+</div>
+
+
+<article class="container">
+    <h2>Ses voyages</h2>
+    <div class="container travel-list scroll-1 ">
         {% for publication in publications %}
         {% if publication.user.id == user.id %}
-        <li>{{publication.countryName}}</li>
+        <div class="col-5 m-1 own-travel">
+            <div class="presentation p-2">
+                <div class="user-info m-2">
+                    <h3> Ses voyages</h3>
+                </div>
+                <div class="date">
+                    <h4>{{ publication.countryStart | country_name}} <i class="fas fa-plane"></i> {{
+                        publication.countryName | country_name }} </h4>
+                    <h4 class=""> {{ publication.date | date('d/m/Y')}}</h4>
+                </div>
+
+            </div>
+        </div>
         {% endif %}
         {% else %}
-        <h2> Aucun voyages effectué</h2>
+        <h2> Aucun voyages pour le moment</h2>
         {% endfor %}
     </div>
-    
-</div>
-
-
-
-
-
-<div class="msg">
-    <div class="form-largescreen" >
-    {{ form_start(contactVoyageurForm) }}
-    {{ form_end(contactVoyageurForm) }}
-    </div>
-</div>
+</article>
 
 
 
