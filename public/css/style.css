@@ -7,18 +7,13 @@
     padding: 0;
 }
 
- 
-@media only screen and (min-width: 1200px) { 
-
-
-}
-
  header{
-     position: sticky;
-     background-color: #fff;
-     z-index: 999;
-     top: 0px;
+    position: sticky;
+    background-color: #fff;
+    z-index: 999;
+    top: 0px;
     display: flex;
+    align-content: center;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 0px 50px 0px 50px;
@@ -34,8 +29,6 @@
     display: none;
 }
 
-
-
 footer{
 
     display: flex;
@@ -47,8 +40,13 @@ footer{
 a{
     color:#6923E5 ;
 }
+
 a:link{
     text-decoration: none;
+}
+
+.liens-mdp-oublie:hover {
+    color:#09999A;
 }
 
 .header-content{
@@ -67,8 +65,8 @@ a:link{
     height: 100px;
 }
 .searchbar{
-    width: 500px;
     height: 40px;
+    width: 20em;
     border: 1px solid #6923E5;
     border-radius: 20px;
     padding: 15px;
@@ -87,17 +85,14 @@ a:link{
 }
 
 #myUL{
-    padding: 0.4em 0;
     display: none;
     z-index: 1000;
     position: absolute;
-    height: 179px;
-    width: max-content;
+    height: 180px;
     background-color: rgba(220, 220, 220, 0.8);
     border-top: none;
     overflow-y: auto;
     margin-left: 15px;
-    
 }
 
 .pays {
@@ -134,17 +129,15 @@ footer a:hover {
 }
 
 .spacebar{
-    height: 100px;
+    margin: 0 2em;
+    height: 60px;
     width: 2px;
     background-color: #6923E5;   
 }
 
-.liste-searchbar{
-    margin-right: 10px;
-}
 
 .register{
-padding : 10px 30px 10px 30px;
+padding : 6px 30px 10px 30px;
 border: 1px solid #6923E5;
 border-radius: 20px;
 background-color: #fff;
@@ -156,7 +149,7 @@ height: 40px;
 
 .login{
 border: 1px solid  #6923E5;
-padding : 10px 30px 10px 30px;
+padding : 6px 30px 10px 30px;
 border-radius: 20px;
 background-color: #6923E5;    
 color: #fff;
@@ -170,11 +163,12 @@ li{
 }
 
 
+.copyright {
+    color:#6923E5 ;
+}
 
 
-
-
-    
+  
 
 @media (max-width: 1200px) {
     .navbar{
@@ -202,6 +196,7 @@ li{
     top: 5px;
     left: 5px;
     border: none;
+    color: #6923E5;
 }
 .menu-profil:hover{
     color: #6923E5;
@@ -212,13 +207,14 @@ li{
 }
     
     header{
+        display: flex;
         position: relative;
     align-content: center;
     align-items: center ;
-        display: flex;
+       
       justify-content:space-around;
-      height: 25vh;
-     
+    
+        height: max-content;
     }
     .header-content{
         display: flex;
@@ -234,9 +230,7 @@ li{
         margin-top: 50px;
         margin-bottom: 50px;
     }
-    .searchbar{
-        width: 350px;
-    }
+    
     
     .login{
         
@@ -255,4 +249,11 @@ li{
             
         }
 
+        .copyright {
+            color:#6923E5 ;
+        }
+}
+
+#h3-left {
+    text-align: left;
 }

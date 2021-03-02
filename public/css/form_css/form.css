@@ -46,7 +46,6 @@ h1{
 
 label.required {
     margin-right: 10px;
-    
 }
 
 .btn-connexion {
@@ -60,10 +59,11 @@ label.required {
 }
 .title{
  text-align: center;
- font-family: 'calistoga';
+ font-family: calistoga;
  color: #fff;
 
 }
+
 
 .form-control{
     margin: 5px;
@@ -101,15 +101,14 @@ label {
 
 .submit{
     border: 1px solid #6923E5;
-    padding : 7px;
+    padding : 10px;
     border-radius: 20px;
     background-color: #fff;
     margin: 5vh auto 0 auto;
     display: block;
     text-align: center;
-
     font-family: Arial, Helvetica, sans-serif;
-    color: #6923E5;
+
 
 }
 
