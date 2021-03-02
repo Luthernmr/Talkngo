@@ -21,7 +21,8 @@
 
 #publication_date {
     margin-top: 1em;
-    width: 25em;
+    margin-left: 1em;
+    width: auto;
     display: inline;
 }
 
@@ -74,4 +75,13 @@ li{
     width: 400px;
     margin-left: auto;
     margin-right: auto;
+}
+
+@media screen and (max-width: 480px) {
+    .profil{
+        width: auto;
+        margin: 1em;
+    }
+
+
 }
