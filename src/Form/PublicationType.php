@@ -17,10 +17,12 @@ class PublicationType extends AbstractType
     {
         $builder
             ->add('countryName', CountryType::class, [
-                'label' => 'où allez-vous?',])
+                'label' => 'où allez-vous ?',])
 
-            ->add('countryStart',CountryType::class, [
-                    'label' => 'où allez-vous?'])
+            ->add('countryStart', CountryType::class, [
+                    'label' => 'd\'où partez-vous ?',
+                    
+                ])
 
             ->add('date' , BirthdayType::class, [
                 'label' => 'Jour de départ :',
@@ -38,11 +40,7 @@ class PublicationType extends AbstractType
         ])
            
            
-            ->add('countryStart', CountryType::class, [
-                'label' => 'd\'où partez-vous?',
-                
-                
-            ])
+      
             
            
         ;
