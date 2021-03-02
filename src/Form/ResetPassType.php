@@ -18,9 +18,16 @@ class ResetPassType extends AbstractType
                 'attr' => [
                     'placeholder'=>'votre email',
                 
-                ] 
+                ]  
+            ])
+            ->add('envoyer',SubmitType::class,[
+                   'attr' => [
+            
+                     'class' => 'envoyer'
+                ]  
             ])
         ;
+
     }
 
     public function configureOptions(OptionsResolver $resolver)
