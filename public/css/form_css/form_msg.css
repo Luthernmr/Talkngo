@@ -24,6 +24,7 @@ h1{
    font-family: calistoga;
    text-align: center;
 }
+
 h2{
    margin-top: 50px;
 }
@@ -78,11 +79,11 @@ article{
    color: #0d9b9c;
 }
 
-.msg{
+.mssg{
    margin-top : 50px;
    width: 350px;
    padding: 25px;
-   background-color: #6923E5;
+   background: #6923E5;
    border-radius: 25px;
 }
 
@@ -119,7 +120,7 @@ article{
 }
 
 label {
-   color: #6923E5;
+   color: #fff;
    margin-left: 5px;
 }
 
