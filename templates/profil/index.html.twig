@@ -19,7 +19,7 @@
     {{message}}
 </div>
 {% endfor %}
-    <div class="profil container ">
+    <div class="profil container-fluid">
 
         <div class=" info-profil container d-flex justify-content-around">
         
@@ -29,11 +29,11 @@
                 
                 <div class="container d-flex-column ml-2" > 
                     <h3 id="nameOfUserProfil" class=>{{ user.firstname }}  {{ user.name }}</h3>
-                    <h6>{{ user_age}} ans</h6>
-                    <h6>{{ user.location }}</h6>
+                    <h6 style="color: #09999A">{{ user_age}} ans</h6>
+                    <h6 style="color: #09999A">{{ user.location }}</h6>
                 </div>
 
-                <a class="modif-btn m-2" href="#" data-toggle="modal" data-target="#modif-info-profil"><i class="fas fa-user-edit fa-3x ml-5" id="modifProfil"></i></a>
+                <a class="modif-btn m-2 ml-5" href="#" data-toggle="modal" data-target="#modif-info-profil" id="sizemodifinfoprofil"><i class="fas fa-user-edit fa-3x" id="modifProfil"></i></a>
 
             </div>
 
