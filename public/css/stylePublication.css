@@ -16,12 +16,12 @@ main{
     background: no-repeat center ;
 }
 
-#box-article {
+.box-article {
   margin: 5em;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: nowrap
+  flex-wrap: wrap wrap-reverse;
 }
 
 article{
