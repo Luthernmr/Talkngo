@@ -2,11 +2,13 @@
 
 {% block title %}utilisateurs{% endblock %}
 
+
+
+{% block body %}
+
 {% block stylesheets %}
     <link rel="stylesheet" href="{{asset('css/styleAdmin.css')}}">
 {% endblock %}
-
-{% block body %}
 
 {% for message in app.flashes('message') %}
 <div class="alert alert-success " role="alert">
