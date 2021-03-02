@@ -2,11 +2,13 @@
 
 {% block title %}utilisateurs{% endblock %}
 
+
+
+{% block body %}
+
 {% block stylesheets %}
     <link rel="stylesheet" href="{{asset('css/styleAdmin.css')}}">
 {% endblock %}
-
-{% block body %}
 
 {% for message in app.flashes('message') %}
 <div class="alert alert-success " role="alert">
@@ -52,7 +54,7 @@
                         
                     </td>
                     <td>
-                        <a href="  {{ path('user_delete', {'id':user.id})  }} ">suprimer</a>
+                        <a href="  {{ path('user_delete', {'id':user.id})  }} ">supprimer</a>
                     </td>
                 </tr>
                 {% endfor %}
