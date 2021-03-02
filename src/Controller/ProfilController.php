@@ -74,11 +74,14 @@ class ProfilController extends AbstractController
         $formProfil = $this->createForm(UpdateProfilFormType::class, $user);
         $formProfil->handleRequest($request);
         if ($formProfil->isSubmitted() && $formProfil->isValid()) {
+            
+            
             $infoImg = $formProfil['img']->getData(); // récupère les infos de l'image 
             $extensionImg = $infoImg->guessExtension(); // récupère le format de l'image 
             $nomImg = time() . '.' . $extensionImg; // compose un nom d'image unique
             $infoImg->move($this->getParameter('dossier_photos_user'), $nomImg); // déplace l'image
             $user->setImg($nomImg);
+            
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($user);
             $manager->flush();
@@ -181,13 +184,10 @@ class ProfilController extends AbstractController
                 $this->renderView(
                     'profil/emailContactUser.html.twig',[
                         'formData' => $donnes,
-                        'countrys' => $countrys,
-                        
-                    ]
-                ),
-                'text/html'
-            )
-            ;
+                        'countrys' => $countrys, ]),
+                'text/html');
+                    }
+
             return $this->render('profil/publierProfil.html.twig', [
                 'contactVoyageurForm' => $form->createView(),
                 'countrys' => $countrys,
@@ -197,7 +197,6 @@ class ProfilController extends AbstractController
             ]);
             }
      
-       
-    }
+        }
+    
 
-}

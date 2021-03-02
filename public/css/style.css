@@ -10,11 +10,10 @@
  
 @media only screen and (min-width: 1200px) { 
 
-header.phone-screen{
-    display: none;
+
 }
 
- header.large-screen{
+ header{
      position: sticky;
      background-color: #fff;
      z-index: 999;
@@ -31,13 +30,11 @@ header.phone-screen{
   
 }
 
-header.tablet-screen{
+.nom-photo{
     display: none;
 }
 
-header.small-screen {
-    display: none;
-}
+
 
 footer{
 
@@ -143,12 +140,13 @@ footer a:hover {
 }
 
 .register{
-border: 1px solid #6923E5;
 padding : 10px 30px 10px 30px;
+border: 1px solid #6923E5;
 border-radius: 20px;
 background-color: #fff;
 font-family: Arial, Helvetica, sans-serif;
 transition: ease-in-out 0.2s;
+height: 40px;
 
 }
 
@@ -159,6 +157,7 @@ border-radius: 20px;
 background-color: #6923E5;    
 color: #fff;
 font-family: Arial, Helvetica, sans-serif;
+height: 40px;
 }
 
 li{
@@ -167,404 +166,60 @@ li{
 }
 
 
-}
 
+
+
+
+    
 
 @media (max-width: 1200px) {
-    header.large-screen{
-        display: none;
+    .navbar{
+        position: fixed;
+        top: 0px;
+        left: -50px;
+        height: 100vh;
+        background: #09999A;
+        align-items: flex-start;
     }
-
-    header.phone-screen{
-        display: none;
+    .connexion-body{
+        height: 100vh;
     }
-
-    header.small-screen {
-        display: none;
+   
+    
+    .navbar-nav{
+        margin: 40px;
     }
-    header.tablet-screen {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            padding: 0px 50px 0px 50px;
-            margin-left:auto ;
-            margin-right: auto;
-            height: 8em;
-            box-shadow: 0px 11px 7px 0px rgba(0,0,0,0.2);
-    }
-
-    footer{
-
+    .info{
         display: flex;
-        justify-content: center;
-        margin-top: 50px;
-        margin-bottom: 50px;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-    a{
-        color:#6923E5 ;
-    }
-    a:link{
-        text-decoration: none;
-    }
-    
-    .header-content{
-       width: auto;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        
-    }
-    
-    
-    .logo{
-        margin-top: 1em;
-        width: 200px;
-        height: 100px;
-    }
-    .searchbar{
-        width: 400px;
-        height: 40px;
-        /* margin-top: 56px; */
-        border: 1px solid #6923E5;
-        border-radius: 20px;
-        padding: 15px;
-        background-image: url('./img/loupe.svg')  ;
-        background-size: 20px;
-        background-repeat: no-repeat;
-        background-position-x: 468px;
-        background-position-y: 10px;
-        background-color: rgb(236, 236, 236);
-        font-family: Arial, Helvetica, sans-serif;
-    
-    }
-    
-    #myUL{
-        display: none;
-        z-index: 1000;
-        position: absolute;
-        height: 200px;
-        width: 500px;
-        background-color: #fff;
-        border: 1px solid #6923E5;
-        border-top: none;
-        border-radius: 25px;
-        overflow: hidden;
-    }
-    
-
-    
-    .spacebar{
-        height: 40px;
-        border: 1px solid #6923E5;
-       
-        
-    }
-    
-    .liste-searchbar{
-        margin-right: 10px;
-    }
-    
-    .register{
-    border: 1px solid #6923E5;
-    padding : 10px 30px 10px 30px;
-    border-radius: 20px;
-    background-color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-    }
-    
-    .login{
-    border: 1px solid  #6923E5;
-    padding : 10px 30px 10px 30px;
-    border-radius: 20px;
-    background-color: #6923E5;    
-    color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-    }
-    
-    li{
-        padding-right: 15px;
-        padding-left:15px ;
-    }
-
-}
-
-@media only screen and (min-width: 990px) and (max-width: 1080px) {
-    header.large-screen{
-        display: none;
-    }
-
-    header.tablet-screen {
-        display: none;
-    }
-
-    header.phone-screen{
-        display: none;
-    }
-
-    header.tablet-screen {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            padding: 0px 50px 0px 50px;
-            margin-left:auto ;
-            margin-right: auto;
-            height: 8em;
-            width: 100%;
-            box-shadow: 0px 11px 7px 0px rgba(0,0,0,0.2);
-            
-    }
-
-    footer{
-
-        display: flex;
-        justify-content: center;
-        margin-top: 50px;
-        margin-bottom: 50px;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-    a{
-        color:#6923E5 ;
-    }
-    a:link{
-        text-decoration: none;
-    }
-    
-    .header-content{
-       width: auto;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        
-    }
-    
-    
-    .logo{
-        margin-top: 1em;
-        width: 200px;
-        height: 100px;
-    }
-    .searchbar{
-        width: 300px;
-        height: 40px;
-        /* margin-top: 56px; */
-        border: 1px solid #6923E5;
-        border-radius: 20px;
-        padding: 15px;
-        background-image: url('./img/loupe.svg')  ;
-        background-size: 20px;
-        background-repeat: no-repeat;
-        background-position-x: 468px;
-        background-position-y: 10px;
-        background-color: rgb(236, 236, 236);
-        font-family: Arial, Helvetica, sans-serif;
-    
-    }
-    
-    #myUL{
-        display: none;
-        z-index: 1000;
-        position: absolute;
-        height: 200px;
-        width: 500px;
-        background-color: #fff;
-        border: 1px solid #6923E5;
-        border-top: none;
-        border-radius: 25px;
-        overflow: hidden;
-    }
-    
-    
-    .spacebar{
-        height: 40px;
-        border: 1px solid #6923E5;
-       
-        
-    }
-    
-    .liste-searchbar{
-        margin-right: 10px;
-    }
-    
-    .register{
-    border: 1px solid #6923E5;
-    padding : 10px 30px 10px 30px;
-    border-radius: 20px;
-    background-color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-    
-    }
-    
-    .login{
-    border: 1px solid  #6923E5;
-    padding : 10px 30px 10px 30px;
-    border-radius: 20px;
-    background-color: #6923E5;    
-    color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
- 
-    }
-    
-    li{
-        padding-right: 15px;
-        padding-left:15px ;
-    }
-    
-
-
-}
-
-@media only screen and (min-width: 840px) and (max-width: 990px) {
-    header.large-screen{
-        display: none;
-    }
-
-    header.tablet-screen {
-        display: none;
-    }
-
-    header.phone-screen{
-        display: none;
-    }
-
-    header.tablet-screen {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            padding: 0px 50px 0px 50px;
-            margin-left:auto ;
-            margin-right: auto;
-            height: 8em;
-            width: 100%;
-            box-shadow: 0px 11px 7px 0px rgba(0,0,0,0.2);
-    }
-
-    footer{
-
-        display: flex;
-        justify-content: center;
-        margin-top: 50px;
-        margin-bottom: 50px;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-    a{
-        color:#6923E5 ;
-    }
-    a:link{
-        text-decoration: none;
-    }
-    
-    .header-content{
-       width: auto;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        
-    }
-    
-    
-    .logo{
-        margin-top: 1em;
-        width: 200px;
-        height: 100px;
-    }
-    .searchbar{
-        width: 200px;
-        height: 40px;
-        /* margin-top: 56px; */
-        border: 1px solid #6923E5;
-        border-radius: 20px;
-        padding: 15px;
-        background-image: url('./img/loupe.svg')  ;
-        background-size: 20px;
-        background-repeat: no-repeat;
-        background-position-x: 468px;
-        background-position-y: 10px;
-        background-color: rgb(236, 236, 236);
-        font-family: Arial, Helvetica, sans-serif;
-    
-    }
-    
-    #myUL{
-        display: none;
-        z-index: 1000;
-        position: absolute;
-        height: 200px;
-        width: 500px;
-        background-color: #fff;
-        border: 1px solid #6923E5;
-        border-top: none;
-        border-radius: 25px;
-        overflow: hidden;
-    }
-    
-    
-    .spacebar{
-        height: 40px;
-        border: 1px solid #6923E5;
-       
-        
-    }
-    
-    .liste-searchbar{
-        margin-right: 10px;
-    }
-    
-    .register{
-    border: 1px solid #6923E5;
-    padding : 10px 30px 10px 30px;
-    border-radius: 20px;
-    background-color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-    
-  
-    }
-    
-    .login{
-    border: 1px solid  #6923E5;
-    padding : 10px 30px 10px 30px;
-    border-radius: 20px;
-    background-color: #6923E5;    
-    color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-    
-    }
-    
-    li{
-        padding-right: 15px;
-        padding-left:15px ;
-    }
-    
-
-
-}
-
-
-@media (max-width: 840px) {
-
-    header.large-screen{
-        display: none;
-    }
-
-    header.tablet-screen{
-        display: none;
-    }
-
-
-    header.small-screen {
-        display: none;
-    }
-
-    header.phone-screen{
-        padding: 15px;
-        display: flex;
-       align-items: center;
         flex-direction: column;
-      
+    }
+.menu-profil{
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    border: none;
+}
+.menu-profil:hover{
+    color: #6923E5;
+}
+.nom-photo{
+    display: flex;
+    color: #fff;
+}
+    
+    header{
+        position: relative;
+    align-content: center;
+    align-items: center ;
+        display: flex;
+      justify-content:space-around;
+      height: 25vh;
      
+    }
+    .header-content{
+        display: flex;
+        flex-direction: column;
+
     }
 
     footer{
@@ -583,7 +238,6 @@ li{
         
        margin-top: 25px;
         border: 1px solid  #6923E5;
-        padding : 10px 30px 10px 30px;
         border-radius: 20px;
         background-color: #6923E5;    
         color: #fff;
@@ -592,7 +246,6 @@ li{
         .register{
             margin-top: 25px;
             border: 1px solid #6923E5;
-            padding : 10px 30px 10px 30px;
             border-radius: 20px;
             background-color: #fff;
             
