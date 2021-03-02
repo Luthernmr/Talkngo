@@ -2,6 +2,10 @@
 
 {% block title %}utilisateurs{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('css/styleAdmin.css')}}">
+{% endblock %}
+
 {% block body %}
 
 {% for message in app.flashes('message') %}
@@ -10,50 +14,54 @@
 </div>
     
 {% endfor %}
-    <h2>utilisateurs</h2>
-    
-    <table class="table">
-        <thead>
-            <tr>
-                <th>N°</th>
-                <th>nom</th>
-                <th>prenom</th>
-                <th>email</th>
-                <th>Roles</th>
-                <th>age</th>
-                <th>localisation</th>
-                <th>description</th>
-                <th>image</th>
-                <th>modifier</th>
-            
-            </tr>
-        </thead>
-        <tbody>
-            {% for user in users %}
-            <tr>
-                {% set counter = ( counter | default(-1) ) + 1 %}
-                <td>{{ loop.index }}</td>
-                <td>{{ user.name }}</td>
-                <td>{{ user.firstname }}</td>
-                <td>{{ user.email }}</td> 
-                <td>{{ user.roles|join(' + ')|lower }}</td>
-                <td>{{ user_age.age[counter]}}</td>
-                <td>{{ user.location }}</td>
-                <td>{{ user.description }}</td>
-                <td>{{ user.img }}</td>
-               
-                <td>
-                     <a href=" {{ path('user_update', {'id':user.id})  }} ">modifier user</a> 
-                    <a href="  {{ path('user_delete', {'id':user.id})  }} "> suprimer user</a>
-                </td>
-
-
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    
-    <a href=" {{ path('create_user')}} ">créer user</a>
+    <h2 style="font-size: 2em;" class="m-4 mt-5">Liste des utilisateurs</h2>
+    <div class="container-fluid" id="tableuseradmin">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>N°</th>
+                    <th>nom</th>
+                    <th>prenom</th>
+                    <th>email</th>
+                    <th>Roles</th>
+                    <th>age</th>
+                    <th>localisation</th>
+                    <th>description</th>
+                    <th>image</th>
+                    <th>modifier</th>
+                    <th>supprimer</th>
+                
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    {% set counter = ( counter | default(-1) ) + 1 %}
+                    <td>{{ loop.index }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.firstname }}</td>
+                    <td>{{ user.email }}</td> 
+                    <td>{{ user.roles|join(' + ')|lower }}</td>
+                    <td>{{ user_age.age[counter]}}</td>
+                    <td>{{ user.location }}</td>
+                    <td>{{ user.description }}</td>
+                    <td>{{ user.img }}</td>
+                
+                    <td>
+                        <a href=" {{ path('user_update', {'id':user.id})  }} ">modifier</a> 
+                        
+                    </td>
+                    <td>
+                        <a href="  {{ path('user_delete', {'id':user.id})  }} ">suprimer</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="ml-4">
+        <a id="boutonaduser" href=" {{ path('create_user')}} "><i class="fas fa-plus mr-1"></i>créer un utilisateur</a>
+    </div>
 
 
 {% endblock %}
