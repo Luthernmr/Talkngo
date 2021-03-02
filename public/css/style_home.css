@@ -20,6 +20,16 @@ body {
     margin: 0;
 }
 
+#imageapropos {
+    background-image: url("img/image_apropos.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: max-content;
+    width: 100%;
+    min-height: 40em;
+    margin: 0;
+}
+
 h2 {
     color: #6923E5;
     font-family: 'calistoga';

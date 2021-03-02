@@ -170,6 +170,9 @@ li{
 }
 
 
+.copyright {
+    color:#6923E5 ;
+}
 
 
 
@@ -255,4 +258,7 @@ li{
             
         }
 
+        .copyright {
+            color:#6923E5 ;
+        }
 }
