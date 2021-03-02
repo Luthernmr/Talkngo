@@ -214,6 +214,8 @@ class ProfilController extends AbstractController
                 'publications' => $publications,
                 'user_age' => $age,
             ]);
-    }
+            }
+     
+        }
+    
 
-}

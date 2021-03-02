@@ -1,29 +1,18 @@
 
  .profil{
-    
-    margin-left: auto;
-    margin-right: auto;
-    padding: 5em 2em 3em 2em;
-    border: #6923E5 3px solid ;
-    border-radius: 25px;
-    width: 47em;
-    margin-top: 5vh;
+     margin-left: auto;
+     margin-right: auto;
+     padding: 15px;
+
+     border-radius: 25px;
+     width: 900px;
+     height: 400px;
+     margin-top: 5vh;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    color: #0d9b9c;
-}
-
-#nameOfUserProfil {
-    font-size: 2em;   
-}
-
-#publication_date {
-    margin-top: 1em;
-    margin-left: 1em;
-    width: auto;
-    display: inline;
+    color: #fff;
 }
 
 .profil-voyage{
@@ -31,9 +20,15 @@
 width: 50%;
  
 }
-
+h2{
+    margin-top: 50px;
+}
 li{
     color: black;
+}
+article{
+    display: flex;
+    justify-content: center;
 }
  .profile{
     display: flex;
@@ -67,19 +62,55 @@ li{
     top: 5px;
     left: 5px;
 }
-.fas:hover{
+.fas .times:hover{
     color: #0d9b9c;
 }
 
 .msg{
-    width: 400px;
-    margin-left: auto;
-    margin-right: auto;
+ 
+    background-color: #6923E5;
+	width:400px;
+    border-radius: 25px;
+    border-color: #6923E5;
+    padding: 15px;
+    margin: 50px;
 }
 
-@media screen and (max-width: 480px) {
-    .profil{
-        width: auto;
-        margin: 1em;
-    }
+.msg:hover{
+    transition: 1s;
+    border-right: 20px solid  #6923E5;
+    border-left: 20px solid  #6923E5;
 }
+
+
+@media only screen and (max-width: 762px){
+    .profil{
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 15px;
+   
+        border-radius: 25px;
+        width: 300px;
+        height: 500px;
+        margin-top: 5vh;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: space-around;
+       color: #fff;
+   }
+
+
+   .ligne{
+       width: 350px;
+   }
+
+
+   .msg{
+    width: 350px;
+    margin-bottom: 50px;
+}
+
+}
+
