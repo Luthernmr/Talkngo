@@ -3,9 +3,9 @@
      margin-left: auto;
      margin-right: auto;
      padding: 15px;
-     border: #6923E5 5px solid ;
+
      border-radius: 25px;
-     width: 800px;
+     width: 900px;
      height: 400px;
      margin-top: 5vh;
     display: flex;
@@ -20,9 +20,15 @@
 width: 50%;
  
 }
-
+h2{
+    margin-top: 50px;
+}
 li{
     color: black;
+}
+article{
+    display: flex;
+    justify-content: center;
 }
  .profile{
     display: flex;
@@ -56,7 +62,7 @@ li{
     top: 5px;
     left: 5px;
 }
-.fas:hover{
+.fas .times:hover{
     color: #0d9b9c;
 }
 

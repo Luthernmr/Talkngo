@@ -25,6 +25,9 @@ class NewPassType extends AbstractType
                 'required' => true,
                 'first_options'  => ['label' => 'mot de passe'],
                 'second_options' => ['label' => 'confirmer  mot de passe'],
+                'attr' => [
+                    'class' => 'input-mdp'
+                ],
                 'mapped' => false,
                 'constraints' => [
                     new Length([
@@ -35,7 +38,11 @@ class NewPassType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('envoyer',SubmitType::class)
+            ->add('valider',SubmitType::class,[
+                'attr' => [
+                    'class' => 'valider'
+                ]
+            ])
         ;
     }
 
