@@ -128,9 +128,12 @@ class ProfilController extends AbstractController
 
         if ( $formModifPublication->isSubmitted() &&  $formModifPublication->isValid()) {
 
-                if ($$formModifPublication->get('img')->getData() !== null){
+                if ($formModifPublication->get('img')->getData() !== null){
                 $oldNomImg = $publication->getImg(); //ancien image
                 $oldCheminImg = $this->getParameter('dossier_photos_pays') . '/' . $oldNomImg;
+                if (file_exists($oldCheminImg)) {
+                    unlink($oldCheminImg);
+                }
                 $infoImg =  $formModifPublication['img']->getData();
                 $extensionImg = $infoImg->guessExtension();
                 $nomImg = time() . '.' . $extensionImg;
