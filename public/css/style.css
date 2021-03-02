@@ -39,6 +39,7 @@ footer{
 }
 a{
     color:#6923E5 ;
+    
 }
 
 a:link{
@@ -58,6 +59,9 @@ a:link{
     
 }
 
+#menuburger {
+    color: #6923E5;
+}
 
 .logo{
     margin-top: 1em;
