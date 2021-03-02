@@ -102,7 +102,7 @@ label {
 
 .submit{
     border: 1px solid #6923E5;
-    padding : 10px;
+    padding : 7px;
     border-radius: 20px;
     background-color: #fff;
     margin: 5vh auto 0 auto;
@@ -110,7 +110,7 @@ label {
     text-align: center;
     width: 150px;
     font-family: Arial, Helvetica, sans-serif;
-
+    color: #6923E5;
 
 }
 
