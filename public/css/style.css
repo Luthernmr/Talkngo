@@ -115,16 +115,21 @@ a:link{
 
 footer a:hover {
     color: #09999A;
+    transition: ease-in-out 0.2s;
+
 }
 
 .login:hover {
     color: #6923E5;
     background-color: white;
+    transition: ease-in-out 0.2s;
 }
 
 .register:hover {
     color:white;
     background-color: #6923E5;
+    transition: ease-in-out 0.2s;
+
 }
 
 .spacebar{
@@ -143,6 +148,8 @@ padding : 10px 30px 10px 30px;
 border-radius: 20px;
 background-color: #fff;
 font-family: Arial, Helvetica, sans-serif;
+transition: ease-in-out 0.2s;
+
 }
 
 .login{

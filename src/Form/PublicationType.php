@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class PublicationType extends AbstractType
 {
@@ -35,13 +36,8 @@ class PublicationType extends AbstractType
             
             
         ])
-            ->add('duration')
-            ->add('img', FileType::class, [
-
-                'mapped' => false,
-                'label' => 'Ajouter une image pour ce pays',
-                
-            ])
+           
+           
             ->add('countryStart', CountryType::class, [
                 'label' => 'd\'où partez vous',
                 
