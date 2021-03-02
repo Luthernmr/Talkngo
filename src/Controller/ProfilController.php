@@ -28,48 +28,48 @@ class ProfilController extends AbstractController
     /**
      * @Route("/profil", name="profil")
      */
-    public function index(Request $request,EntityManagerInterface $entityManager,UserRepository $userRepository): Response
+    public function index(Request $request, EntityManagerInterface $entityManager, UserRepository $userRepository): Response
     {
-       
+
         $repo = $this->getDoctrine()->getRepository(Country::class);
         $countrys = $repo->findAll();
         $publications = $this->getDoctrine()->getManager()->getRepository(Publication::class)->findAll();
         $user = $this->getUser();
-        
-        
-        
-            $datetime = date_format($user->getAge(), 'Y-m-d');
-            $timestamp = strtotime($datetime);
-            $age = abs((time() - $timestamp) / (3600 * 24 * 365));
-            $age = floor($age);
-        
+
+
+
+        $datetime = date_format($user->getAge(), 'Y-m-d');
+        $timestamp = strtotime($datetime);
+        $age = abs((time() - $timestamp) / (3600 * 24 * 365));
+        $age = floor($age);
+
         $publication = new Publication();
-        $form =$this->createForm(PublicationType::class, $publication);
-                
-    
-        
-        
+        $form = $this->createForm(PublicationType::class, $publication);
+
+
+
+
         $form->handleRequest($request);
-        
-        if($form->isSubmitted() && $form->isValid()){
+
+        if ($form->isSubmitted() && $form->isValid()) {
             //récuperer les tokens de l'utilisateur connecté
             $user = $this->get('security.token_storage')->getToken()->getUser();
             $publication->setUser($user);
-            
-            $manager= $this->getDoctrine()->getManager();
+
+            $manager = $this->getDoctrine()->getManager();
             $manager->persist($publication);
             $manager->flush();
-            
+
 
             $this->addFlash('message', 'Votre annoce à bien été publié');
             return $this->redirectToRoute('profil');
-        } 
+        }
 
 
 
 
-    
-// formulaire modif
+
+        // formulaire modif
 
         $formProfil = $this->createForm(UpdateProfilFormType::class, $user);
         $formProfil->handleRequest($request);
@@ -90,8 +90,8 @@ class ProfilController extends AbstractController
 
             return $this->redirectToRoute('profil');
         }
-      
-       
+
+
         return $this->render('profil/index.html.twig', [
             'user' => $user,
             'publications' => $publications,
@@ -100,27 +100,26 @@ class ProfilController extends AbstractController
             'updateProfilForm' => $formProfil->createView(),
             'user_age' => $age,
         ]);
-        
-        }
-    
-    
+    }
+
+
     /**
      * @Route("/profil/update-{id}", name="publication_update")
      */
     public function updatePublication(PublicationRepository $publicationRepository, $id, Request $request): Response
-    { 
-        
+    {
+
         $publication = $publicationRepository->find($id);
         $formModifPublication = $this->createForm(PublicationType::class, $publication);
         $formModifPublication->handleRequest($request);
         $repo = $this->getDoctrine()->getRepository(Publication::class);
         $countrys = $repo->findAll();
 
-        if ( $formModifPublication->isSubmitted() &&  $formModifPublication->isValid()) {
+        if ($formModifPublication->isSubmitted() &&  $formModifPublication->isValid()) {
             $oldNomImg = $publication->getImg(); //ancien image
             $oldCheminImg = $this->getParameter('dossier_photos_pays') . '/' . $oldNomImg;
 
-            
+
 
             $infoImg =  $formModifPublication['img']->getData();
             $extensionImg = $infoImg->guessExtension();
@@ -138,9 +137,9 @@ class ProfilController extends AbstractController
                 'La voyage a bien été modifiée'
             );
 
-           
-       
-        return $this->redirectToRoute('profil');
+
+
+            return $this->redirectToRoute('profil');
         }
         return $this->render('profil/updatePublication.html.twig', [
             'publicationModifForm' =>  $formModifPublication->createView(),
@@ -152,7 +151,8 @@ class ProfilController extends AbstractController
     /**
      * @Route("/profil/{id}", name="profil_voyageur")
      */
-    public function afficheProfilVoyageur($id, Request $request, UserRepository $userRepository){
+    public function afficheProfilVoyageur($id, Request $request, UserRepository $userRepository)
+    {
 
         $repo = $this->getDoctrine()->getRepository(Country::class);
         $countrys = $repo->findAll();
@@ -160,7 +160,7 @@ class ProfilController extends AbstractController
         $repo = $this->getDoctrine()->getRepository(User::class);
         $user = $repo->find($id);
 
-        $datetime = date_format($user->getAge(),'Y-m-d H:i:s');
+        $datetime = date_format($user->getAge(), 'Y-m-d H:i:s');
         $timestamp = strtotime($datetime);
         $age = abs((time() - $timestamp) / (3600 * 24 * 365));
         $age = floor($age);
@@ -168,7 +168,7 @@ class ProfilController extends AbstractController
         $form = $this->createForm(ContactVoyageurFormType::class);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $recepteur = $userRepository->find($id)->getEmail();
             $expediteur = $this->get('security.token_storage')->getToken()->getUser()->getEmail();
 
@@ -178,16 +178,17 @@ class ProfilController extends AbstractController
                 ->setFrom($expediteur)
                 ->setTo($recepteur)
                 ->setBody(
-                $this->renderView(
-                    'profil/emailContactUser.html.twig',[
-                        'formData' => $donnes,
-                        'countrys' => $countrys,
-                        
-                    ]
-                ),
-                'text/html'
-            )
-            ;
+                    $this->renderView(
+                        'profil/emailContactUser.html.twig',
+                        [
+                            'formData' => $donnes,
+                            'countrys' => $countrys,
+
+                        ]
+                    ),
+                    'text/html'
+             );
+             }   
             return $this->render('profil/publierProfil.html.twig', [
                 'contactVoyageurForm' => $form->createView(),
                 'countrys' => $countrys,
@@ -195,9 +196,6 @@ class ProfilController extends AbstractController
                 'publications' => $publications,
                 'user_age' => $age,
             ]);
-            }
-     
-       
+        
     }
-
 }
