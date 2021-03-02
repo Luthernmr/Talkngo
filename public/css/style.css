@@ -85,17 +85,14 @@ a:link{
 }
 
 #myUL{
-    padding: 0.4em 0;
     display: none;
     z-index: 1000;
     position: absolute;
-    height: 179px;
-    width: max-content;
+    height: 180px;
     background-color: rgba(220, 220, 220, 0.8);
     border-top: none;
     overflow-y: auto;
     margin-left: 15px;
-    
 }
 
 .pays {

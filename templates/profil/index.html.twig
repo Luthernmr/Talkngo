@@ -23,89 +23,99 @@
 
         <div class=" info-profil container d-flex justify-content-around">
         
-        <div class="d-flex">
-            <img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profil-img" width="80em" height="80em">
-            
-            <div class="container d-flex-column ml-2" > 
-                <h3 id="nameOfUserProfil" class=>{{ user.firstname }}  {{ user.name }}</h3>
-                <h6>{{ user_age}} ans</h6>
-                <h6>{{ user.location }}</h6>
-            </div>
-            <a class="modif-btn m-2" href="#" data-toggle="modal" data-target="#login"><i class="fas fa-user-edit fa-3x" id="modifProfil"></i></a>
+            <div class="d-flex">
 
-        </div>
+                <img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profil-img" width="80em" height="80em">
+                
+                <div class="container d-flex-column ml-2" > 
+                    <h3 id="nameOfUserProfil" class=>{{ user.firstname }}  {{ user.name }}</h3>
+                    <h6>{{ user_age}} ans</h6>
+                    <h6>{{ user.location }}</h6>
+                </div>
+
+                <a class="modif-btn m-2" href="#" data-toggle="modal" data-target="#modif-info-profil"><i class="fas fa-user-edit fa-3x" id="modifProfil"></i></a>
+
+            </div>
 
             <p class="description-profil text-dark col-12 m-2 p-2">{{user.description}}</p>
 
 
         </div>
     </div>
-    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="signLabel" aria-hidden="true">
+    <div class="modal fade" id="modif-info-profil" tabindex="-1" role="dialog" aria-labelledby="signLabel" aria-hidden="true">
        
             <div class="modal-dialog modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="connexLabel"><em class="fa fa-user"></em> Modification du profil</h5>
-                <button type="button" class="close" data-dismiss="modal" ><i class="fas fa-times"></i></button>
-              </div>
-              <div class="modal-body">
-               {{form_start(updateProfilForm)}}
-               {{ form_row(updateProfilForm.location,{'attr':{'class':'form-control'} }) }}
-               {{ form_row(updateProfilForm.description,{'attr':{'class':'form-control'} }) }}
-               {{ form_row(updateProfilForm.email,{'attr':{'class':'form-control'} }) }}
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="connexLabel"><em class="fa fa-user"></em> Modification du profil</h5>
+                        <button type="button" class="close" data-dismiss="modal" ><i class="fas fa-times"></i></button>
+                    </div>
+
+                    <div class="modal-body">
+                        {{form_start(updateProfilForm)}}
+
+                            {{ form_row(updateProfilForm.location,{'attr':{'class':'form-control'} }) }}
+                            {{ form_row(updateProfilForm.description,{'attr':{'class':'form-control'} }) }}
+                            {{ form_row(updateProfilForm.email,{'attr':{'class':'form-control'} }) }}
            
-              
+                            {{form_widget(updateProfilForm)}}
 
-                    {{form_widget(updateProfilForm)}}
-                    <button id="modification" type="submit" class="submit">Modifier les changements</button>
+                            <button id="modification" type="submit" class="submit">Modifier les changements</button>
 
-               {{form_end(updateProfilForm)}}
-              </div>
-            </div>
+                        {{form_end(updateProfilForm)}}
+                    </div>
+
+                </div>
             </div>
         
     </div>
 
     <article class="container mb-5" >
-    <h2 class="mt-5">Mes voyages</h2>         
-    <div class="container travel-list scroll-1" id="sizesmallscreen" >
-    {% for publication in publications %}
-        {% if publication.user.id == user.id %}
-        <div class="col-5 m-1 own-travel" >
-            <div class="presentation p-2">
-              <div class="user-info m-2">
-              </div>
-              <div class="date">
-                <h4>{{ publication.countryStart | country_name}} <i class="fas fa-plane"></i> {{ publication.countryName | country_name }} </h4>
-                <h4 class=""> {{ publication.date | date('d/m/Y')}}</h4>
-                <a class="" href="{{ path('publication_update', {'id': publication.id})  }}">Modifier mes voyages</a>
-              </div>
-              
+        <h2 class="mt-5">Mes voyages</h2>         
+        <div class="container travel-list scroll-1" id="sizesmallscreen" >
+            {% for publication in publications %}
+                {% if publication.user.id == user.id %}
+
+                <div class="col-5 m-1 own-travel" >
+                    <div class="presentation p-2">
+            
+                        <div class="date">
+                            <h4>{{ publication.countryStart | country_name}} <i class="fas fa-plane"></i> {{ publication.countryName | country_name }} </h4>
+                            <h4 class=""> {{ publication.date | date('d/m/Y')}}</h4>
+                            <a class="" href="{{ path('publication_update', {'id': publication.id})  }}">Modifier mes voyages</a>
+                        </div>
+                  
+                    </div>
+                </div>
+
+                {% endif %}
+
+            {% else %}
+
+                <h2> Aucun voyages effectué</h2>
+
+            {% endfor %}
             </div>
-          </div>
-        {% endif %}
-        {% else %}
-            <h2> Aucun voyages effectué</h2>
-    {% endfor %}
-        </div>
     </article>
 
    
 <div class="form-largescreen container" data-scroll data-scroll-speed>
     <h2 class="text-white mb-4">Ajouter un nouveau voyage :</h2>
-{{ form_start(formPublication) }}
 
-    {{form_widget(formPublication)}}
-    <button type="submit" class="submit mt-2">Publier l'annonce</button>
-{{ form_end(formPublication) }}
+        {{ form_start(formPublication) }}
+
+        {{form_widget(formPublication)}}
+
+        <button type="submit" class="submit mt-2">Publier l'annonce</button>
+
+        {{ form_end(formPublication) }}
 </div>
-{% for message in app.flashes('message') %}
-<div class="alert alert-success " role="alert">
-    {{message}}
-</div>
-{% endfor %} 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        {% for message in app.flashes('message') %}
+            <div class="alert alert-success " role="alert">
+               {{message}}
+            </div>
+        {% endfor %} 
 </body>
 {% endblock %}
