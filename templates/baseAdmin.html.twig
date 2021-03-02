@@ -28,28 +28,29 @@
     <header class="large-screen">
 
 
-      <img class="logo" src="{{asset('css/img/logo-horizontal-1.svg')}}" alt="">
+       <a href="{{path('home')}}"><img class="logo" src="{{asset('css/img/logo-horizontal-1.svg')}}" alt="logo talkngo"></a>
       <h2>Talk'n Go - Espace administrateur</h2>
       
     </header>
   
 
     <header class="phone-screen">
-      <img class="logo" src="../public/css/img/logo-vertical (2).svg" alt="">
+      <img class="logo" src="{{asset('css/img/logo-vertical-2.svg')}}" alt="">
       <h2>Talk'n Go - Espace administrateur</h2>
     </header>
       
     <div class="container-fluid">
       <div class="row">
-          <nav id="menu" class="col-2 ">
+          <nav id="menu" class="col-6 pt-3">
             <h2>Menu</h2>
               <ul class="ul-menu">
+                  <li><a href="{{ path('home') }}"><i class="fas fa-door-open"> Accueil</i></a></li>
                   <li><a href="{{ path('admin') }}"><i class="fas fa-laptop"> Admin</i></a></li>
                   <li><a href="{{ path('add_country') }}"><i class="fas fa-globe-americas"> Pays</i></a></li>
                   <li><a href="{{ path('admin_user') }}"><i class="fas fa-users"> Utilisateur</i></a></li>
-                  <li><a href="{{ path('app_register') }}"><i class="fas fa-save"> Enregistrement</i></a></li>
-                  <li><a href="{{ path('app_logout') }}"><i class="fas fa-lock"> Sécurité</i></a></li>
-                  <li><a href="{{ path('home') }}"><i class="fas fa-door-open"> Accueil</i></a></li>
+                  <li><a href="{{ path('create_user') }}"><i class="fas fa-save"> Enregistrement</i></a></li>
+                  <li><a href="{{ path('app_logout') }}"><i class="fas fa-lock"> Déconnexion</i></a></li>
+                  
               </ul>
           </nav>
       </div>
@@ -68,9 +69,9 @@
     {% block javascripts %}{% endblock %}
 
     <footer>
-      <li><a href="#">A propos</a></li>
-      <li><a href="#">Nous contacter</a></li>
-      <li><a href="#">Talk'n Go © Copyright 2021</a></li>
+      <li><a href="{{path('apropos')}}">A propos</a></li>
+      <li><a href="{{path('contact')}}">Nous contacter</a></li>
+      <li><p class="copyright">Talk'n Go © Copyright 2021</p></li>
   </footer>  
   
   </body>

@@ -36,18 +36,63 @@ header.phone-screen{
     display: none;
 }
 
- header.large-screen{
+@import url('https://fonts.googleapis.com/css2?family=Calistoga&display=swap');
+
+*{
+    list-style: none;
+    outline-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#tableuseradmin {
+    overflow-x: auto;
+    margin-bottom: 1em;
+    padding: 0;
+}
+
+#boutonaduser {
+    color: white;
+    background-color: #6923E5;
+    border-radius: 20px;
+    padding: 0.2em 0.5em 0.4em 0.5em;
+    width: 11em;
+}
+
+td a:hover {
+    color: #09999A;
+}
+
+#boutonaduser:hover {
+    color: #6923E5;
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid #6923E5;
+}
+
+ header{
+    position: sticky;
+    background-color: #fff;
+    z-index: 999;
+    top: 0px;
     display: flex;
+    align-content: center;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 50px;
+    padding: 0px 50px 0px 50px;
     margin-left:auto ;
     margin-right: auto;
+    height: 8em;
     width: 100%;
-    box-shadow: 0px 11px 7px 0px rgba(0,0,0,0.2);
-    
+    box-shadow: 0px 4px 7px 0px rgba(0,0,0,0.2);
   
 }
+
+.nom-photo{
+    display: none;
+}
+
+
 
 footer{
 
@@ -57,6 +102,29 @@ footer{
     margin-bottom: 50px;
     font-family: Arial, Helvetica, sans-serif;
 }
+a{
+    color:#6923E5 ;
+}
+a:link{
+    text-decoration: none;
+}
+
+.header-content{
+   width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+
+.logo{
+    margin-top: 1em;
+    width: 200px;
+    height: 100px;
+}
+
 
 h2 {
     color:#6923E5 ;
@@ -73,13 +141,7 @@ a:link{
     text-decoration: none;
 }
 
-.header-content{
-   width: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;  
-}
+
 
 
 .logo{
@@ -111,7 +173,9 @@ li{
 }
 
 
-
+header.phone-screen {
+    display: none;
+}
 
 @media (max-width: 840px) {
 
@@ -129,6 +193,7 @@ li{
       
      
     }
+
 
     footer{
         
@@ -151,6 +216,7 @@ li{
 
     .li-menu {
         font-family: Arial, Helvetica, sans-serif;
+
         
     }
 
@@ -163,4 +229,13 @@ li{
         font-family: Arial, Helvetica, sans-serif;
         color: #09999A;
     }
+
+    .logo{
+        width: 100px;
+        height: 100px;
+    }
+}
+
+.copyright {
+    color:#6923E5 ;
 }

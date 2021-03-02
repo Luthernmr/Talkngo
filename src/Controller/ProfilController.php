@@ -172,20 +172,26 @@ class ProfilController extends AbstractController
         //Envoie de mail Utilisateur à Utilisteur
         if($form->isSubmitted() && $form->isValid()){
             
+            $nomUser = $userRepository->find($id)->getName();
+            $prenomUser = $userRepository->find($id)->getFirstName();
 
             $recepteur = $userRepository->find($id)->getEmail();
             $expediteur = $this->get('security.token_storage')->getToken()->getUser()->getEmail();
-
+  
             $donnes = $form->getData();
             // $userReceveur = $UserRepository->findOneByEmail($donnes['email']);
            $message = (new \Swift_Message('demande de contact  '))
                 ->setFrom($expediteur)
                 ->setTo($recepteur)
-                ->setBody(
+               
+                 ->setBody(
                 $this->renderView(
                     'profil/emailContactUser.html.twig',[
                         'formData' => $donnes,
                         'countrys' => $countrys,
+                        'nomUser' => $nomUser,
+                        'prenomUser'=> $prenomUser,
+                        'expediteur' => $expediteur
                         
                     ]
                 ),
