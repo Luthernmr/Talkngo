@@ -29,26 +29,29 @@
 
     </head>
     
-        <header class="">
+        <header>
             
             <a href="{{path('home')}}"><img class="logo" src="{{asset('css/img/logo-horizontal-1.svg')}}" alt="logo talkngo"></a>
+         
+        <div class="d-flex flex-row align-items-center">
             <div class="header-content">
                 <div class="liste-searchbar">
-                <input class="searchbar " onClick="afficheListe()" type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeydown="searchFunction(); afficheListekeyboard()">
+                <input class="searchbar m-3 " onClick="afficheListe()" type="search" name="myInput" placeholder="Chercher un pays" id="myInput" onkeydown="searchFunction(); afficheListekeyboard()">
                     <ul id="myUL">
                        {% for country in countrys %}
                        <li class="container-fluid" id="suggestion">
                             <a class="pays" id="pays" href="{{ path('country_page',{'id':country.id } ) }}">{{ country.countryName }} </a>
                         </li>
                         {% endfor %} 
-                    </ul>
-               
+                    </ul>    
             </div>
-           
+
           <div class="spacebar"></div>
             
-    
+          
             {% if app.user %}
+
+            
             <nav class="navbar navbar-expand-lg navbar-light  ">
                
                     <i class="fas fa-3x fa-bars menu-profil navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></i>
@@ -77,11 +80,11 @@
             
         {% endif %}
        
-    
+        </div>
                 
             
                 
-        </div>
+    </div>
     </header>
 
 

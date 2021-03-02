@@ -22,6 +22,7 @@ class PublicationType extends AbstractType
             ->add('countryStart',CountryType::class, [
                     'label' => 'où allez-vous?'])
 
+            
             ->add('date' , BirthdayType::class, [
                 'label' => 'Jour de départ :',
             'widget' => 'single_text',
