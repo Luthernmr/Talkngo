@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class BaseController extends AbstractController
 {
     /**
-     * @Route("/", name="base")
+     * @Route("/base", name="base")
      */
     public function ajout():Response
     {
