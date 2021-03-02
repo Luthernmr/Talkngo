@@ -27,12 +27,12 @@
     <div class="form-largescreen">
         <h1>Connectez-vous</h1>
         <label for="inputEmail">Email</label>
-        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required
+        <input type="email" value="{{ last_username }}" name="email" placeholder="adress@email.com" id="inputEmail" class="form-control" required
             autofocus>
         <label for="inputPassword">Password</label>
         <input type="password" name="password" id="inputPassword" class="form-control" required>
 
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        <input type="hidden" name="_csrf_token" placeholder="adress@email.com" value="{{ csrf_token('authenticate') }}">
         <button class="submit" type="submit">
             Connexion
         </button>

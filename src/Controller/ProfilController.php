@@ -61,7 +61,7 @@ class ProfilController extends AbstractController
             $manager->flush();
             
 
-            $this->addFlash('message', 'Votre annonce à bien été publiée');
+            $this->addFlash('message', 'Votre annoce à bien été publié');
             return $this->redirectToRoute('profil');
         } 
 
@@ -128,26 +128,14 @@ class ProfilController extends AbstractController
 
         if ( $formModifPublication->isSubmitted() &&  $formModifPublication->isValid()) {
 
-                if ($formModifPublication->get('img')->getData() !== null){
-                $oldNomImg = $publication->getImg(); //ancien image
-                $oldCheminImg = $this->getParameter('dossier_photos_pays') . '/' . $oldNomImg;
-                if (file_exists($oldCheminImg)) {
-                    unlink($oldCheminImg);
-                }
-                $infoImg =  $formModifPublication['img']->getData();
-                $extensionImg = $infoImg->guessExtension();
-                $nomImg = time() . '.' . $extensionImg;
-                $infoImg->move($this->getParameter('dossier_photos_pays'), $nomImg);
-                $publication->setImg($nomImg);
-                }
-
+               
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($publication);
             $manager->flush();
 
             $this->addFlash(
                 'success',
-                'La voyage a bien été modifié'
+                'La voyage a bien été modifiée'
             );
 
            
@@ -172,6 +160,7 @@ class ProfilController extends AbstractController
         $repo = $this->getDoctrine()->getRepository(User::class);
         $user = $repo->find($id);
 
+        //Calculer l'âge en fonction de la date de naissance
         $datetime = date_format($user->getAge(),'Y-m-d H:i:s');
         $timestamp = strtotime($datetime);
         $age = abs((time() - $timestamp) / (3600 * 24 * 365));
@@ -180,22 +169,29 @@ class ProfilController extends AbstractController
         $form = $this->createForm(ContactVoyageurFormType::class);
         $form->handleRequest($request);
 
+        //Envoie de mail Utilisateur à Utilisteur
         if($form->isSubmitted() && $form->isValid()){
             
+            $nomUser = $userRepository->find($id)->getName();
+            $prenomUser = $userRepository->find($id)->getFirstName();
 
             $recepteur = $userRepository->find($id)->getEmail();
             $expediteur = $this->get('security.token_storage')->getToken()->getUser()->getEmail();
-
+  
             $donnes = $form->getData();
             // $userReceveur = $UserRepository->findOneByEmail($donnes['email']);
            $message = (new \Swift_Message('demande de contact  '))
                 ->setFrom($expediteur)
                 ->setTo($recepteur)
-                ->setBody(
+               
+                 ->setBody(
                 $this->renderView(
                     'profil/emailContactUser.html.twig',[
                         'formData' => $donnes,
                         'countrys' => $countrys,
+                        'nomUser' => $nomUser,
+                        'prenomUser'=> $prenomUser,
+                        'expediteur' => $expediteur
                         
                     ]
                 ),
@@ -205,7 +201,7 @@ class ProfilController extends AbstractController
             $Mailer->send($message);
            $this->addFlash('message',' votre message a bien ete envoyer  ');
 
-           return $this->redirectToRoute('profil_voyageur');
+           return $this->redirectToRoute('profil');
 
             }
 
@@ -217,8 +213,6 @@ class ProfilController extends AbstractController
                 'publications' => $publications,
                 'user_age' => $age,
             ]);
-            }
-     
-        }
-    
+    }
 
+}

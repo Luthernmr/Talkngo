@@ -16,8 +16,8 @@
     width: 50em;
     height: 30em;
     border-radius: 25px;
-    margin-top: 5em;
-    padding-top: 5em;
+    margin: 5em 1em 0 1em;
+    padding: 5em 1em;
 }
 
 @media screen and (max-width: 480px) {
@@ -29,8 +29,9 @@
         font-size: 1.2rem;
     }
     #bgPays{
-        width: 30em;
         height: 25em;
+        width:auto;
+        margin: 5em 0.5em 0 0.5em;
     }
     h2#sloganPaysAlt {
         font-size: 1.2rem;

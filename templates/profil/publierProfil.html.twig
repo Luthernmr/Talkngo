@@ -1,37 +1,20 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}profil{% endblock %}
 
-{% block javascripts %}
-<script>
-    const card = document.getElementsByClassName('contenuCard');
-
-    for (i = 0; i < card.length; i++) {
-        card[i].addEventListener('click', function () {
-            this.classList.toggle('active')
-        })
-    }
-</script>
-{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper {
-        margin: 1em auto;
-        max-width: 800px;
-        width: 95%;
-        font: 18px/1.5 sans-serif;
-    }
 
-    .example-wrapper code {
-        background: #F5F5F5;
-        padding: 2px 6px;
-    }
-</style>
 
-<div class="profil">
-    <div class="info-profil">
-        <img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profil-img" width="80px" height="80px">
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('css/form_css/form_msg.css')}}">
+{% endblock  %}
+
+
+<div class="profil2">
+    <div class="info-profil2 text-center mt-4">
+        <img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profil-img2" width="80px" height="80px">
         <h3>{{ user.firstname }}</h1>
             <h3>{{ user.name }}</h2>
                 <h3>{{ user_age}} ans</h3>
@@ -39,18 +22,17 @@
                 <p>{{user.description}}</p>
     </div>
 
-    <div class="ligne"></div>
+    <div class="ligne2"></div>
 
-    <div class="msg">
-    
+    <div class="msg2">
             <h1>Envoyez un message </h1>
             {{ form_start(contactVoyageurForm) }}
-            {{ form_row(contactVoyageurForm.sujet,{'attr':{'class':'form-control'} }) }}
-            {{ form_row(contactVoyageurForm.message,{'attr':{'class':'form-control'} }) }}
+            {{ form_row(contactVoyageurForm.sujet,{'attr':{'class':'form-control', 'placeholder':'sujet'} }) }}
+            {{ form_row(contactVoyageurForm.message,{'attr':{'class':'form-control', 'placeholder':'message'} }) }}
             {{ form_row(contactVoyageurForm.envoyer,{'attr':{'class':'submit'} }) }}
             {{ form_end(contactVoyageurForm) }}
         </div>
-    </div>
+    
 
 
 </div>

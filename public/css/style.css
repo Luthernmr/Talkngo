@@ -7,7 +7,6 @@
     padding: 0;
 }
 
-
  header{
     position: sticky;
     background-color: #fff;
@@ -42,9 +41,15 @@ footer{
 }
 a{
     color:#6923E5 ;
+    
 }
+
 a:link{
     text-decoration: none;
+}
+
+.liens-mdp-oublie:hover {
+    color:#09999A;
 }
 
 .header-content{
@@ -56,6 +61,9 @@ a:link{
     
 }
 
+#menuburger {
+    color: #6923E5;
+}
 
 .logo{
     margin-top: 1em;
@@ -83,17 +91,14 @@ a:link{
 }
 
 #myUL{
-    padding: 0.4em 0;
     display: none;
     z-index: 1000;
     position: absolute;
-    height: 179px;
-    width: max-content;
+    height: 180px;
     background-color: rgba(220, 220, 220, 0.8);
     border-top: none;
     overflow-y: auto;
     margin-left: 15px;
-    
 }
 
 .pays {
@@ -130,17 +135,15 @@ footer a:hover {
 }
 
 .spacebar{
-    height: 100px;
+    margin: 0 2em;
+    height: 60px;
     width: 2px;
     background-color: #6923E5;   
 }
 
-.liste-searchbar{
-    margin-right: 10px;
-}
 
 .register{
-padding : 10px 30px 10px 30px;
+padding : 6px 30px 10px 30px;
 border: 1px solid #6923E5;
 border-radius: 20px;
 background-color: #fff;
@@ -152,7 +155,7 @@ height: 40px;
 
 .login{
 border: 1px solid  #6923E5;
-padding : 10px 30px 10px 30px;
+padding : 6px 30px 10px 30px;
 border-radius: 20px;
 background-color: #6923E5;    
 color: #fff;
@@ -222,7 +225,6 @@ li{
     .header-content{
         display: flex;
         flex-direction: column;
-
     }
 
     footer{
