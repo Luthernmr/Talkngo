@@ -1,10 +1,10 @@
 
 {% block body %}
-<h1> Talkngo demande de  contact </h1>
+<h1 style="text-align: center;">  <span style="color:#6923E5 ;"> Talkngo</span> demande de  contact </h1>
 
-<h3> {{formData.sujet}} </h3>
+<h3> Nom: {{nomUser}} Prenom: {{prenomUser}} <br> Email: {{expediteur}} </h3>
+<h4> Ojet du message:  {{formData.sujet}}  </h4>
 <p>
-   
     {{formData.message}}
 </p>
 {% endblock body %}
