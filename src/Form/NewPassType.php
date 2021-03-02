@@ -21,13 +21,10 @@ class NewPassType extends AbstractType
              ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'les deux mot de passe ne correspond pas  .',
-                'options' => ['attr' => ['class' => 'password-field']],
+                'options' => ['attr' => ['class' => 'input-mdp']],
                 'required' => true,
                 'first_options'  => ['label' => 'mot de passe'],
                 'second_options' => ['label' => 'confirmer  mot de passe'],
-                'attr' => [
-                    'class' => 'input-mdp'
-                ],
                 'mapped' => false,
                 'constraints' => [
                     new Length([

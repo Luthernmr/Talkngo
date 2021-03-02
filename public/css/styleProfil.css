@@ -71,21 +71,22 @@ article{
 }
 
 .msg{
- 
-    background-color: #6923E5;
-	width:400px;
-    border-radius: 25px;
-    border-color: #6923E5;
-    padding: 15px;
-    margin: 50px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.msg:hover{
-    transition: 1s;
-    border-right: 20px solid  #6923E5;
-    border-left: 20px solid  #6923E5;
+#modification {
+    width: 220px;
+    height: 40px;
+    color: #6923E5;
 }
 
+#modification:hover {
+    width: 220px;
+    height: 40px;
+    color: #fff;
+}
 
 @media only screen and (max-width: 762px){
     .profil{
@@ -112,11 +113,21 @@ article{
        border-radius: 25px;
    }
 
-
-   .msg{
-    width: 350px;
-    margin-bottom: 50px;
+.close {
+    color: #6923E5;
 }
 
+label {
+    color: #6923E5;
+    margin-left: 5px;
 }
 
+#file-upload-button {
+    margin: 20px;
+}
+
+.photo {
+    margin : 20px;
+    
+}
+}

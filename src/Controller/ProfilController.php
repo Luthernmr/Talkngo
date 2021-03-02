@@ -61,7 +61,7 @@ class ProfilController extends AbstractController
             $manager->flush();
             
 
-            $this->addFlash('message', 'Votre annoce à bien été publié');
+            $this->addFlash('message', 'Votre annonce à bien été publiée');
             return $this->redirectToRoute('profil');
         } 
 
@@ -128,9 +128,12 @@ class ProfilController extends AbstractController
 
         if ( $formModifPublication->isSubmitted() &&  $formModifPublication->isValid()) {
 
-                if ($$formModifPublication->get('img')->getData() !== null){
+                if ($formModifPublication->get('img')->getData() !== null){
                 $oldNomImg = $publication->getImg(); //ancien image
                 $oldCheminImg = $this->getParameter('dossier_photos_pays') . '/' . $oldNomImg;
+                if (file_exists($oldCheminImg)) {
+                    unlink($oldCheminImg);
+                }
                 $infoImg =  $formModifPublication['img']->getData();
                 $extensionImg = $infoImg->guessExtension();
                 $nomImg = time() . '.' . $extensionImg;
@@ -144,7 +147,7 @@ class ProfilController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'La voyage a bien été modifiée'
+                'La voyage a bien été modifié'
             );
 
            
