@@ -28,7 +28,7 @@
         {% endblock %}
 
     </head>
-    {% if app.user %}
+    
         <header class="">
             
             <a href="{{path('home')}}"><img class="logo" src="{{asset('css/img/logo-horizontal-1.svg')}}" alt="logo talkngo"></a>
@@ -45,10 +45,10 @@
                
             </div>
            
-           
-    
-    
+          <div class="spacebar"></div>
             
+    
+            {% if app.user %}
             <nav class="navbar navbar-expand-lg navbar-light  ">
                
                     <i class="fas fa-3x fa-bars menu-profil navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></i>
@@ -71,6 +71,10 @@
          
                     </div>
             </nav>
+            {% else %}
+            <a class="login m-3" href=" {{ path('app_login') }} ">Connexion</a>
+            <a class="register m-3" href="{{ path('app_register') }}">Inscription</a>
+            
         {% endif %}
        
     
@@ -83,21 +87,8 @@
 
     
         {% block body %}
-        <body class="connexion-body d-flex flex-column justify-content-around">
-            <h1 class="m-4" style="color:#6923E5">Bienvenu sur Talk'n Go</h1>
-
-            <main class="connexion-main ">
-            <div class="d-flex m-1">
-                <div class="d-flex flex-column align-items-center">
-                    <a class="register m-3" href="{{ path('app_register') }}">Inscription</a>
-                    <h6 style="font-weight:lighter">(S'enregistrer)</h6>
-                </div>
-                <div class="d-flex flex-column align-items-center"> 
-                    <a class="login m-3" href=" {{ path('app_login') }} ">Connexion</a>
-                    <h6 style="font-weight:lighter">(Se connecter)</h6>
-                </div>    
-    </div>
-            </main>
+        <body >
+          
                    
         </body>
         {% endblock %}
