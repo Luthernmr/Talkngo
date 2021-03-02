@@ -1,8 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-    <link rel="stylesheet" href=" {{asset('css/form_css/form_msg.css')}} ">
-{% endblock  %}
 
 {% block title %}profil{% endblock %}
 
@@ -10,9 +7,14 @@
 {% block body %}
 
 
-<div class="profil">
-    <div class="info-profil">
-        <img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profil-img" width="80px" height="80px">
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('css/form_css/form_msg.css')}}">
+{% endblock  %}
+
+
+<div class="profil2">
+    <div class="info-profil2 text-center mt-4">
+        <img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profil-img2" width="80px" height="80px">
         <h3>{{ user.firstname }}</h1>
             <h3>{{ user.name }}</h2>
                 <h3>{{ user_age}} ans</h3>
@@ -20,9 +22,9 @@
                 <p>{{user.description}}</p>
     </div>
 
-    <div class="ligne"></div>
+    <div class="ligne2"></div>
 
-    <div class="msg">
+    <div class="msg2">
             <h1>Envoyez un message </h1>
             {{ form_start(contactVoyageurForm) }}
             {{ form_row(contactVoyageurForm.sujet,{'attr':{'class':'form-control'} }) }}
