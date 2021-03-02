@@ -1,18 +1,28 @@
 
  .profil{
-     margin-left: auto;
-     margin-right: auto;
-     padding: 15px;
-     border: #6923E5 5px solid ;
-     border-radius: 25px;
-     width: 800px;
-     height: 400px;
-     margin-top: 5vh;
+    
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5em 2em 3em 2em;
+    border: #6923E5 3px solid ;
+    border-radius: 25px;
+    width: 47em;
+    margin-top: 5vh;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    color: #fff;
+    color: #0d9b9c;
+}
+
+#nameOfUserProfil {
+    font-size: 2em;   
+}
+
+#publication_date {
+    margin-top: 1em;
+    width: 25em;
+    display: inline;
 }
 
 .profil-voyage{
