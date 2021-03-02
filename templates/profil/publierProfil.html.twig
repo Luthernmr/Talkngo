@@ -3,6 +3,13 @@
 {% block title %}profil{% endblock %}
 
 {% block body %}
+
+{% for message in app.flashes('message') %}
+<div class="alert alert-success " role="alert">
+    {{message}}
+</div>
+
+{% endfor %}
 <style>
     .example-wrapper {
         margin: 1em auto;

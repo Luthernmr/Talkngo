@@ -175,19 +175,20 @@ class AdminController extends AbstractController
 
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $oldNomImg = $user->getImg(); //ancien image
-            $oldCheminImg = $this->getParameter('dossier_photos_user') . '/' . $oldNomImg;
 
-            // if (file_exists($oldCheminImg)) {
-            //     unlink($oldCheminImg);
-            // }
-
-            // $infoImg = $form['img']->getData();
-            // $extensionImg = $infoImg->guessExtension();
-
-            // $nomImg = time() . '.' . $extensionImg;
-            // $infoImg->move($this->getParameter('dossier_photos_user'), $nomImg);
-            // $user->setImg($nomImg);
+                if ($form->get('img')->getData() !== null){
+                    
+                    $oldNomImg = $user->getImg(); //ancien image
+                    $oldCheminImg = $this->getParameter('dossier_photos_user') . '/' . $oldNomImg;
+                    if (file_exists($oldCheminImg)) {
+                        unlink($oldCheminImg);
+                    }
+                    $infoImg = $form['img']->getData();
+                    $extensionImg = $infoImg->guessExtension();
+                    $nomImg = time() . '.' . $extensionImg;
+                    $infoImg->move($this->getParameter('dossier_photos_user'), $nomImg);
+                    $user->setImg($nomImg);
+                }
 
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($user);
