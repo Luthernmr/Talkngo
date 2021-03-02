@@ -29,8 +29,6 @@
     display: none;
 }
 
-
-
 footer{
 
     display: flex;
@@ -257,4 +255,8 @@ li{
         .copyright {
             color:#6923E5 ;
         }
+}
+
+#h3-left {
+    text-align: left;
 }
