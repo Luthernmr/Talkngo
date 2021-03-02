@@ -20,9 +20,15 @@
 width: 50%;
  
 }
-
+h2{
+    margin-top: 50px;
+}
 li{
     color: black;
+}
+article{
+    display: flex;
+    justify-content: center;
 }
  .profile{
     display: flex;
@@ -61,13 +67,25 @@ li{
 }
 
 .msg{
-    width: 600px;
-    margin-bottom: 30px;
-   
+ 
+    background-color: #6923E5;
+	width:400px;
+    border-radius: 25px;
+    border-color: #6923E5;
+    padding: 15px;
+    margin: 50px;
 }
+
+.msg:hover{
+    transition: 1s;
+    border-right: 20px solid  #6923E5;
+    border-left: 20px solid  #6923E5;
+}
+
 
 @media only screen and (max-width: 762px){
     .profil{
+        position: relative;
         margin-left: auto;
         margin-right: auto;
         padding: 15px;
@@ -88,6 +106,10 @@ li{
        width: 350px;
    }
 
+
+   .msg{
+    width: 350px;
+}
 
 }
 

@@ -151,8 +151,7 @@ class ProfilController extends AbstractController
     /**
      * @Route("/profil/{id}", name="profil_voyageur")
      */
-    public function afficheProfilVoyageur($id, Request $request, UserRepository $userRepository)
-    {
+    public function afficheProfilVoyageur($id, Request $request, UserRepository $userRepository , \Swift_Mailer $Mailer){
 
         $repo = $this->getDoctrine()->getRepository(Country::class);
         $countrys = $repo->findAll();
@@ -168,34 +167,39 @@ class ProfilController extends AbstractController
         $form = $this->createForm(ContactVoyageurFormType::class);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if($form->isSubmitted() && $form->isValid()){
+            
+
             $recepteur = $userRepository->find($id)->getEmail();
             $expediteur = $this->get('security.token_storage')->getToken()->getUser()->getEmail();
 
             $donnes = $form->getData();
             // $userReceveur = $UserRepository->findOneByEmail($donnes['email']);
-            $message = (new \Swift_Message('comfirmation de votre email '))
+           $message = (new \Swift_Message('demande de contact  '))
                 ->setFrom($expediteur)
                 ->setTo($recepteur)
                 ->setBody(
-                    $this->renderView(
-                        'profil/emailContactUser.html.twig',
-                        [
-                            'formData' => $donnes,
-                            'countrys' => $countrys,
+                $this->renderView(
+                    'profil/emailContactUser.html.twig',[
+                        'formData' => $donnes,
+                        'countrys' => $countrys,
+                        
+                    ]
+                ),
+                'text/html'
+            )
+            ; 
+            $Mailer->send($message);
+           $this->addFlash('message',' votre message a bien ete envoyer  ');
 
-                        ]
-                    ),
-                    'text/html'
-             );
-             }   
-            return $this->render('profil/publierProfil.html.twig', [
+            }
+     
+       return $this->render('profil/publierProfil.html.twig', [
                 'contactVoyageurForm' => $form->createView(),
                 'countrys' => $countrys,
                 'user' => $user,
                 'publications' => $publications,
                 'user_age' => $age,
             ]);
-        
     }
 }
