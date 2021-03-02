@@ -27,7 +27,7 @@
 </div>
 {% endif %}
 
-<h4 class="text-center" style="color:#0d9b9c; font-family: 'calistoga'; margin-top: 5em;">Trouvez-vous un partenaire de voyage !</h4>
+<h4 class="text-center" styles="color:#0d9b9c; font-family: 'calistoga'; margin-top: 5em;">Trouvez-vous un partenaire de voyage !</h4>
 {% if user %}
 
 <div class="box-article">         
@@ -39,7 +39,7 @@
   <div class="card">
     <div class="presentation p-2 align-items-center">
 
-      <div class="user-info d-flex" style="height:3em;">
+      <div class="user-info d-flex" styles="height:3em;">
         <a href="{{ path('profil_voyageur',{'id':publication.user.id } ) }}"><img src="{{asset('img/profil/' ~ publication.user.img)}}" alt="pdp" class="profil-img ml-2" width="60px" height="60px"></a>
         <h3 class="m-3">{{ publication.user.firstName }}</h3>
       </div>
@@ -69,4 +69,3 @@
 {% endif %}
 </body>
 {% endblock %}
-
