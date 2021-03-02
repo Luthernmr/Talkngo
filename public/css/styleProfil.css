@@ -3,9 +3,9 @@
      margin-left: auto;
      margin-right: auto;
      padding: 15px;
-     border: #6923E5 5px solid ;
+
      border-radius: 25px;
-     width: 800px;
+     width: 900px;
      height: 400px;
      margin-top: 5vh;
     display: flex;
@@ -61,7 +61,33 @@ li{
 }
 
 .msg{
-    width: 400px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 600px;
+    margin-bottom: 30px;
+   
 }
+
+@media only screen and (max-width: 762px){
+    .profil{
+        margin-left: auto;
+        margin-right: auto;
+        padding: 15px;
+   
+        border-radius: 25px;
+        width: 300px;
+        height: 500px;
+        margin-top: 5vh;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: space-around;
+       color: #fff;
+   }
+
+
+   .ligne{
+       width: 350px;
+   }
+
+
+}
+
