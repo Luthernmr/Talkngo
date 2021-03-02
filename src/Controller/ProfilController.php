@@ -202,7 +202,7 @@ class ProfilController extends AbstractController
             $Mailer->send($message);
            $this->addFlash('message',' votre message a bien ete envoyer  ');
 
-           return $this->redirectToRoute('profil_vayageur');
+           return $this->redirectToRoute('profil_voyageur');
 
             }
 
