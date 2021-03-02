@@ -1,43 +1,59 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfilController!{% endblock %}
+{% block title %}profil{% endblock %}
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .example-wrapper {
+        margin: 1em auto;
+        max-width: 800px;
+        width: 95%;
+        font: 18px/1.5 sans-serif;
+    }
+
+    .example-wrapper code {
+        background: #F5F5F5;
+        padding: 2px 6px;
+    }
 </style>
 
-<div class="profile container">
-    <img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profile-img" width="80px" height="80px">
-    <h3>{{ user.firstname }}</h1>
-    <h3>{{ user.name }}</h2>
-    <h3>{{ user_age}} ans</h3>
-    <h3>{{ user.location }}</h3>
-    <p>{{user.description}}</p>
+<div class="profil">
+    <div class="info-profil">
+        <img src="{{asset('img/profil/' ~ user.img)}}" alt="pdp" class="profil-img" width="80px" height="80px">
+        <h3>{{ user.firstname }}</h1>
+            <h3>{{ user.name }}</h2>
+                <h3>{{ user_age}} ans</h3>
+                <h3>{{ user.location }}</h3>
+                <p>{{user.description}}</p>
+    </div>
+
+    <div class="ligne"></div>
+
+    <div class="profil-voyage">
+        <h2>Les voyages de {{user.name}}</h2>
+        
+        {% for publication in publications %}
+        {% if publication.user.id == user.id %}
+        <li>{{publication.countryName}}</li>
+        {% endif %}
+        {% else %}
+        <h2> Aucun voyages effectué</h2>
+        {% endfor %}
+    </div>
+    
 </div>
 
 
-    <div>
-        <h2>Les voyages de {{user.name}}</h2>
-        {% for publication in publications %}
-            {% if publication.user.id == user.id %}
-                {{publication.countryName}}
-            {% endif %}
-            {% else %}
-                <h2> Aucun voyages effectué</h2>
-        {% endfor %}
+
+
+
+<div class="msg">
+    <div class="form-largescreen" >
+    {{ form_start(contactVoyageurForm) }}
+    {{ form_end(contactVoyageurForm) }}
     </div>
+</div>
 
-   
 
-    <div class="message">
-
-        {{ form_start(contactVoyageurForm) }}
-        {{ form_end(contactVoyageurForm) }}
-
-    </div>
-
-        
 
 {% endblock %}
