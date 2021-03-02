@@ -180,7 +180,9 @@ class ProfilController extends AbstractController
                 ->setBody(
                 $this->renderView(
                     'profil/emailContactUser.html.twig',[
-                        'formData' => $donnes
+                        'formData' => $donnes,
+                        'countrys' => $countrys,
+                        
                     ]
                 ),
                 'text/html'
@@ -188,17 +190,13 @@ class ProfilController extends AbstractController
             ;
             return $this->render('profil/publierProfil.html.twig', [
                 'contactVoyageurForm' => $form->createView(),
+                'countrys' => $countrys,
+                'user' => $user,
+                'publications' => $publications,
+                'user_age' => $age,
             ]);
-        }
-
-        return $this->render('profil/publierProfil.html.twig', [
-            'user' => $user,
-            'countrys' => $countrys,
-            'publications' => $publications,
-            'user_age' => $age,
-            'contactVoyageurForm' => $form->createView()
-        ]);
-
+            }
+     
        
     }
 

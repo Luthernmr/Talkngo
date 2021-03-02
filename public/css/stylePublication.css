@@ -27,7 +27,6 @@ main{
 article{
     width: 100%;
     margin-top: 5em;
-    overflow: auto;
 }
 .profil-img{
     clip-path: circle(50%);
