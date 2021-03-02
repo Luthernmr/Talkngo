@@ -4,21 +4,18 @@
 
 {% block body %}
 
- <h1> Ajouter les moficication pour </h1>
+ <h1> Ajouter les notifications pour </h1>
  <div class="form-largescreen">
 {{ form_start(publicationModifForm,) }}
 {{ form_row(publicationModifForm.date,{'attr':{'class':'form-control'} }) }}
-{{ form_row(publicationModifForm.duration,{'attr':{'class':'form-control'} }) }}
-{{ form_row(publicationModifForm.img,{'attr':{'class':'form-control'} }) }}
-
 {{ form_row(publicationModifForm.countryStart,{'attr':{'class':'form-select' , 'placeholder' : 'exemple'} }) }}
 {{ form_row(publicationModifForm.countryName,{'attr':{'class':'form-select' , 'placeholder' : 'exemple'} }) }}
 
 
 <button class="submit" type="submit" class="btn btn-success">valider form</button>
 {{ form_end(publicationModifForm) }} 
-</div>
+<a class="retour" href=" {{path('admin')}} "> retour </a>
 
-<a href=" {{path('admin')}} "> retour </a>
+</div>
 
 {% endblock %}
