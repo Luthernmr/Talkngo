@@ -7,18 +7,14 @@
     padding: 0;
 }
 
- 
-@media only screen and (min-width: 1200px) { 
-
-
-}
 
  header{
-     position: sticky;
-     background-color: #fff;
-     z-index: 999;
-     top: 0px;
+    position: sticky;
+    background-color: #fff;
+    z-index: 999;
+    top: 0px;
     display: flex;
+    align-content: center;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 0px 50px 0px 50px;
@@ -67,8 +63,8 @@ a:link{
     height: 100px;
 }
 .searchbar{
-    width: 500px;
     height: 40px;
+    width: 20em;
     border: 1px solid #6923E5;
     border-radius: 20px;
     padding: 15px;
@@ -170,11 +166,12 @@ li{
 }
 
 
+.copyright {
+    color:#6923E5 ;
+}
 
 
-
-
-    
+  
 
 @media (max-width: 1200px) {
     .navbar{
@@ -202,6 +199,7 @@ li{
     top: 5px;
     left: 5px;
     border: none;
+    color: #6923E5;
 }
 .menu-profil:hover{
     color: #6923E5;
@@ -212,13 +210,14 @@ li{
 }
     
     header{
+        display: flex;
         position: relative;
     align-content: center;
     align-items: center ;
-        display: flex;
+       
       justify-content:space-around;
-      height: 25vh;
-     
+    
+        height: max-content;
     }
     .header-content{
         display: flex;
@@ -234,9 +233,7 @@ li{
         margin-top: 50px;
         margin-bottom: 50px;
     }
-    .searchbar{
-        width: 350px;
-    }
+    
     
     .login{
         
@@ -255,4 +252,7 @@ li{
             
         }
 
+        .copyright {
+            color:#6923E5 ;
+        }
 }

@@ -28,5 +28,35 @@ class HomeController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/apropos", name="apropos")
+     */
+
+    public function aPropos()
+    {
+        $repo = $this->getDoctrine()->getRepository(Country::class);
+        $countrys = $repo->findAll();
+        return $this->render('/home/Apropos.html.twig', [
+            
+          'countrys' =>  $countrys
+          
+        ]);
+    }
+
+    /**
+     * @Route("/contact", name="contact")
+     */
+
+    public function contact()
+    {
+        $repo = $this->getDoctrine()->getRepository(Country::class);
+        $countrys = $repo->findAll();
+        return $this->render('/home/contact.html.twig', [
+            
+          'countrys' =>  $countrys
+          
+        ]);
+    }
+  
   
 }
