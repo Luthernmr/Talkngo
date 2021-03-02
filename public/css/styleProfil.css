@@ -62,7 +62,7 @@ article{
     top: 5px;
     left: 5px;
 }
-.fas:hover{
+.fas .times:hover{
     color: #0d9b9c;
 }
 

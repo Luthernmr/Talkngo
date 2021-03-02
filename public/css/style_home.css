@@ -14,8 +14,10 @@ body {
     background-image: url("img/Image_accueil.png");
     background-repeat: no-repeat;
     background-size: cover;
-    width: 110%;
+    width: max-content;
+    width: 100%;
     min-height: 40em;
+    margin: 0;
 }
 
 h2 {
