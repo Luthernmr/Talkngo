@@ -1,9 +1,38 @@
 
  .profil{
+     margin-left: auto;
+     margin-right: auto;
+     padding: 15px;
+     border: #6923E5 5px solid ;
+     border-radius: 25px;
+     width: 800px;
+     height: 400px;
+     margin-top: 5vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    color: #fff;
+}
+
+.profil-voyage{
+
+width: 50%;
+ 
+}
+
+li{
+    color: black;
+}
+ .profile{
     display: flex;
     margin-top: 3%;
    border-radius: 10px;
    box-shadow: 0 5px 5px gray;
+}
+.profil-img{
+    border-radius: 50%;
+    margin-bottom: 50px;
 }
 .info-profil{
     display: flex;
@@ -15,6 +44,11 @@
    border-radius: 10px;
 
 }
+.ligne{
+    height: 350px;
+    border: 2px solid #6923E5;
+    background-color: #6923E5;
+}
 .modif-btn{
 
     display: flex;
@@ -24,4 +58,10 @@
 }
 .fas:hover{
     color: #0d9b9c;
+}
+
+.msg{
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
 }
