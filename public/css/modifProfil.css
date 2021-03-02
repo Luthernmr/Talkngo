@@ -110,6 +110,14 @@ label {
     margin-top: 15px;
 }
 
+.label-dark{
+    display: inline-block;
+    margin-bottom: .5rem;
+    color: #fff;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
 .submit{
     border: 1px solid #6923E5;
     padding : 10px;
