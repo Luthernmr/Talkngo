@@ -4,12 +4,11 @@
 
 {% block body %}
 
-<div class="container-fluid p-4">
+
         <h2 class="text-center"> modifier un utilisateur </h2>
+        <div class="form-largescreen" >
 
 
-
-    <div class="col-4 offset-4">
 
     
             {{ form_start(updateAdminForm,) }}
@@ -22,9 +21,9 @@
         {{ form_row(updateAdminForm.description,{'attr':{'class':'form-control'} }) }}
         {{ form_row(updateAdminForm.img) }}
 
+        </div>
         
-        
-        <button type="submit" class="btn btn-success">valider </button>
+        <button type="submit" class="submit">valider </button>
     {{ form_end(updateAdminForm) }}
       </div>
                   <a href=" {{path('admin_user')}} "> retour </a>
