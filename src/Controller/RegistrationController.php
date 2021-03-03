@@ -65,7 +65,7 @@ class RegistrationController extends AbstractController
             )
            ;
            $Mailer->send($message);
-           $this->addFlash('message',' creation de compte reuisssi,un email confirmation de mot de passe vous a éte envoyer ');
+           $this->addFlash('message',' creation de compte reuisssi,un email de verification  vous a éte envoyer ');
 
             return $guardHandler->authenticateUserAndHandleSuccess(
                 $user,
