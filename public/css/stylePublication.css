@@ -155,16 +155,6 @@ article{
     background-color: #fff;
     color: #0d9b9c;
     transition: ease-in-out 0.2s;
-    border: 1px solid #0d9b9c
+    border: 1px solid #0d9b9c;
 }
-
-
-@media (max-width: 840px) {
-
- 
-    
-
-   
-    }
-
 
