@@ -213,14 +213,12 @@ li{
 }
     
     header{
-        display: flex;
-        position: relative;
+    display: flex;
+    position: relative;
     align-content: center;
     align-items: center ;
-       
-      justify-content:space-around;
-    
-        height: max-content;
+    justify-content:space-around;
+    height: max-content;
     }
     .header-content{
         display: flex;
