@@ -136,7 +136,7 @@ class AdminController extends AbstractController
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
-                    $form->get('plainPassword')->getData()
+                    $form->get('password')->getData()
                 )
             );
             //gestion des images 
@@ -177,7 +177,7 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
                 if ($form->get('img')->getData() !== null){
-                    
+
                     $oldNomImg = $user->getImg(); //ancien image
                     $oldCheminImg = $this->getParameter('dossier_photos_user') . '/' . $oldNomImg;
                     if (file_exists($oldCheminImg)) {

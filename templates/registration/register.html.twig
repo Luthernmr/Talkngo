@@ -4,19 +4,26 @@
 
 {% block body %}
 
+{% block stylesheets %}
+<link rel="stylesheet" href="{{asset('css/form_css/form.css')}}">
+{% endblock  %}
 
     <div class="form-largescreen" >
         <h1>Inscription</h1>
             {{ form_start(registrationForm,) }}
+
+        <div class="short">
         {{ form_row(registrationForm.name,{'attr':{'class':'form-control', 'placeholder':' nom'} }) }}
         {{ form_row(registrationForm.first_name,{'attr':{'class':'form-control','placeholder':' prénom'} }) }}
-        {{ form_row(registrationForm.email,{'attr':{'class':'form-control','placeholder':'adress@email.com'} }) }}
+        </div>
+        {{ form_row(registrationForm.email,{'attr':{'class':'form-control2','placeholder':'adress@email.com'} }) }}
+        <div class="short">
         {{ form_row(registrationForm.password,{'attr':{'class':'form-control','placeholder':'*******'} }) }}
-         
+         </div>
       
-        {{ form_row(registrationForm.age, {'attr':{'class':'form-control',} }) }}
-        {{ form_row(registrationForm.location,{'attr':{'class':'form-control','placeholder':'votre email',} }) }}
-        {{ form_row(registrationForm.description,{'attr':{'class':'form-control','placeholder':'Parlez de votre projet!',} }) }}
+        {{ form_row(registrationForm.age, {'attr':{'class':'form-control2',} }) }}
+        {{ form_row(registrationForm.location,{'attr':{'class':'form-control2','placeholder':'votre ville',} }) }}
+        {{ form_row(registrationForm.description,{'attr':{'class':'form-control2','placeholder':'Parlez de votre projet!',} }) }}
         {{ form_row(registrationForm.img,{'attr':{'class':''} }) }}
 
         

@@ -35,8 +35,9 @@ h2 {
     font-family: 'calistoga';
 }
 
-h3 {
+#h3_accueil {
     color: #0d9b9c;
     font-family: 'calistoga';
     font-size: 1.3em;
+    text-align: left;
 }
