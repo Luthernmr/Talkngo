@@ -1,11 +1,10 @@
-
 {% extends "base.html.twig" %}
 
 {% block title %}{{ country.countryName }}{% endblock %}
-  
+
 {% block stylesheets %}
 
-            
+
 {% endblock %}
 {% block body %}
 
@@ -17,54 +16,59 @@
   </div>
 </main>
 {% else %}
-<main id="imagePays" style='background-image:url("{{asset('img/pays/' ~ country.imagePays)}}")'>
-    <h1 id="sloganPays" class="mb-4">{{ country.countryName }}</h1>
-    <h2 id="sloganPays">C'est le moment de partir à l'aventure !</h2>
+<main id="imagePays" style='background-image:url("{{asset(' img/pays/' ~ country.imagePays)}}")'>
+  <h1 id="sloganPays" class="mb-4">{{ country.countryName }}</h1>
+  <h2 id="sloganPays">C'est le moment de partir à l'aventure !</h2>
 </main>
 <div class="container">
-<h2 class="mt-4 mb-4">À propos du pays</h2>
-<p>{{ country.description }}</p>
+  <h2 class="mt-4 mb-4">À propos du pays</h2>
+  <p>{{ country.description }}</p>
 </div>
 {% endif %}
 
-<h4 class="text-center" styles="color:#0d9b9c; font-family: 'calistoga'; margin-top: 5em;">Trouvez-vous un partenaire de voyage !</h4>
+<h4 class="text-center" styles="color:#0d9b9c; font-family: 'calistoga'; margin-top: 5em;">Trouvez-vous un partenaire de
+  voyage !</h4>
 {% if user %}
 
-<div class="box-article">         
-<article class="m-auto flex-nowrap" id="sizeOfArticles">
-  {% for publication in publications %}
+<div class="box-article">
+  <article class="m-auto flex-nowrap" id="sizeOfArticles">
+    {% for publication in publications %}
 
-  {% if country.countryCode == publication.countryName  %}
-<div class="ml-1">
-  <div class="card">
-    <div class="presentation p-2 align-items-center">
+    {% if country.countryCode == publication.countryName %}
+    <div class="ml-1">
+      <div class="card">
+        <div class="presentation p-2 align-items-center">
 
-      <div class="user-info d-flex" styles="height:3em;">
-        <a href="{{ path('profil_voyageur',{'id':publication.user.id } ) }}"><img src="{{asset('img/profil/' ~ publication.user.img)}}" alt="pdp" class="profil-img ml-2" width="60px" height="60px"></a>
-        <h3 class="m-3">{{ publication.user.firstName }}</h3>
-      </div>
+          <div class="user-info d-flex" styles="height:3em;">
+            <a href="{{ path('profil_voyageur',{'id':publication.user.id } ) }}"><img
+                src="{{asset('img/profil/' ~ publication.user.img)}}" alt="pdp" class="profil-img ml-2" width="60px"
+                height="60px"></a>
+            <h3 class="m-3">{{ publication.user.firstName }}</h3>
+          </div>
 
-      <div class="date mt-3 pl-4">
-        <h6>{{ publication.countryStart | country_name }}<i class="fas fa-plane m-2"></i> {{ publication.countryName | country_name }} </h6>
-        <h7>{{ publication.date | date('d/m/Y')}}</h7>
+          <div class="date mt-3 pl-4 pb-4">
+            <h6>{{ publication.countryStart | country_name }}<i class="fas fa-plane m-2"></i> {{ publication.countryName
+              | country_name }} </h6>
+            <h7>{{ publication.date | date('d/m/Y')}}</h7>
+          </div>
+        </div>
+        <div class="mt-auto mb-4">
+          <a href="{{ path('profil_voyageur',{'id':publication.user.id } ) }}" class="button-info-1 m-1">A propos de {{
+            publication.user.firstName }}</a>
+        </div>
       </div>
     </div>
-    <div class="mt-auto mb-4">
-      <a href="{{ path('profil_voyageur',{'id':publication.user.id } ) }}" class="button-info-1 m-1">A propos de {{ publication.user.firstName }}</a>
-    </div>
-  </div>  
+    {% endif %}
+    {% endfor %}
+  </article>
 </div>
-  {% endif %}
-{% endfor %}
-</article>
-</div>         
-          
+
 
 
 {% else %}
 <div class="container-fluid text-center">
   <h4 class="mb-5 mt-5">Vous devez être connecté pour acceder à ce contenu</h2>
-  <a class="login" href="{{ path('app_login') }}">Connexion</a>  
+    <a class="login" href="{{ path('app_login') }}">Connexion</a>
 </div>
 {% endif %}
 </body>
